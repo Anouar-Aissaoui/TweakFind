@@ -2,6 +2,7 @@ import type { App } from '@/lib/apps';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { Download } from 'lucide-react';
+import { formatDistanceToNow } from 'date-fns';
 
 type AppListProps = {
   apps: App[];
@@ -31,9 +32,11 @@ export function AppList({ apps, onInstallClick }: AppListProps) {
           />
           <div className="flex-1 ml-4">
             <p className="text-base font-semibold text-foreground">{app.name}</p>
-            <p className="text-sm text-muted-foreground line-clamp-1">
-              v{app.version} &middot; {app.description}
-            </p>
+            <div className="text-sm text-muted-foreground flex items-center gap-2">
+                <p className="line-clamp-1">v{app.version}</p>
+                <span className='text-xs'>&middot;</span>
+                <p>{formatDistanceToNow(new Date(app.lastModified), { addSuffix: true })}</p>
+            </div>
           </div>
           <Button className="shrink-0" onClick={() => onInstallClick(app)}>
             <Download className="mr-2 h-4 w-4" />

@@ -16,9 +16,10 @@ export type App = {
   version: string;
   description: string;
   category: AppCategory;
+  lastModified: string;
 };
 
-const appData = [
+const appData: Omit<App, 'id' | 'icon' | 'iconHint'> & { slug: string; img: string; 'data-ai-hint': string, lastModified: string }[] = [
     {
         slug: "altstore",
         img: "https://i.imgur.com/rq3p0eE.png",
@@ -1274,6 +1275,5 @@ export const apps: App[] = appData.map((app) => ({
   version: app.version,
   description: app.description,
   category: app.category as AppCategory,
+  lastModified: app.lastModified,
 }));
-
-    
