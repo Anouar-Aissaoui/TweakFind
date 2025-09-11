@@ -6,29 +6,46 @@ import { Header } from './header';
 import { AppList } from './app-list';
 import { BottomNav } from './bottom-nav';
 import { InstallationModal } from './installation-modal';
+import { FeaturedApps } from './featured-apps';
 
 type HomePageClientProps = {
-  apps: App[];
+  featuredApps: App[];
+  regularApps: App[];
 };
 
-export function HomePageClient({ apps }: HomePageClientProps) {
+export function HomePageClient({ featuredApps, regularApps }: HomePageClientProps) {
   const [searchTerm, setSearchTerm] = useState('');
   const [activeCategory, setActiveCategory] = useState<AppCategory>('Apps');
   const [modalApp, setModalApp] = useState<App | null>(null);
 
+  const allApps = useMemo(() => [...featuredApps, ...regularApps], [featuredApps, regularApps]);
+
   const filteredApps = useMemo(() => {
-    return apps
+    return allApps
       .filter((app) => app.category === activeCategory)
       .filter((app) =>
         app.name.toLowerCase().includes(searchTerm.toLowerCase())
       );
-  }, [apps, activeCategory, searchTerm]);
+  }, [allApps, activeCategory, searchTerm]);
+  
+  const handleInstallClick = (app: App) => {
+    setModalApp(app);
+  };
+
 
   return (
     <>
       <Header searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
       <div className="container mx-auto px-4 py-2">
-        <AppList apps={filteredApps} onInstallClick={setModalApp} />
+         {searchTerm === '' && activeCategory === 'Apps' && (
+          <>
+            <FeaturedApps apps={featuredApps} onInstallClick={handleInstallClick} />
+            <h2 className="text-xl font-bold tracking-tight text-foreground mt-6 mb-4">
+              All Apps
+            </h2>
+          </>
+        )}
+        <AppList apps={filteredApps} onInstallClick={handleInstallClick} />
       </div>
       <BottomNav
         activeCategory={activeCategory}
