@@ -1,3 +1,4 @@
+
 import type { App } from '@/lib/apps';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
@@ -48,4 +49,5 @@ export function AppList({ apps, onInstallClick }: AppListProps) {
   );
 }
 
+    
     

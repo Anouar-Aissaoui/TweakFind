@@ -1,3 +1,4 @@
+
 'use client';
 
 import { AppWindow, Gamepad2, SquareTerminal, Wrench, Blocks, Tv, MessageSquare } from 'lucide-react';
@@ -50,4 +51,5 @@ export function BottomNav({ activeCategory, setCategory }: BottomNavProps) {
   );
 }
 
+    
     
