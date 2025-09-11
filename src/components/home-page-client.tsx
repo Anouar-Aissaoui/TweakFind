@@ -22,9 +22,9 @@ export function HomePageClient({ apps }: HomePageClientProps) {
 
   const filteredApps = useMemo(() => {
     let appsToFilter = apps;
-    if (activeCategory !== 'Apps') {
-        appsToFilter = apps.filter((app) => app.category === activeCategory);
-    }
+    
+    appsToFilter = apps.filter((app) => app.category === activeCategory);
+
     if (searchTerm) {
       return appsToFilter.filter((app) =>
         app.name.toLowerCase().includes(searchTerm.toLowerCase())
@@ -32,6 +32,14 @@ export function HomePageClient({ apps }: HomePageClientProps) {
     }
     return appsToFilter;
   }, [apps, activeCategory, searchTerm]);
+  
+  const allApps = useMemo(() => {
+    if(searchTerm) {
+      return apps.filter((app) => app.name.toLowerCase().includes(searchTerm.toLowerCase()))
+    }
+    return apps;
+  }, [apps, searchTerm]);
+
 
   const handleInstallClick = (app: App) => {
     setModalApp(app);
@@ -51,7 +59,7 @@ export function HomePageClient({ apps }: HomePageClientProps) {
             </h2>
           </section>
         )}
-        <AppList apps={filteredApps} onInstallClick={handleInstallClick} />
+        <AppList apps={showFeatured ? allApps : filteredApps} onInstallClick={handleInstallClick} />
       </div>
       <BottomNav
         activeCategory={activeCategory}
