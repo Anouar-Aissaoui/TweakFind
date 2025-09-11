@@ -2,7 +2,7 @@
 'use client';
 
 import { useState, useMemo } from 'react';
-import type { App, AppCategory } from '@/lib/apps';
+import type { Entity, AppCategory } from '@/lib/apps';
 import { Header } from './header';
 import { AppList } from './app-list';
 import { BottomNav } from './bottom-nav';
@@ -10,13 +10,13 @@ import { InstallationModal } from './installation-modal';
 import { FeaturedApps } from './featured-apps';
 
 type HomePageClientProps = {
-  apps: App[];
+  apps: Entity[];
 };
 
 export function HomePageClient({ apps }: HomePageClientProps) {
   const [searchTerm, setSearchTerm] = useState('');
   const [activeCategory, setActiveCategory] = useState<AppCategory>('Apps');
-  const [modalApp, setModalApp] = useState<App | null>(null);
+  const [modalApp, setModalApp] = useState<Entity | null>(null);
 
   const featuredApps = useMemo(() => apps.slice(0, 5), [apps]);
 
@@ -41,7 +41,7 @@ export function HomePageClient({ apps }: HomePageClientProps) {
   }, [apps, searchTerm]);
 
 
-  const handleInstallClick = (app: App) => {
+  const handleInstallClick = (app: Entity) => {
     setModalApp(app);
   };
 

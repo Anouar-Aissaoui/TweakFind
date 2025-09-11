@@ -10,12 +10,12 @@ import {
 } from '@/components/ui/dialog';
 import { Button } from './ui/button';
 import { Progress } from './ui/progress';
-import type { App } from '@/lib/apps';
+import type { Entity } from '@/lib/apps';
 import { CheckCircle } from 'lucide-react';
 import Image from 'next/image';
 
 type InstallationModalProps = {
-  app: App | null;
+  app: Entity | null;
   onClose: () => void;
 };
 
@@ -72,12 +72,12 @@ export function InstallationModal({ app, onClose }: InstallationModalProps) {
         <DialogHeader className="p-6 pb-0">
           <div className="flex justify-center mb-4">
             <Image
-              src={app.icon}
+              src={app.media.icon}
               alt={`${app.name} icon`}
               width={80}
               height={80}
               className="rounded-xl object-contain"
-              data-ai-hint={app.iconHint}
+              data-ai-hint={app.media.iconHint}
             />
           </div>
           <DialogTitle className="text-2xl text-center font-headline">

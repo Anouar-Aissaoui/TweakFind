@@ -50,6 +50,3 @@ export function BottomNav({ activeCategory, setCategory }: BottomNavProps) {
     </nav>
   );
 }
-
-    
-    

@@ -1,7 +1,7 @@
 
 'use client';
 
-import type { App } from '@/lib/apps';
+import type { Entity } from '@/lib/apps';
 import Image from 'next/image';
 import {
   Carousel,
@@ -12,8 +12,8 @@ import { Button } from '@/components/ui/button';
 import { Download } from 'lucide-react';
 
 type FeaturedAppsProps = {
-  apps: App[];
-  onInstallClick: (app: App) => void;
+  apps: Entity[];
+  onInstallClick: (app: Entity) => void;
 };
 
 export function FeaturedApps({ apps, onInstallClick }: FeaturedAppsProps) {
@@ -35,15 +35,15 @@ export function FeaturedApps({ apps, onInstallClick }: FeaturedAppsProps) {
               <div className="p-1">
                 <div className="flex flex-col items-center justify-center p-4 bg-card rounded-lg border border-border/50 aspect-square">
                   <Image
-                    src={app.icon}
+                    src={app.media.icon}
                     alt={`${app.name} icon`}
                     width={64}
                     height={64}
                     className="rounded-lg object-contain mb-3"
-                    data-ai-hint={app.iconHint}
+                    data-ai-hint={app.media.iconHint}
                   />
                   <p className="text-sm font-semibold text-center text-foreground truncate w-full">{app.name}</p>
-                   <p className="text-xs text-muted-foreground mb-3">Version: {app.version}</p>
+                   <p className="text-xs text-muted-foreground mb-3">Version: {app.facts.version}</p>
                   <Button size="sm" className="w-full" onClick={() => onInstallClick(app)}>
                     <Download className="mr-2 h-4 w-4" />
                     Install

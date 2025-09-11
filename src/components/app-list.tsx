@@ -1,13 +1,13 @@
 
-import type { App } from '@/lib/apps';
+import type { Entity } from '@/lib/apps';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { Download } from 'lucide-react';
 import { formatDistanceToNow } from 'date-fns';
 
 type AppListProps = {
-  apps: App[];
-  onInstallClick: (app: App) => void;
+  apps: Entity[];
+  onInstallClick: (app: Entity) => void;
 };
 
 export function AppList({ apps, onInstallClick }: AppListProps) {
@@ -24,17 +24,17 @@ export function AppList({ apps, onInstallClick }: AppListProps) {
       {apps.map((app) => (
         <div key={app.id} className="flex items-center bg-card p-3 rounded-lg border border-border/50 hover:bg-secondary/50 transition-colors">
           <Image
-            src={app.icon}
+            src={app.media.icon}
             alt={`${app.name} icon`}
             width={48}
             height={48}
             className="rounded-lg object-contain border-2 border-border/30"
-            data-ai-hint={app.iconHint}
+            data-ai-hint={app.media.iconHint}
           />
           <div className="flex-1 ml-4">
             <p className="text-base font-semibold text-foreground">{app.name}</p>
             <div className="text-sm text-muted-foreground flex items-center gap-2">
-                <p className="line-clamp-1">v{app.version}</p>
+                <p className="line-clamp-1">v{app.facts.version}</p>
                 <span className='text-xs'>&middot;</span>
                 <p>{formatDistanceToNow(new Date(app.lastModified), { addSuffix: true })}</p>
             </div>
@@ -48,6 +48,3 @@ export function AppList({ apps, onInstallClick }: AppListProps) {
     </div>
   );
 }
-
-    
-    

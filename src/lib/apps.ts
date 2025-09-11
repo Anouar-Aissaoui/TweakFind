@@ -8,18 +8,33 @@ export type AppCategory =
   | 'Entertainment'
   | 'Social';
 
-export type App = {
-  id: string;
+export type Entity = {
+  id: string; // slug
+  name: string; // title
+  description: string; // summary
+  category: AppCategory;
+  lastModified: string; // updated_at
+  media: {
+    icon: string;
+    iconHint: string;
+  };
+  facts: {
+    version: string;
+  };
+};
+
+type AppDto = {
+  slug: string;
+  img: string;
   name: string;
-  icon: string;
-  iconHint: string;
-  version: string;
+  'data-ai-hint': string;
   description: string;
+  version: string;
   category: AppCategory;
   lastModified: string;
 };
 
-const appData: Omit<App, 'id' | 'icon' | 'iconHint'> & { slug: string; img: string; 'data-ai-hint': string, lastModified: string }[] = [
+const appData: AppDto[] = [
     {
         slug: "altstore",
         img: "https://i.imgur.com/rq3p0eE.png",
@@ -982,16 +997,17 @@ const appData: Omit<App, 'id' | 'icon' | 'iconHint'> & { slug: string; img: stri
     }
 ];
 
-export const apps: App[] = appData.map((app) => ({
+export const apps: Entity[] = appData.map((app) => ({
   id: app.slug,
   name: app.name,
-  icon: app.img,
-  iconHint: app['data-ai-hint'],
-  version: app.version,
   description: app.description,
-  category: app.category as AppCategory,
+  category: app.category,
   lastModified: app.lastModified,
+  media: {
+    icon: app.img,
+    iconHint: app['data-ai-hint'],
+  },
+  facts: {
+    version: app.version,
+  },
 }));
-
-    
-    
