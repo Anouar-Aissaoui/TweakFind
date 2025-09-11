@@ -20,7 +20,7 @@ type BottomNavProps = {
 
 export function BottomNav({ activeCategory, setCategory }: BottomNavProps) {
   return (
-    <nav className="fixed bottom-0 left-0 right-0 w-full bg-card/95 backdrop-blur-sm border-t z-50">
+    <nav className="fixed bottom-0 left-0 right-0 w-full bg-card/90 backdrop-blur-sm border-t border-border/50 z-50">
       <div className="max-w-screen-lg mx-auto grid grid-cols-5">
         {categories.map((category) => (
           <Button
@@ -28,10 +28,10 @@ export function BottomNav({ activeCategory, setCategory }: BottomNavProps) {
             variant="ghost"
             onClick={() => setCategory(category.name)}
             className={cn(
-              'flex flex-col items-center h-full p-2 text-xs rounded-none focus-visible:ring-0 focus-visible:ring-offset-0',
+              'flex flex-col items-center h-16 justify-center p-2 text-xs rounded-none focus-visible:ring-0 focus-visible:ring-offset-0 transition-colors duration-200',
               activeCategory === category.name
-                ? 'text-primary'
-                : 'text-muted-foreground'
+                ? 'text-primary bg-primary/10'
+                : 'text-muted-foreground hover:bg-accent/50'
             )}
             aria-pressed={activeCategory === category.name}
           >
