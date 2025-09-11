@@ -27,6 +27,15 @@ export function HomePageClient({ featuredApps, regularApps }: HomePageClientProp
         app.name.toLowerCase().includes(searchTerm.toLowerCase())
       );
   }, [allApps, activeCategory, searchTerm]);
+
+  const appsForList = useMemo(() => {
+    if (searchTerm === '' && activeCategory === 'Apps') {
+        return allApps.filter((app) =>
+            app.name.toLowerCase().includes(searchTerm.toLowerCase())
+        );
+    }
+    return filteredApps;
+  }, [allApps, filteredApps, activeCategory, searchTerm]);
   
   const handleInstallClick = (app: App) => {
     setModalApp(app);
@@ -45,7 +54,7 @@ export function HomePageClient({ featuredApps, regularApps }: HomePageClientProp
             </h2>
           </>
         )}
-        <AppList apps={filteredApps} onInstallClick={handleInstallClick} />
+        <AppList apps={appsForList} onInstallClick={handleInstallClick} />
       </div>
       <BottomNav
         activeCategory={activeCategory}
