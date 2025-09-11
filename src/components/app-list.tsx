@@ -1,5 +1,7 @@
 import type { App } from '@/lib/apps';
-import { AppCard } from './app-card';
+import Image from 'next/image';
+import { Button } from '@/components/ui/button';
+import { Download } from 'lucide-react';
 
 type AppListProps = {
   apps: App[];
@@ -16,9 +18,28 @@ export function AppList({ apps, onInstallClick }: AppListProps) {
     );
   }
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+    <div className="space-y-2">
       {apps.map((app) => (
-        <AppCard key={app.id} app={app} onInstallClick={onInstallClick} />
+        <div key={app.id} className="flex items-center bg-secondary p-4 rounded-lg border">
+          <Image
+            src={app.icon}
+            alt={`${app.name} icon`}
+            width={48}
+            height={48}
+            className="rounded-lg object-contain"
+            data-ai-hint={app.iconHint}
+          />
+          <div className="flex-1 ml-4">
+            <p className="text-base font-semibold text-primary">{app.name}</p>
+            <p className="text-sm text-muted-foreground">
+              Latest: <b className="font-semibold text-foreground">{app.version}</b>
+            </p>
+          </div>
+          <Button size="sm" onClick={() => onInstallClick(app)}>
+            <Download className="mr-2 h-4 w-4" />
+            Install
+          </Button>
+        </div>
       ))}
     </div>
   );

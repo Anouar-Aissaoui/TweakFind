@@ -27,7 +27,7 @@ export function HomePageClient({ apps }: HomePageClientProps) {
   return (
     <>
       <Header searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
-      <div className="container mx-auto px-4 py-8">
+      <div className="container mx-auto px-4 py-2">
         <AppList apps={filteredApps} onInstallClick={setModalApp} />
       </div>
       <BottomNav
