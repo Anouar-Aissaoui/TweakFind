@@ -1,3 +1,4 @@
+
 'use client';
 
 import { useState, useMemo } from 'react';
@@ -47,12 +48,12 @@ export function HomePageClient({ featuredApps, regularApps }: HomePageClientProp
       <Header searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
       <div className="container mx-auto px-4 py-2">
          {searchTerm === '' && activeCategory === 'Apps' && (
-          <>
+          <section>
             <FeaturedApps apps={featuredApps} onInstallClick={handleInstallClick} />
             <h2 className="text-xl font-bold tracking-tight text-foreground mt-6 mb-4">
               All Apps
             </h2>
-          </>
+          </section>
         )}
         <AppList apps={appsForList} onInstallClick={handleInstallClick} />
       </div>

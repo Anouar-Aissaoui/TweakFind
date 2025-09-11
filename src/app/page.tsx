@@ -1,8 +1,8 @@
 import { apps, type App } from '@/lib/apps';
 import { HomePageClient } from '@/components/home-page-client';
+import { Header } from '@/components/header';
 
 export default function Home() {
-  // Let's feature the first 5 apps for the hero section
   const featuredApps = apps.slice(0, 5) as App[];
   const regularApps = apps.slice(5) as App[];
 
