@@ -1,3 +1,101 @@
+
 {
-  "placeholderImages": []
+  "placeholderImages": [
+    {
+      "id": "onlyfans-plus-plus",
+      "description": "Onlyfans++ app icon",
+      "imageUrl": "https://picsum.photos/seed/1/128/128",
+      "imageHint": "logo social"
+    },
+    {
+      "id": "apple-music-plus-plus",
+      "description": "Apple Music++ app icon",
+      "imageUrl": "https://picsum.photos/seed/2/128/128",
+      "imageHint": "logo music"
+    },
+    {
+      "id": "cash-app-plus-plus",
+      "description": "Cash App++ app icon",
+      "imageUrl": "https://picsum.photos/seed/3/128/128",
+      "imageHint": "logo finance"
+    },
+    {
+      "id": "spotify-plus-plus",
+      "description": "Spotify++ app icon",
+      "imageUrl": "https://picsum.photos/seed/4/128/128",
+      "imageHint": "logo music"
+    },
+    {
+      "id": "netflix-plus-plus",
+      "description": "Netflix++ app icon",
+      "imageUrl": "https://picsum.photos/seed/5/128/128",
+      "imageHint": "logo video"
+    },
+    {
+      "id": "watched-plus-plus",
+      "description": "Watched++ app icon",
+      "imageUrl": "https://picsum.photos/seed/6/128/128",
+      "imageHint": "logo movie"
+    },
+    {
+      "id": "snapchat-plus-plus",
+      "description": "Snapchat++ app icon",
+      "imageUrl": "https://picsum.photos/seed/7/128/128",
+      "imageHint": "logo social"
+    },
+    {
+      "id": "roblox-plus-plus",
+      "description": "Roblox++ app icon",
+      "imageUrl": "https://picsum.photos/seed/8/128/128",
+      "imageHint": "logo game"
+    },
+    {
+      "id": "tiktok-plus-plus",
+      "description": "tiktok++ app icon",
+      "imageUrl": "https://picsum.photos/seed/9/128/128",
+      "imageHint": "logo social"
+    },
+    {
+      "id": "instagram-plus-plus",
+      "description": "Instagram++ app icon",
+      "imageUrl": "https://picsum.photos/seed/10/128/128",
+      "imageHint": "logo photo"
+    },
+    {
+      "id": "disney-plus-plus",
+      "description": "Disney++ app icon",
+      "imageUrl": "https://picsum.photos/seed/11/128/128",
+      "imageHint": "logo movie"
+    },
+    {
+      "id": "tinder-gold",
+      "description": "Tinder Gold app icon",
+      "imageUrl": "https://picsum.photos/seed/12/128/128",
+      "imageHint": "logo dating"
+    },
+    {
+      "id": "gba4ios",
+      "description": "GBA4iOS emulator icon",
+      "imageUrl": "https://picsum.photos/seed/13/128/128",
+      "imageHint": "logo controller"
+    },
+    {
+      "id": "delta-emulator",
+      "description": "Delta emulator icon",
+      "imageUrl": "https://picsum.photos/seed/14/128/128",
+      "imageHint": "logo console"
+    },
+    {
+      "id": "youtube-cercube",
+      "description": "Cercube for YouTube icon",
+      "imageUrl": "https://picsum.photos/seed/15/128/128",
+      "imageHint": "logo video"
+    },
+    {
+      "id": "whatsapp-watusi",
+      "description": "Watusi for WhatsApp icon",
+      "imageUrl": "https://picsum.photos/seed/16/128/128",
+      "imageHint": "logo chat"
+    }
+  ]
 }
