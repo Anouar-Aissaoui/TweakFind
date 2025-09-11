@@ -32,12 +32,12 @@ export function AppList({ apps, onInstallClick }: AppListProps) {
           <div className="flex-1 ml-4">
             <p className="text-base font-semibold text-foreground">{app.name}</p>
             <p className="text-sm text-muted-foreground line-clamp-1">
-              {app.description}
+              v{app.version} &middot; {app.description}
             </p>
           </div>
-          <Button size="icon" variant="ghost" className="bg-primary/10 text-primary hover:bg-primary/20 shrink-0" onClick={() => onInstallClick(app)}>
-            <Download className="h-4 w-4" />
-            <span className="sr-only">Install</span>
+          <Button className="shrink-0" onClick={() => onInstallClick(app)}>
+            <Download className="mr-2 h-4 w-4" />
+            Install
           </Button>
         </div>
       ))}

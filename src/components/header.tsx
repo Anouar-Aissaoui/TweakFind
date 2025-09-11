@@ -11,9 +11,9 @@ export function Header({ searchTerm, setSearchTerm }: HeaderProps) {
     <header className="container mx-auto px-4 pt-6 pb-4 bg-background">
       <div className='text-center mb-4'>
         <h1 className="text-3xl font-bold tracking-tighter text-primary">
-          OGzilla.org
+          TweakFind
         </h1>
-        <p className="text-muted-foreground text-sm">Find and install tweaked apps for your devices.</p>
+        <p className="text-muted-foreground text-sm">Your #1 source for tweaked apps & mods.</p>
       </div>
        <div className="relative">
         <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
