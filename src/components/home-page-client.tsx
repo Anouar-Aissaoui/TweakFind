@@ -23,7 +23,9 @@ export function HomePageClient({ apps }: HomePageClientProps) {
   const filteredApps = useMemo(() => {
     let appsToFilter = apps;
     
-    appsToFilter = apps.filter((app) => app.category === activeCategory);
+    if (activeCategory) {
+        appsToFilter = apps.filter((app) => app.category === activeCategory);
+    }
 
     if (searchTerm) {
       return appsToFilter.filter((app) =>
