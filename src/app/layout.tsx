@@ -3,8 +3,8 @@ import './globals.css';
 import { Toaster } from '@/components/ui/toaster';
 
 export const metadata: Metadata = {
-  title: 'TweakFind - Your Source for Tweaked Apps & Mods',
-  description: 'Discover and install the best tweaked apps, mods, and emulators for iOS and Android. Safe, updated, and no jailbreak required. Your #1 source for TweakFind.',
+  title: 'TweakFind: #1 Tweaked App Store for iOS & Android',
+  description: 'Download tweaked apps, game mods, and emulators. Safe, updated, and no jailbreak required. Your trusted source for TweakFind.',
 };
 
 export default function RootLayout({
