@@ -714,7 +714,7 @@ Compatibility
         description: "PPSSPP on iOS/Android without Jailbreak!",
         version: "1.0.0",
         size: "Varies",
-        category: "Utilities",
+        category: "Emulators",
         longDescription: `PPSSPP – PSP Emulator for iOS & Android
 
 What you get
@@ -761,7 +761,7 @@ Tips
 - Optimize sensitivity and FOV for better aim
 
 Compatibility
-- iOS 12+ and Android 7+`,
+- iOS 12+ / Android 7+`,
         faqs: [
             { question: "Ranked safety?", answer: "Use casual modes; ranked raises risk." },
             { question: "Root/jailbreak?", answer: "Not required." }
@@ -1744,7 +1744,7 @@ Accelerate research, expand your city, and dominate events without waiting. This
         longDescription: `Investigate with unlimited money in Criminal Case to speed through cases. iOS & Android supported.`,
         faqs: [
             { question: "Progress sync?", answer: "Local progress persists; server sync may vary." },
-            { question: "Platforms supported?", answer: "iOS & Android." }
+            { question: "Platforms supported?", answer: "iOS and Android." }
         ],
         url: "",
         lastModified: "2025-06-22"
@@ -2758,3 +2758,5 @@ export const apps: App[] = appData.map((app) => ({
   description: app.description,
   category: app.category as AppCategory,
 }));
+
+    
