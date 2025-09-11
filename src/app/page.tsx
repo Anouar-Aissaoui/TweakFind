@@ -1,6 +1,5 @@
 import { apps, type App } from '@/lib/apps';
 import { HomePageClient } from '@/components/home-page-client';
-import { Header } from '@/components/header';
 
 export default function Home() {
   const featuredApps = apps.slice(0, 5) as App[];
