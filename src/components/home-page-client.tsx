@@ -10,44 +10,40 @@ import { InstallationModal } from './installation-modal';
 import { FeaturedApps } from './featured-apps';
 
 type HomePageClientProps = {
-  featuredApps: App[];
-  regularApps: App[];
+  apps: App[];
 };
 
-export function HomePageClient({ featuredApps, regularApps }: HomePageClientProps) {
+export function HomePageClient({ apps }: HomePageClientProps) {
   const [searchTerm, setSearchTerm] = useState('');
   const [activeCategory, setActiveCategory] = useState<AppCategory>('Apps');
   const [modalApp, setModalApp] = useState<App | null>(null);
 
-  const allApps = useMemo(() => [...featuredApps, ...regularApps], [featuredApps, regularApps]);
+  const featuredApps = useMemo(() => apps.slice(0, 5), [apps]);
 
   const filteredApps = useMemo(() => {
-    return allApps
-      .filter((app) => app.category === activeCategory)
-      .filter((app) =>
+    let appsToFilter = apps;
+    if (activeCategory !== 'Apps') {
+        appsToFilter = apps.filter((app) => app.category === activeCategory);
+    }
+    if (searchTerm) {
+      return appsToFilter.filter((app) =>
         app.name.toLowerCase().includes(searchTerm.toLowerCase())
       );
-  }, [allApps, activeCategory, searchTerm]);
-
-  const appsForList = useMemo(() => {
-    if (searchTerm === '' && activeCategory === 'Apps') {
-        return allApps.filter((app) =>
-            app.name.toLowerCase().includes(searchTerm.toLowerCase())
-        );
     }
-    return filteredApps;
-  }, [allApps, filteredApps, activeCategory, searchTerm]);
-  
+    return appsToFilter;
+  }, [apps, activeCategory, searchTerm]);
+
   const handleInstallClick = (app: App) => {
     setModalApp(app);
   };
 
+  const showFeatured = searchTerm === '' && activeCategory === 'Apps';
 
   return (
     <>
       <Header searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
       <div className="container mx-auto px-4 py-2">
-         {searchTerm === '' && activeCategory === 'Apps' && (
+         {showFeatured && (
           <section>
             <FeaturedApps apps={featuredApps} onInstallClick={handleInstallClick} />
             <h2 className="text-xl font-bold tracking-tight text-foreground mt-6 mb-4">
@@ -55,7 +51,7 @@ export function HomePageClient({ featuredApps, regularApps }: HomePageClientProp
             </h2>
           </section>
         )}
-        <AppList apps={appsForList} onInstallClick={handleInstallClick} />
+        <AppList apps={filteredApps} onInstallClick={handleInstallClick} />
       </div>
       <BottomNav
         activeCategory={activeCategory}
