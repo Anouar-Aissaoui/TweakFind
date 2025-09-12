@@ -23,7 +23,7 @@ export function AppList({ apps, onInstallClick }: AppListProps) {
   return (
     <div className="space-y-2">
       {apps.map((app) => (
-        <Link href={`/${app.category.toLowerCase()}/${app.id}`} key={app.id} className="block">
+        <Link href={`/apps/${app.id}`} key={app.id} className="block">
           <div className="flex items-center bg-card p-3 rounded-lg border border-border/50 hover:bg-secondary/50 transition-colors">
             <Image
               src={app.media.icon}

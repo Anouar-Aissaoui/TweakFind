@@ -34,7 +34,7 @@ export function FeaturedApps({ apps, onInstallClick }: FeaturedAppsProps) {
           {apps.map((app) => (
             <CarouselItem key={app.id} className="basis-1/2 md:basis-1/3 lg:basis-1/4">
               <div className="p-1">
-                 <Link href={`/${app.category.toLowerCase()}/${app.id}`} className="block h-full">
+                 <Link href={`/apps/${app.id}`} className="block h-full">
                     <div className="flex flex-col items-center justify-center p-4 bg-card rounded-lg border border-border/50 aspect-square h-full">
                     <Image
                         src={app.media.icon}

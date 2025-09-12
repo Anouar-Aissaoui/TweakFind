@@ -11,20 +11,19 @@ export const revalidate = 86400; // ISR: 24h
 
 export async function generateStaticParams() {
   return apps.map(app => ({
-    category: app.category.toLowerCase(),
     slug: app.id,
   }));
 }
 
-export async function generateMetadata({ params }: { params: { slug: string, category: string } }): Promise<Metadata> {
+export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
   const app = apps.find(a => a.id === params.slug);
-  if (!app || app.category.toLowerCase() !== params.category) {
+  if (!app) {
     return {};
   }
 
   const title = `${app.name} - TweakFind`;
   const description = app.description.slice(0, 155);
-  const url = `https://tweak.appsg.site/${app.category.toLowerCase()}/${app.id}`;
+  const url = `https://tweak.appsg.site/apps/${app.id}`;
 
   return {
     title,
@@ -35,10 +34,10 @@ export async function generateMetadata({ params }: { params: { slug: string, cat
   };
 }
 
-export default async function Page({ params }: { params: { slug: string, category: string } }) {
+export default async function Page({ params }: { params: { slug:string } }) {
   const app = apps.find(e => e.id === params.slug);
 
-  if (!app || app.category.toLowerCase() !== params.category) {
+  if (!app) {
     return notFound();
   }
   
@@ -48,8 +47,8 @@ export default async function Page({ params }: { params: { slug: string, categor
 
   const breadcrumbs = [
     { name: "Home", item: "/" },
-    { name: app.category, item: `/${app.category.toLowerCase()}` },
-    { name: app.name, item: `/${app.category.toLowerCase()}/${app.id}` }
+    { name: "Apps", item: `/apps` },
+    { name: app.name, item: `/apps/${app.id}` }
   ];
 
   const siteUrl = "https://tweak.appsg.site";
