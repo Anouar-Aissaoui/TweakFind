@@ -5,7 +5,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const siteUrl = 'https://tweak.appsg.site';
 
   const appUrls = apps.map((app) => ({
-    url: `${siteUrl}/apps/${app.id}`,
+    url: `${siteUrl}/${app.category.toLowerCase()}/apps/${app.id}`,
     lastModified: app.lastModified ? new Date(app.lastModified) : new Date(),
     changeFrequency: 'weekly' as const,
     priority: 0.8,
@@ -25,12 +25,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: new Date(),
       changeFrequency: 'daily',
       priority: 1,
-    },
-    {
-        url: `${siteUrl}/apps`,
-        lastModified: new Date(),
-        changeFrequency: 'daily',
-        priority: 0.9,
     },
     ...categoryUrls,
     ...appUrls,

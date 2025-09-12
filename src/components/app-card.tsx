@@ -11,7 +11,7 @@ type AppCardProps = {
 
 export function AppCard({ app }: AppCardProps) {
   return (
-    <Link href={`/apps/${app.id}`} className="block h-full">
+    <Link href={`/${app.category.toLowerCase()}/apps/${app.id}`} className="block h-full">
       <div className="flex flex-col items-center justify-center p-4 bg-card rounded-lg border border-border/50 aspect-square h-full hover:bg-secondary/50 transition-colors">
         <Image
           src={app.media.icon}

@@ -45,7 +45,7 @@ export function AppGrid({ apps }: AppGridProps) {
       {apps.map((app) => {
         const status = getPaymentStatus(app);
         return (
-            <Link href={`/apps/${app.id}`} key={app.id} className="block group">
+            <Link href={`/${app.category.toLowerCase()}/apps/${app.id}`} key={app.id} className="block group">
                 <div className="flex items-center gap-4 p-3 rounded-lg border bg-background hover:bg-secondary transition-colors">
                     <Image
                     src={app.media.icon}
