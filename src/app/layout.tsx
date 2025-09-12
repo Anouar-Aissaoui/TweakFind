@@ -1,3 +1,4 @@
+
 import type { Metadata, TemplateString } from 'next';
 import './globals.css';
 import { Toaster } from '@/components/ui/toaster';
@@ -13,7 +14,7 @@ type AppMetadata = Omit<Metadata, 'title'> & {
   title: string | TemplateString;
 };
 
-export async function generateMetadata({ searchParams }: { searchParams: { [key: string]: string | string[] | undefined } }): Promise<AppMetadata> {
+export async function generateMetadata({ searchParams = {} }: { searchParams?: { [key: string]: string | string[] | undefined } }): Promise<AppMetadata> {
   
   const baseMetadata: AppMetadata = {
     title: {
