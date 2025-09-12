@@ -16,12 +16,18 @@ type AppMetadata = Omit<Metadata, 'title'> & {
 
 export async function generateMetadata({ searchParams }: { searchParams?: { [key: string]: string | string[] | undefined } }): Promise<AppMetadata> {
   
+  const siteUrl = "https://tweak.appsg.site";
+
   const baseMetadata: AppMetadata = {
+    metadataBase: new URL(siteUrl),
     title: {
       default: 'TweakFind: #1 Tweaked App Store for iOS & Android',
       template: '%s | TweakFind',
     },
     description: 'Download tweaked apps, game mods, and emulators. Safe, updated, and no jailbreak required. Your trusted source for TweakFind.',
+    alternates: {
+      canonical: '/',
+    }
   };
   
   searchParams = searchParams || {};
