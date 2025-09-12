@@ -22,7 +22,7 @@ export function Sidebar() {
                     </div>
                     <div className="grid grid-cols-2 gap-x-4 gap-y-2">
                         {categories.map(category => (
-                            <Link key={category} href={`/${category.toLowerCase().replace(/ & /g, '-').replace(/ /g, '-')}`} className="text-sm text-muted-foreground hover:text-primary transition-colors truncate">
+                            <Link key={category} href={`/${category.toLowerCase().replace(/ & /g, '-').replace(/ /g, '-')}/apps`} className="text-sm text-muted-foreground hover:text-primary transition-colors truncate">
                                 {category}
                             </Link>
                         ))}

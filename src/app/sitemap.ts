@@ -12,7 +12,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   }));
 
   const categoryUrls = [...new Set(apps.map((app) => app.category))].map((category) => ({
-    url: `${siteUrl}/${category.toLowerCase()}`,
+    url: `${siteUrl}/${category.toLowerCase()}/apps`,
     lastModified: new Date(),
     changeFrequency: 'daily' as const,
     priority: 0.9,

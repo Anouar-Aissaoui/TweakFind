@@ -25,7 +25,7 @@ export async function generateMetadata({ params }: { params: { category: string 
 
     const title = `${categoryName.charAt(0).toUpperCase() + categoryName.slice(1)} Apps - TweakFind`;
     const description = `Browse and download the latest tweaked ${categoryName} apps. Safe, updated, and no jailbreak required.`;
-    const url = `https://tweak.appsg.site/${categoryParam}`;
+    const url = `https://tweak.appsg.site/${categoryParam}/apps`;
 
     return {
         title,
@@ -49,7 +49,7 @@ export default async function CategoryPage({ params }: { params: { category: str
 
     const breadcrumbs = [
         { name: "Home", item: "/" },
-        { name: capitalizedCategory, item: `/${categoryParam}` }
+        { name: capitalizedCategory, item: `/${categoryParam}/apps` }
     ];
 
     return (
@@ -83,3 +83,4 @@ export default async function CategoryPage({ params }: { params: { category: str
         </div>
     );
 }
+
