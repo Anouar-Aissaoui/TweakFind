@@ -10,6 +10,7 @@ import { ChevronRight } from "lucide-react";
 import { jsonLdScriptProps } from "react-schemaorg";
 import { WebPage, BreadcrumbList } from "schema-dts";
 import { ClientTime } from "@/components/client-time";
+import { AppCard } from "@/components/app-card";
 
 
 export const revalidate = 86400; // ISR: 24h
@@ -46,6 +47,10 @@ export default async function Page({ params }: { params: { slug: string, categor
   if (!app || app.category.toLowerCase() !== params.category) {
     return notFound();
   }
+  
+  const relatedApps = apps
+    .filter(a => a.category === app.category && a.id !== app.id)
+    .slice(0, 4);
 
   const breadcrumbs = [
     { name: "Home", item: "/" },
@@ -141,6 +146,17 @@ export default async function Page({ params }: { params: { slug: string, categor
                         With a user-friendly interface and regular updates, {app.name} ensures a smooth and reliable experience. It's designed for easy installation without the need for complex procedures like jailbreaking, making it accessible to a wide audience. Explore the enhanced capabilities and enjoy a premium experience for free.
                     </p>
                 </section>
+                
+                {relatedApps.length > 0 && (
+                    <section aria-labelledby="related-apps" className="mt-12">
+                        <h2 id="related-apps" className="text-2xl font-bold tracking-tight mb-4">You Might Also Like</h2>
+                        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                            {relatedApps.map((relatedApp) => (
+                                <AppCard key={relatedApp.id} app={relatedApp} />
+                            ))}
+                        </div>
+                    </section>
+                )}
 
 
                 <footer className="mt-12 text-center text-muted-foreground text-sm">
