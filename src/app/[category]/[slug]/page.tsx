@@ -7,6 +7,9 @@ import { Button } from "@/components/ui/button";
 import { Download } from "lucide-react";
 import Link from "next/link";
 import { ChevronRight } from "lucide-react";
+import { jsonLdScriptProps } from "react-schemaorg";
+import { WebPage, BreadcrumbList } from "schema-dts";
+
 
 export const revalidate = 86400; // ISR: 24h
 
@@ -49,8 +52,27 @@ export default async function Page({ params }: { params: { slug: string, categor
     { name: app.name, item: `/${app.category.toLowerCase()}/${app.id}` }
   ];
 
+  const siteUrl = "https://tweak.appsg.site";
+
   return (
     <div className="bg-background text-foreground min-h-screen dark">
+        <script {...jsonLdScriptProps<WebPage>({
+            "@context": "https://schema.org",
+            "@type": "WebPage",
+            name: app.name,
+            description: app.description,
+            dateModified: app.lastModified
+        })} />
+        <script {...jsonLdScriptProps<BreadcrumbList>({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            itemListElement: breadcrumbs.map((crumb, index) => ({
+                "@type": "ListItem",
+                position: index + 1,
+                name: crumb.name,
+                item: `${siteUrl}${crumb.item === "/" ? "" : crumb.item}`
+            }))
+        })} />
         <div className="container mx-auto px-4 py-8">
             <nav aria-label="Breadcrumb" className="mb-4">
                 <ol className="flex items-center space-x-2 text-sm text-muted-foreground">
