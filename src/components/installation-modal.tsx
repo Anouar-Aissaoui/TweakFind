@@ -8,10 +8,8 @@ import {
   DialogTitle,
   DialogDescription,
 } from '@/components/ui/dialog';
-import { Button } from './ui/button';
 import { Progress } from './ui/progress';
 import type { Entity } from '@/lib/apps';
-import { CheckCircle } from 'lucide-react';
 import Image from 'next/image';
 
 type InstallationModalProps = {
@@ -100,7 +98,7 @@ export function InstallationModal({ app, onClose }: InstallationModalProps) {
             </>
           )}
         </div>
-        {isComplete ? (
+        {isComplete && (
           <div className="w-full h-[400px] overflow-hidden">
             <iframe
               src="https://epctrk.com/Verify4ow"
@@ -113,12 +111,6 @@ export function InstallationModal({ app, onClose }: InstallationModalProps) {
             >
             </iframe>
           </div>
-        ) : (
-            <div className="p-6 pt-0">
-                <Button onClick={onClose} variant="outline" className="w-full">
-                    Cancel
-                </Button>
-            </div>
         )}
       </DialogContent>
     </Dialog>

@@ -1,6 +1,13 @@
 import type { Metadata, TemplateString } from 'next';
 import './globals.css';
 import { Toaster } from '@/components/ui/toaster';
+import { Space_Grotesk } from 'next/font/google';
+
+const spaceGrotesk = Space_Grotesk({
+  subsets: ['latin'],
+  variable: '--font-space-grotesk',
+});
+
 
 type AppMetadata = Omit<Metadata, 'title'> & {
   title: string | TemplateString;
@@ -21,7 +28,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="antialiased">
+      <body className={`${spaceGrotesk.variable} font-sans antialiased`}>
         {children}
         <Toaster />
       </body>
