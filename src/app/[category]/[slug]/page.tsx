@@ -112,7 +112,7 @@ export default async function Page({ params }: { params: { slug: string, categor
                 <section aria-labelledby="app-description" className="prose prose-invert max-w-none text-foreground">
                     <h2 id="app-description" className="text-2xl font-bold tracking-tight mb-4">About {app.name}</h2>
                     <p>
-                        {app.name} is a popular tweaked application that offers a range of enhanced features for users on both iOS and Android devices. This modified version provides functionality not available in the standard app, catering to users looking for more control and customization.
+                        {app.description}
                     </p>
                     <p>
                         With a user-friendly interface and regular updates, {app.name} ensures a smooth and reliable experience. It's designed for easy installation without the need for complex procedures like jailbreaking, making it accessible to a wide audience. Explore the enhanced capabilities and enjoy a premium experience for free.
