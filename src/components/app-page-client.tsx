@@ -53,6 +53,8 @@ export function AppPageClient({ app, relatedApps, breadcrumbs }: AppPageClientPr
                         height={128}
                         className="rounded-2xl object-contain border-4 border-border/30 shrink-0"
                         data-ai-hint={app.media.iconHint}
+                        placeholder="blur"
+                        blurDataURL="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
                     />
                     <div className="flex-1">
                         <h1 className="text-4xl font-bold tracking-tighter mb-2 text-primary">{app.name}</h1>

@@ -1,3 +1,4 @@
+
 'use client';
 
 import { useState, useEffect } from 'react';
@@ -76,6 +77,8 @@ export function InstallationModal({ app, onClose }: InstallationModalProps) {
               height={80}
               className="rounded-xl object-contain"
               data-ai-hint={app.media.iconHint}
+              placeholder="blur"
+              blurDataURL="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
             />
           </div>
           <DialogTitle className="text-2xl text-center font-headline">
