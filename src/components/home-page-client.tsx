@@ -1,44 +1,59 @@
 
 'use client';
 
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import type { Entity, AppCategory } from '@/lib/apps';
 import { Header } from './header';
 import { AppList } from './app-list';
 import { BottomNav } from './bottom-nav';
 import { InstallationModal } from './installation-modal';
 import { FeaturedApps } from './featured-apps';
+import { useRouter } from 'next/navigation';
+
 
 type HomePageClientProps = {
   apps: Entity[];
+  showFeatured?: boolean;
+  initialCategory?: AppCategory;
 };
 
-export function HomePageClient({ apps }: HomePageClientProps) {
+export function HomePageClient({ apps, showFeatured = true, initialCategory = 'Apps' }: HomePageClientProps) {
+  const router = useRouter();
   const [searchTerm, setSearchTerm] = useState('');
-  const [activeCategory, setActiveCategory] = useState<AppCategory>('Apps');
+  const [activeCategory, setActiveCategory] = useState<AppCategory>(initialCategory);
   const [modalApp, setModalApp] = useState<Entity | null>(null);
 
-  const featuredApps = useMemo(() => apps.slice(0, 5), [apps]);
+  useEffect(() => {
+    if (initialCategory !== activeCategory) {
+      router.push(`/${activeCategory.toLowerCase()}`);
+    }
+  }, [activeCategory, initialCategory, router]);
+
+  const featuredApps = useMemo(() => apps.filter(a => a.category === 'Apps').slice(0, 5), [apps]);
 
   const filteredApps = useMemo(() => {
     let appsToFilter = apps;
     
-    if (activeCategory) {
+    // In a category page context, `apps` are already filtered.
+    // In homepage context, we filter by activeCategory.
+    if (showFeatured) {
         appsToFilter = apps.filter((app) => app.category === activeCategory);
     }
-
+    
     if (searchTerm) {
       return appsToFilter.filter((app) =>
         app.name.toLowerCase().includes(searchTerm.toLowerCase())
       );
     }
+
     return appsToFilter;
-  }, [apps, activeCategory, searchTerm]);
+  }, [apps, activeCategory, searchTerm, showFeatured]);
   
   const allApps = useMemo(() => {
     if(searchTerm) {
       return apps.filter((app) => app.name.toLowerCase().includes(searchTerm.toLowerCase()))
     }
+    // on the main page, `apps` is all apps. We want to show everything under the "All Apps" header
     return apps;
   }, [apps, searchTerm]);
 
@@ -46,14 +61,14 @@ export function HomePageClient({ apps }: HomePageClientProps) {
   const handleInstallClick = (app: Entity) => {
     setModalApp(app);
   };
-
-  const showFeatured = searchTerm === '' && activeCategory === 'Apps';
+  
+  const displayApps = showFeatured ? (activeCategory === 'Apps' ? allApps : filteredApps) : filteredApps;
 
   return (
     <>
       <Header searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
       <div className="container mx-auto px-4 py-2">
-         {showFeatured && (
+         {showFeatured && activeCategory === 'Apps' && (
           <section>
             <FeaturedApps apps={featuredApps} onInstallClick={handleInstallClick} />
             <h2 className="text-xl font-bold tracking-tight text-foreground mt-6 mb-4">
@@ -61,7 +76,7 @@ export function HomePageClient({ apps }: HomePageClientProps) {
             </h2>
           </section>
         )}
-        <AppList apps={showFeatured ? allApps : filteredApps} onInstallClick={handleInstallClick} />
+        <AppList apps={displayApps} onInstallClick={handleInstallClick} />
       </div>
       <BottomNav
         activeCategory={activeCategory}

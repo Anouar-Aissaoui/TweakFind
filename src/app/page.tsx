@@ -1,3 +1,4 @@
+
 import { apps, type Entity } from '@/lib/apps';
 import { HomePageClient } from '@/components/home-page-client';
 
