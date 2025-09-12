@@ -35,3 +35,5 @@ export function AppCard({ app }: AppCardProps) {
     </Link>
   );
 }
+
+    

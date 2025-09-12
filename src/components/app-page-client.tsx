@@ -5,11 +5,12 @@ import { useState } from 'react';
 import type { Entity } from '@/lib/apps';
 import Image from "next/image";
 import Link from "next/link";
-import { ChevronRight, Download } from "lucide-react";
+import { ChevronRight, Download, CheckCircle, ShieldCheck, FileCode, Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ClientTime } from "@/components/client-time";
 import { AppCard } from "@/components/app-card";
 import { InstallationModal } from './installation-modal';
+import { Badge } from '@/components/ui/badge';
 
 type Breadcrumb = {
   name: string;
@@ -20,10 +21,18 @@ type AppPageClientProps = {
   app: Entity;
   relatedApps: Entity[];
   breadcrumbs: Breadcrumb[];
+  categories: string[];
 };
 
-export function AppPageClient({ app, relatedApps, breadcrumbs }: AppPageClientProps) {
+export function AppPageClient({ app, relatedApps, breadcrumbs, categories }: AppPageClientProps) {
   const [modalApp, setModalApp] = useState<Entity | null>(null);
+
+  const keyFacts = [
+    { label: "Version", value: app.facts.version, icon: <Star className="w-4 h-4 mr-2" /> },
+    { label: "Category", value: app.category, icon: <ChevronRight className="w-4 h-4 mr-2" /> },
+    { label: "Compatibility", value: app.facts.compatibility, icon: <CheckCircle className="w-4 h-4 mr-2" /> },
+    { label: "Downloads", value: app.facts.downloads, icon: <Download className="w-4 h-4 mr-2" /> },
+  ];
 
   return (
     <>
@@ -45,61 +54,92 @@ export function AppPageClient({ app, relatedApps, breadcrumbs }: AppPageClientPr
             </nav>
 
             <article>
-                <header className="flex flex-col sm:flex-row gap-6 items-start mb-8">
-                    <Image
-                        src={app.media.icon}
-                        alt={`${app.name} icon`}
-                        width={128}
-                        height={128}
-                        className="rounded-2xl object-contain border-4 border-border/30 shrink-0"
-                        data-ai-hint={app.media.iconHint}
-                        placeholder="blur"
-                        blurDataURL="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
-                    />
-                    <div className="flex-1">
-                        <h1 className="text-4xl font-bold tracking-tighter mb-2 text-primary">{app.name}</h1>
-                        <p className="text-lg text-muted-foreground mb-4">{app.description}</p>
-                         <Button size="lg" onClick={() => setModalApp(app)}>
-                            <Download className="mr-2 h-5 w-5" />
-                            Install Now
-                        </Button>
+                <header className="text-center py-12 px-6 bg-card rounded-lg border border-border/50 mb-8">
+                    <div className="flex justify-center mb-4">
+                        <Image
+                            src={app.media.icon}
+                            alt={`${app.name} icon`}
+                            width={96}
+                            height={96}
+                            className="rounded-2xl object-contain border-4 border-border/30"
+                            data-ai-hint={app.media.iconHint}
+                            placeholder="blur"
+                            blurDataURL="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                        />
                     </div>
+                    <h1 className="text-4xl font-bold tracking-tighter text-primary mb-2">{app.name} — Free iOS App Installer (No Jailbreak Required)</h1>
+                    <p className="text-lg text-muted-foreground max-w-3xl mx-auto mb-6">{app.subhead}</p>
+                    <Button size="lg" onClick={() => setModalApp(app)} className="text-lg px-8 py-6">
+                        <Download className="mr-2 h-5 w-5" />
+                        Install {app.name} Now (Free)
+                    </Button>
                 </header>
 
-                <section aria-labelledby="key-facts" className="mb-8 p-6 bg-card rounded-lg border border-border/50">
-                    <h2 id="key-facts" className="text-2xl font-bold tracking-tight mb-4">Key facts</h2>
-                    <ul className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
-                        <li className="p-4 bg-secondary rounded-lg">
-                            <strong className="block text-sm text-muted-foreground">Version</strong>
-                            <span className="text-xl font-semibold">{app.facts.version}</span>
-                        </li>
-                        <li className="p-4 bg-secondary rounded-lg">
-                            <strong className="block text-sm text-muted-foreground">Category</strong>
-                            <span className="text-xl font-semibold">{app.category}</span>
-                        </li>
-                         <li className="p-4 bg-secondary rounded-lg">
-                            <strong className="block text-sm text-muted-foreground">Last Updated</strong>
-                            <ClientTime date={app.lastModified} className="text-xl font-semibold" />
-                        </li>
-                         <li className="p-4 bg-secondary rounded-lg">
-                            <strong className="block text-sm text-muted-foreground">Downloads</strong>
-                            <span className="text-xl font-semibold">500k+</span>
-                        </li>
-                    </ul>
+                <section aria-labelledby="key-facts" className="mb-12">
+                    <h2 id="key-facts" className="text-2xl font-bold tracking-tight mb-4 text-center sr-only">Key facts</h2>
+                    <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-left">
+                        {keyFacts.map(fact => (
+                            <div key={fact.label} className="p-4 bg-card rounded-lg border border-border/50">
+                                <strong className="flex items-center text-sm text-muted-foreground mb-1">
+                                    {fact.icon} {fact.label}
+                                </strong>
+                                <span className="text-lg font-semibold block truncate">{fact.value}</span>
+                            </div>
+                        ))}
+                    </div>
+                     <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-left mt-4">
+                         <div className="p-4 bg-card rounded-lg border border-border/50">
+                            <strong className="flex items-center text-sm text-muted-foreground mb-1">
+                                <ShieldCheck className="w-4 h-4 mr-2" /> Safety
+                            </strong>
+                             <div className="flex flex-wrap gap-1 mt-2">
+                                {app.facts.safety.map(tag => <Badge key={tag} variant="secondary">{tag}</Badge>)}
+                            </div>
+                        </div>
+                        <div className="p-4 bg-card rounded-lg border border-border/50">
+                            <strong className="flex items-center text-sm text-muted-foreground mb-1">
+                                <FileCode className="w-4 h-4 mr-2" /> License
+                            </strong>
+                             <div className="flex flex-wrap gap-1 mt-2">
+                                {app.facts.license.map(tag => <Badge key={tag} variant="secondary">{tag}</Badge>)}
+                            </div>
+                        </div>
+                    </div>
                 </section>
                 
-                <section aria-labelledby="app-description" className="prose prose-invert max-w-none text-foreground">
-                    <h2 id="app-description" className="text-2xl font-bold tracking-tight mb-4">About {app.name}</h2>
-                    <p>
-                        {app.description}
-                    </p>
-                    <p>
-                        With a user-friendly interface and regular updates, {app.name} ensures a smooth and reliable experience. It's designed for easy installation without the need for complex procedures like jailbreaking, making it accessible to a wide audience. Explore the enhanced capabilities and enjoy a premium experience for free.
-                    </p>
-                </section>
+                <div className="grid md:grid-cols-3 gap-8">
+                    <div className="md:col-span-2">
+                        <section aria-labelledby="app-description" className="prose prose-invert max-w-none text-foreground mb-8">
+                            <h2 id="app-description" className="text-2xl font-bold tracking-tight mb-2">{app.about.title}</h2>
+                            <p>{app.about.content}</p>
+                        </section>
+
+                         <section aria-labelledby="app-features" className="mb-8">
+                            <h3 id="app-features" className="text-xl font-bold tracking-tight mb-3">{app.features.title}</h3>
+                            <ul className="space-y-2">
+                                {app.features.items.map((item, index) => (
+                                    <li key={index} className="flex items-start">
+                                        <CheckCircle className="w-5 h-5 text-green-500 mr-3 mt-1 shrink-0" />
+                                        <span>{item.substring(item.indexOf(" ") + 1)}</span>
+                                    </li>
+                                ))}
+                            </ul>
+                        </section>
+                    </div>
+
+                     <div>
+                        <section aria-labelledby="perfect-for" className="bg-card p-6 rounded-lg border border-border/50 sticky top-8">
+                            <h3 id="perfect-for" className="text-lg font-bold tracking-tight mb-3">{app.perfectFor.title}</h3>
+                            <div className="flex flex-wrap gap-2">
+                                {app.perfectFor.tags.map(tag => <Badge key={tag} variant="outline">{tag}</Badge>)}
+                            </div>
+                        </section>
+                    </div>
+                </div>
+
                 
                 {relatedApps.length > 0 && (
-                    <section aria-labelledby="related-apps" className="mt-12">
+                    <section aria-labelledby="related-apps" className="mt-12 border-t border-border/50 pt-8">
                         <h2 id="related-apps" className="text-2xl font-bold tracking-tight mb-4">You Might Also Like</h2>
                         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                             {relatedApps.map((relatedApp) => (
@@ -120,3 +160,5 @@ export function AppPageClient({ app, relatedApps, breadcrumbs }: AppPageClientPr
     </>
   );
 }
+
+    

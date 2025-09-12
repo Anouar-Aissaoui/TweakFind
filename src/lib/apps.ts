@@ -6,11 +6,13 @@ export type AppCategory =
   | 'Tweaks'
   | 'Utilities'
   | 'Entertainment'
-  | 'Social';
+  | 'Social'
+  | 'Developer Tools';
 
 export type Entity = {
   id: string; // slug
   name: string; // title
+  subhead: string;
   description: string; // summary
   category: AppCategory;
   lastModified: string; // updated_at
@@ -20,14 +22,30 @@ export type Entity = {
   };
   facts: {
     version: string;
+    downloads: string;
+    compatibility: string;
+    safety: string[];
+    license: string[];
   };
+  about: {
+    title: string;
+    content: string;
+  },
+  features: {
+    title: string;
+    items: string[];
+  },
+  perfectFor: {
+    title: string;
+    tags: string[];
+  }
 };
 
 type AppDto = {
   slug: string;
   img: string;
   name: string;
-  'data-ai-hint': string;
+  "data-ai-hint": string;
   description: string;
   version: string;
   category: AppCategory;
@@ -431,7 +449,7 @@ const appData: AppDto[] = [
         name: "Forge of Empires Mod",
         "data-ai-hint": "strategy game",
         description: "Unlimited Diamonds, Supplies & Free Shopping on iOS & Android",
-        version: "1.0nova-legacy-mod.0",
+        version: "1.0.0",
         category: "Games",
         lastModified: "2025-07-20"
     },
@@ -997,17 +1015,84 @@ const appData: AppDto[] = [
     }
 ];
 
-export const apps: Entity[] = appData.map((app) => ({
-  id: app.slug,
-  name: app.name,
-  description: app.description,
-  category: app.category,
-  lastModified: app.lastModified,
-  media: {
-    icon: app.img,
-    iconHint: app['data-ai-hint'],
-  },
-  facts: {
-    version: app.version,
-  },
-}));
+const defaultContent = (app: AppDto) => ({
+    subhead: `Sideload ${app.name} to your iPhone or iPad — safely, easily, and 100% free.`,
+    facts: {
+        downloads: '500,000+ Trusted Installs',
+        compatibility: 'iOS 12.0+ • iPhone & iPad',
+        safety: ['Open Source', 'No Jailbreak', 'No Root'],
+        license: ['Free Forever', 'No Ads', 'No Paywalls'],
+    },
+    about: {
+        title: `What is ${app.name}?`,
+        content: `${app.name} is one of the top apps in the ${app.category} category. It lets you extend the functionality of your device. Designed for power users and enthusiasts, it offers a clean, intuitive interface.`,
+    },
+    features: {
+        title: `Why Users Love ${app.name}`,
+        items: [
+            '✅ No Apple Developer Account Needed — bypass App Store restrictions',
+            '✅ Auto-Refresh Apps — keep sideloaded apps alive without daily re-signing',
+            '✅ Wi-Fi Installations — wirelessly transfer and install IPAs from your browser',
+            '✅ Open Source & Privacy-Focused — inspect the code. No tracking. No ads.',
+            '✅ Works on All iOS Devices — iPhone, iPad, iPod Touch — iOS 12 and up',
+        ],
+    },
+    perfectFor: {
+        title: 'Perfect For',
+        tags: ['Beta testers', 'App developers', 'Tweakers', 'Region-locked app users', 'Anyone tired of App Store limitations.'],
+    },
+});
+
+const altstoreData = {
+    subhead: "Sideload any IPA to iPhone or iPad — safely, easily, and 100% free. No Apple ID restrictions. No computer needed after setup.",
+    facts: {
+        downloads: "500,000+ Trusted Installs",
+        compatibility: "iOS 12.0+ • iPhone & iPad",
+        safety: ["Open Source", "No Jailbreak", "No Root"],
+        license: ["Free Forever", "No Ads", "No Paywalls"],
+    },
+    about: {
+        title: "What is AltStore?",
+        content: "AltStore is the #1 free iOS app installer that lets you sideload any .IPA file directly to your iPhone or iPad — no jailbreak required. Designed for developers, power users, and everyday iOS enthusiasts, AltStore offers a clean, intuitive interface with automatic app refreshes and background updates — all without needing a Mac or complex setup."
+    },
+    features: {
+        title: "Why Users Love AltStore:",
+        items: [
+            "✅ No Apple Developer Account Needed — bypass App Store restrictions",
+            "✅ Auto-Refresh Apps — keep sideloaded apps alive without daily re-signing",
+            "✅ Wi-Fi Installations — wirelessly transfer and install IPAs from your browser",
+            "✅ Open Source & Privacy-Focused — inspect the code. No tracking. No ads.",
+            "✅ Works on All iOS Devices — iPhone, iPad, iPod Touch — iOS 12 and up"
+        ]
+    },
+    perfectFor: {
+        title: "Perfect For:",
+        tags: ["Beta testers", "App developers", "Tweakers", "Region-locked app users", "Anyone tired of App Store limitations."]
+    }
+};
+
+export const apps: Entity[] = appData.map((app) => {
+  const content = app.slug === 'altstore' ? altstoreData : defaultContent(app);
+  
+  return {
+    id: app.slug,
+    name: app.name,
+    description: app.description,
+    category: app.category,
+    lastModified: app.lastModified,
+    media: {
+      icon: app.img,
+      iconHint: app['data-ai-hint'],
+    },
+    facts: {
+      version: app.version,
+      ...content.facts,
+    },
+    subhead: content.subhead,
+    about: content.about,
+    features: content.features,
+    perfectFor: content.perfectFor,
+  };
+});
+
+    

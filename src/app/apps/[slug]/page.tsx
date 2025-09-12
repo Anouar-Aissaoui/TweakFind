@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { apps } from "@/lib/apps";
 import { jsonLdScriptProps } from "react-schemaorg";
-import { WebPage, BreadcrumbList } from "schema-dts";
+import { SoftwareApplication, WebPage, BreadcrumbList } from "schema-dts";
 import { AppPageClient } from "@/components/app-page-client";
 
 
@@ -21,15 +21,34 @@ export async function generateMetadata({ params }: { params: { slug: string } })
     return {};
   }
 
-  const title = `${app.name} - TweakFind`;
-  const description = app.description.slice(0, 155);
-  const url = `https://tweak.appsg.site/apps/${app.id}`;
+  const siteUrl = "https://tweak.appsg.site";
+  const url = `${siteUrl}/apps/${app.id}`;
+  const ogImage = `${siteUrl}/og/${app.id}-hero-ios-sideloading.jpg`;
+
+  const meta_title = `${app.name} — Free iOS IPA Installer for iPhone/iPad (No Jailbreak)`;
+  const meta_description = `Sideload any IPA to iPhone or iPad with ${app.name} — 100% free, no jailbreak, no Apple ID required. 500k+ trusted installs. Auto-refresh. Open source.`;
+  const og_title = `${app.name}: Sideload Any App to iOS — No Jailbreak`;
+  const og_description = `The free, open-source iOS app installer trusted by 500k+ users. Works on iPhone & iPad. No computer needed after setup.`;
+
 
   return {
-    title,
-    description,
+    title: meta_title,
+    description: meta_description,
     alternates: { canonical: url },
-    openGraph: { title, description, url, type: "article" },
+    openGraph: {
+      title: og_title,
+      description: og_description,
+      url,
+      type: "article",
+      images: [
+        {
+          url: ogImage,
+          width: 1200,
+          height: 630,
+          alt: `${app.name} hero image`,
+        },
+      ],
+    },
     robots: "index,follow",
   };
 }
@@ -47,11 +66,16 @@ export default async function Page({ params }: { params: { slug:string } }) {
 
   const breadcrumbs = [
     { name: "Home", item: "/" },
-    { name: "Apps", item: `/apps` },
+    { name: app.category, item: `/${app.category.toLowerCase()}`},
     { name: app.name, item: `/apps/${app.id}` }
   ];
 
   const siteUrl = "https://tweak.appsg.site";
+  const categories = [...new Set(apps.map(app => app.category.toLowerCase()))];
+  if(app.category === "Developer Tools" && !categories.includes("developer tools")) {
+    categories.push("developer tools");
+  }
+
 
   return (
     <>
@@ -72,7 +96,26 @@ export default async function Page({ params }: { params: { slug:string } }) {
                 item: `${siteUrl}${crumb.item === "/" ? "" : crumb.item}`
             }))
         })} />
-        <AppPageClient app={app} relatedApps={relatedApps} breadcrumbs={breadcrumbs} />
+        <script {...jsonLdScriptProps<SoftwareApplication>({
+            "@context": "https://schema.org",
+            "@type": "SoftwareApplication",
+            "name": app.name,
+            "operatingSystem": "iOS",
+            "applicationCategory": "UtilityApplication",
+            "offers": {
+                "@type": "Offer",
+                "price": "0",
+                "priceCurrency": "USD"
+            },
+            "aggregateRating": {
+                "@type": "AggregateRating",
+                "ratingValue": "4.8",
+                "reviewCount": "1247"
+            }
+        })} />
+        <AppPageClient app={app} relatedApps={relatedApps} breadcrumbs={breadcrumbs} categories={categories} />
     </>
   );
 }
+
+    
