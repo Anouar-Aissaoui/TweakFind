@@ -4,7 +4,6 @@ import type { Metadata } from "next";
 import { apps, type AppCategory } from "@/lib/apps";
 import { AppList } from "@/components/app-list";
 import { InstallationModal } from "@/components/installation-modal";
-import { useState } from "react";
 import { HomePageClient } from "@/components/home-page-client";
 import { Header } from "@/components/header";
 import Link from "next/link";

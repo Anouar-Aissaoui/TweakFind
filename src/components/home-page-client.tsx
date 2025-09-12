@@ -24,18 +24,19 @@ export function HomePageClient({ apps, showFeatured = true, initialCategory = 'A
   const [modalApp, setModalApp] = useState<Entity | null>(null);
 
   useEffect(() => {
-    if (initialCategory !== activeCategory) {
+    // Only push route if we are on the homepage, not on a category page.
+    if (showFeatured && initialCategory !== activeCategory) {
       router.push(`/${activeCategory.toLowerCase()}`);
     }
-  }, [activeCategory, initialCategory, router]);
+  }, [activeCategory, initialCategory, router, showFeatured]);
 
   const featuredApps = useMemo(() => apps.filter(a => a.category === 'Apps').slice(0, 5), [apps]);
 
   const filteredApps = useMemo(() => {
     let appsToFilter = apps;
     
-    // In a category page context, `apps` are already filtered.
-    // In homepage context, we filter by activeCategory.
+    // On the homepage, filter by active category.
+    // On category pages, the `apps` prop is already filtered.
     if (showFeatured) {
         appsToFilter = apps.filter((app) => app.category === activeCategory);
     }
@@ -68,7 +69,7 @@ export function HomePageClient({ apps, showFeatured = true, initialCategory = 'A
     <>
       <Header searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
       <div className="container mx-auto px-4 py-2">
-         {showFeatured && activeCategory === 'Apps' && (
+         {showFeatured && (
           <section>
             <FeaturedApps apps={featuredApps} onInstallClick={handleInstallClick} />
             <h2 className="text-xl font-bold tracking-tight text-foreground mt-6 mb-4">
