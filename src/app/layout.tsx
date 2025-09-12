@@ -2,11 +2,12 @@
 import type { Metadata, TemplateString } from 'next';
 import './globals.css';
 import { Toaster } from '@/components/ui/toaster';
-import { Space_Grotesk } from 'next/font/google';
+import { PT_Sans } from 'next/font/google';
 
-const spaceGrotesk = Space_Grotesk({
+const ptSans = PT_Sans({
   subsets: ['latin'],
-  variable: '--font-space-grotesk',
+  weight: ['400', '700'],
+  variable: '--font-pt-sans',
 });
 
 
@@ -52,8 +53,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={`${spaceGrotesk.variable} font-sans antialiased`}>
+    <html lang="en" className="light">
+      <body className={`${ptSans.variable} font-sans antialiased`}>
         {children}
         <Toaster />
       </body>

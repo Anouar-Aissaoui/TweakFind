@@ -1,89 +1,62 @@
 
 'use client';
 
-import { useState, useMemo, useEffect } from 'react';
+import { useMemo } from 'react';
 import type { Entity, AppCategory } from '@/lib/apps';
-import { Header } from './header';
-import { AppList } from './app-list';
-import { BottomNav } from './bottom-nav';
-import { InstallationModal } from './installation-modal';
-import { FeaturedApps } from './featured-apps';
-import { useRouter } from 'next/navigation';
-
+import { AppGrid } from './app-grid';
+import { Button } from './ui/button';
+import Link from 'next/link';
 
 type HomePageClientProps = {
   apps: Entity[];
-  showFeatured?: boolean;
-  initialCategory?: AppCategory;
 };
 
-export function HomePageClient({ apps, showFeatured = true, initialCategory = 'Apps' }: HomePageClientProps) {
-  const router = useRouter();
-  const [searchTerm, setSearchTerm] = useState('');
-  const [activeCategory, setActiveCategory] = useState<AppCategory>(initialCategory);
-  const [modalApp, setModalApp] = useState<Entity | null>(null);
+const CATEGORIES_TO_DISPLAY: AppCategory[] = [
+  'Games',
+  'Apps',
+  'Racing Games',
+  'Video Players & Editors',
+];
 
-  useEffect(() => {
-    // Only push route if we are on the homepage, not on a category page.
-    if (showFeatured && initialCategory !== activeCategory) {
-      router.push(`/${activeCategory.toLowerCase()}`);
+export function HomePageClient({ apps }: HomePageClientProps) {
+  const appsByCategory = useMemo(() => {
+    const grouped: Partial<Record<AppCategory, Entity[]>> = {};
+    for (const app of apps) {
+      if (!grouped[app.category]) {
+        grouped[app.category] = [];
+      }
+      grouped[app.category]!.push(app);
     }
-  }, [activeCategory, initialCategory, router, showFeatured]);
+    // Manually create "Racing Games" category
+    const racingGames = apps.filter(app => app.name.toLowerCase().includes('race') || app.name.toLowerCase().includes('racing') || app.name.toLowerCase().includes('drive'));
+    grouped['Racing Games'] = racingGames;
 
-  const featuredApps = useMemo(() => apps.filter(a => a.category === 'Apps').slice(0, 5), [apps]);
-
-  const filteredApps = useMemo(() => {
-    let appsToFilter = apps;
+    // Manually create "Video Players & Editors" category
+    const videoApps = apps.filter(app => app.category === 'Entertainment' || app.name.toLowerCase().includes('video') || app.name.toLowerCase().includes('player'));
+    grouped['Video Players & Editors'] = videoApps;
     
-    // On the homepage, filter by active category.
-    // On category pages, the `apps` prop is already filtered.
-    if (showFeatured) {
-        appsToFilter = apps.filter((app) => app.category === activeCategory);
-    }
-    
-    if (searchTerm) {
-      return appsToFilter.filter((app) =>
-        app.name.toLowerCase().includes(searchTerm.toLowerCase())
-      );
-    }
-
-    return appsToFilter;
-  }, [apps, activeCategory, searchTerm, showFeatured]);
-  
-  const allApps = useMemo(() => {
-    if(searchTerm) {
-      return apps.filter((app) => app.name.toLowerCase().includes(searchTerm.toLowerCase()))
-    }
-    // on the main page, `apps` is all apps. We want to show everything under the "All Apps" header
-    return apps;
-  }, [apps, searchTerm]);
-
-
-  const handleInstallClick = (app: Entity) => {
-    setModalApp(app);
-  };
-  
-  const displayApps = showFeatured ? (activeCategory === 'Apps' ? allApps : filteredApps) : filteredApps;
+    return grouped;
+  }, [apps]);
 
   return (
-    <>
-      <Header searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
-      <div className="container mx-auto px-4 py-2">
-         {showFeatured && (
-          <section>
-            <FeaturedApps apps={featuredApps} onInstallClick={handleInstallClick} />
-            <h2 className="text-xl font-bold tracking-tight text-foreground mt-6 mb-4">
-              All Apps
-            </h2>
+    <div className="space-y-8">
+      {CATEGORIES_TO_DISPLAY.map((category) => {
+        const categoryApps = appsByCategory[category];
+        if (!categoryApps || categoryApps.length === 0) {
+          return null;
+        }
+        return (
+          <section key={category} className="p-4 bg-card rounded-lg border">
+            <div className="flex items-center justify-between mb-4">
+              <h2 className="text-xl font-bold">{category}</h2>
+              <Button asChild variant="ghost" size="sm">
+                <Link href={`/${category.toLowerCase().replace(/ & /g, '-').replace(/ /g, '-')}`}>View More</Link>
+              </Button>
+            </div>
+            <AppGrid apps={categoryApps.slice(0, 9)} />
           </section>
-        )}
-        <AppList apps={displayApps} onInstallClick={handleInstallClick} />
-      </div>
-      <BottomNav
-        activeCategory={activeCategory}
-        setCategory={setActiveCategory}
-      />
-      <InstallationModal app={modalApp} onClose={() => setModalApp(null)} />
-    </>
+        );
+      })}
+    </div>
   );
 }

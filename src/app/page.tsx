@@ -1,17 +1,23 @@
 
 import { apps, type Entity } from '@/lib/apps';
 import { HomePageClient } from '@/components/home-page-client';
+import { Sidebar } from '@/components/sidebar';
 
 export default function Home() {
   const allApps = apps as Entity[];
 
   return (
-    <div className="flex flex-col min-h-screen bg-background dark">
-      <main className="flex-1 pb-28">
-        <HomePageClient
-          apps={allApps}
-        />
-      </main>
+    <div className="container mx-auto p-4 lg:p-8">
+      <div className="grid lg:grid-cols-[1fr_320px] gap-8">
+        <main>
+          <HomePageClient
+            apps={allApps}
+          />
+        </main>
+        <aside className="hidden lg:block">
+          <Sidebar />
+        </aside>
+      </div>
     </div>
   );
 }
