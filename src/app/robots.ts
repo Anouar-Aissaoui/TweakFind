@@ -5,8 +5,8 @@ export default function robots(): MetadataRoute.Robots {
     rules: {
       userAgent: '*',
       allow: '/',
-      disallow: ['/*?*'],
+      disallow: ['/*?q=*'],
     },
-    sitemap: 'https://tweak.appsg.site/sitemap.xml',
+sitemap: 'https://tweak.appsg.site/sitemap.xml',
   }
 }
