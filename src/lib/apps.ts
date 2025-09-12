@@ -431,7 +431,7 @@ const appData: AppDto[] = [
         name: "Forge of Empires Mod",
         "data-ai-hint": "strategy game",
         description: "Unlimited Diamonds, Supplies & Free Shopping on iOS & Android",
-        version: "1.0.0",
+        version: "1.0nova-legacy-mod.0",
         category: "Games",
         lastModified: "2025-07-20"
     },
