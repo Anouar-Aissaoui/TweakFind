@@ -10,6 +10,7 @@ import {
 } from '@/components/ui/carousel';
 import { Button } from '@/components/ui/button';
 import { Download } from 'lucide-react';
+import Link from 'next/link';
 
 type FeaturedAppsProps = {
   apps: Entity[];
@@ -33,22 +34,26 @@ export function FeaturedApps({ apps, onInstallClick }: FeaturedAppsProps) {
           {apps.map((app) => (
             <CarouselItem key={app.id} className="basis-1/2 md:basis-1/3 lg:basis-1/4">
               <div className="p-1">
-                <div className="flex flex-col items-center justify-center p-4 bg-card rounded-lg border border-border/50 aspect-square">
-                  <Image
-                    src={app.media.icon}
-                    alt={`${app.name} icon`}
-                    width={64}
-                    height={64}
-                    className="rounded-lg object-contain mb-3"
-                    data-ai-hint={app.media.iconHint}
-                  />
-                  <p className="text-sm font-semibold text-center text-foreground truncate w-full">{app.name}</p>
-                   <p className="text-xs text-muted-foreground mb-3">v{app.facts.version}</p>
-                  <Button size="sm" className="w-full" onClick={() => onInstallClick(app)}>
-                    <Download className="mr-2 h-4 w-4" />
-                    Install
-                  </Button>
-                </div>
+                 <Link href={`/${app.category.toLowerCase()}/${app.id}`} className="block h-full">
+                    <div className="flex flex-col items-center justify-center p-4 bg-card rounded-lg border border-border/50 aspect-square h-full">
+                    <Image
+                        src={app.media.icon}
+                        alt={`${app.name} icon`}
+                        width={64}
+                        height={64}
+                        className="rounded-lg object-contain mb-3"
+                        data-ai-hint={app.media.iconHint}
+                    />
+                    <div className="flex flex-col items-center flex-1 justify-center">
+                        <p className="text-sm font-semibold text-center text-foreground truncate w-full">{app.name}</p>
+                        <p className="text-xs text-muted-foreground mb-3">v{app.facts.version}</p>
+                    </div>
+                    <Button size="sm" className="w-full mt-auto" onClick={(e) => { e.preventDefault(); onInstallClick(app); }}>
+                        <Download className="mr-2 h-4 w-4" />
+                        Install
+                    </Button>
+                    </div>
+                </Link>
               </div>
             </CarouselItem>
           ))}
