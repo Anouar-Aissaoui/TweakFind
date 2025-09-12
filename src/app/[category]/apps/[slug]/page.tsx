@@ -118,5 +118,3 @@ export default async function Page({ params }: { params: { category: string, slu
     </>
   );
 }
-
-    

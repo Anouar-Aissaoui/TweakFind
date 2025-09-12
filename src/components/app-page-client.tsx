@@ -160,5 +160,3 @@ export function AppPageClient({ app, relatedApps, breadcrumbs, categories }: App
     </>
   );
 }
-
-    
