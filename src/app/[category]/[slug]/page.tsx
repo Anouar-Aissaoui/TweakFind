@@ -9,6 +9,7 @@ import Link from "next/link";
 import { ChevronRight } from "lucide-react";
 import { jsonLdScriptProps } from "react-schemaorg";
 import { WebPage, BreadcrumbList } from "schema-dts";
+import { ClientTime } from "@/components/client-time";
 
 
 export const revalidate = 86400; // ISR: 24h
@@ -122,7 +123,7 @@ export default async function Page({ params }: { params: { slug: string, categor
                         </li>
                          <li className="p-4 bg-secondary rounded-lg">
                             <strong className="block text-sm text-muted-foreground">Last Updated</strong>
-                            <span className="text-xl font-semibold">{new Date(app.lastModified).toLocaleDateString()}</span>
+                            <ClientTime date={app.lastModified} className="text-xl font-semibold" />
                         </li>
                          <li className="p-4 bg-secondary rounded-lg">
                             <strong className="block text-sm text-muted-foreground">Downloads</strong>
@@ -143,7 +144,7 @@ export default async function Page({ params }: { params: { slug: string, categor
 
 
                 <footer className="mt-12 text-center text-muted-foreground text-sm">
-                    <p>Last updated on {new Date(app.lastModified).toLocaleDateString()}</p>
+                   <p>Last updated <ClientTime date={app.lastModified} /></p>
                 </footer>
             </article>
         </div>
