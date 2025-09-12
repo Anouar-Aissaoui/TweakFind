@@ -11,6 +11,7 @@ import { ClientTime } from "@/components/client-time";
 import { AppCard } from "@/components/app-card";
 import { InstallationModal } from './installation-modal';
 import { Badge } from '@/components/ui/badge';
+import { useIsMobile } from '@/hooks/use-mobile';
 
 type Breadcrumb = {
   name: string;
@@ -26,6 +27,7 @@ type AppPageClientProps = {
 
 export function AppPageClient({ app, relatedApps, breadcrumbs, categories }: AppPageClientProps) {
   const [modalApp, setModalApp] = useState<Entity | null>(null);
+  const isMobile = useIsMobile();
 
   const keyFacts = [
     { label: "Version", value: app.facts.version, icon: <Star className="w-4 h-4 mr-2" /> },
@@ -71,7 +73,7 @@ export function AppPageClient({ app, relatedApps, breadcrumbs, categories }: App
                     <p className="text-lg text-muted-foreground max-w-3xl mx-auto mb-6">{app.subhead}</p>
                     <Button size="lg" onClick={() => setModalApp(app)} className="text-lg px-8 py-6">
                         <Download className="mr-2 h-5 w-5" />
-                        Install {app.name} Now (Free)
+                        {isMobile ? 'Install Now (Free)' : `Install ${app.name} Now (Free)`}
                     </Button>
                 </header>
 
