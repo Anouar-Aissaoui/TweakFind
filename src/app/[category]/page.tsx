@@ -2,10 +2,7 @@
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { apps, type AppCategory } from "@/lib/apps";
-import { AppList } from "@/components/app-list";
-import { InstallationModal } from "@/components/installation-modal";
 import { HomePageClient } from "@/components/home-page-client";
-import { Header } from "@/components/header";
 import Link from "next/link";
 import { ChevronRight } from "lucide-react";
 
@@ -73,14 +70,13 @@ export default async function CategoryPage({ params }: { params: { category: str
                         ))}
                         </ol>
                     </nav>
-
-                    <h1 className="text-3xl font-bold tracking-tighter text-primary mb-4">
-                        {capitalizedCategory} Apps
-                    </h1>
+                    
                      <HomePageClient
                       apps={appsForCategory}
                       showFeatured={false}
                       initialCategory={categoryName}
+                      pageTitle={`${capitalizedCategory} Apps`}
+                      displayMode="grid"
                     />
                 </div>
             </main>
