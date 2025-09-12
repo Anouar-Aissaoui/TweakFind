@@ -43,7 +43,7 @@ export function FeaturedApps({ apps, onInstallClick }: FeaturedAppsProps) {
                     data-ai-hint={app.media.iconHint}
                   />
                   <p className="text-sm font-semibold text-center text-foreground truncate w-full">{app.name}</p>
-                   <p className="text-xs text-muted-foreground mb-3">Version: {app.facts.version}</p>
+                   <p className="text-xs text-muted-foreground mb-3">v{app.facts.version}</p>
                   <Button size="sm" className="w-full" onClick={() => onInstallClick(app)}>
                     <Download className="mr-2 h-4 w-4" />
                     Install
