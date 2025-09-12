@@ -14,7 +14,7 @@ type AppMetadata = Omit<Metadata, 'title'> & {
   title: string | TemplateString;
 };
 
-export async function generateMetadata({ searchParams = {} }: { searchParams?: { [key: string]: string | string[] | undefined } }): Promise<AppMetadata> {
+export async function generateMetadata({ searchParams }: { searchParams?: { [key: string]: string | string[] | undefined } }): Promise<AppMetadata> {
   
   const baseMetadata: AppMetadata = {
     title: {
@@ -23,7 +23,8 @@ export async function generateMetadata({ searchParams = {} }: { searchParams?: {
     },
     description: 'Download tweaked apps, game mods, and emulators. Safe, updated, and no jailbreak required. Your trusted source for TweakFind.',
   };
-
+  
+  searchParams = searchParams || {};
   const hasSearchParams = Object.keys(searchParams).length > 0;
 
   if (hasSearchParams) {
