@@ -80,7 +80,7 @@ export function HomePageClient({
               <div className="flex items-center justify-between mb-4">
                 <h2 className="text-xl font-bold">{category}</h2>
                 <Button asChild variant="ghost" size="sm">
-                  <Link href={`/${category.toLowerCase().replace(/ & /g, '-').replace(/ /g, '-')}/apps`}>View More</Link>
+                  <Link href={`/${category.toLowerCase()}/apps`}>View More</Link>
                 </Button>
               </div>
               <AppGrid apps={categoryApps.slice(0, 9)} />
