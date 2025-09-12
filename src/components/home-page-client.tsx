@@ -65,7 +65,7 @@ export function HomePageClient({
     <div className="space-y-8">
       <Header searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
       {searchTerm ? (
-        <section className="p-4 bg-card rounded-lg border">
+        <section className="p-4 bg-secondary/50 rounded-lg border border-border">
           <h2 className="text-xl font-bold mb-4">Search Results</h2>
           <AppGrid apps={filteredApps} />
         </section>
@@ -76,7 +76,7 @@ export function HomePageClient({
             return null;
           }
           return (
-            <section key={category} className="p-4 bg-card rounded-lg border">
+            <section key={category} className="p-4 bg-secondary/50 rounded-lg border border-border">
               <div className="flex items-center justify-between mb-4">
                 <h2 className="text-xl font-bold">{category}</h2>
                 <Button asChild variant="ghost" size="sm">

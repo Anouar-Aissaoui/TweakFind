@@ -13,7 +13,7 @@ export function Sidebar() {
     return (
         <div className="space-y-6">
             {Object.entries(categoryGroups).map(([groupTitle, categories]) => (
-                <div key={groupTitle} className="p-4 bg-card rounded-lg border">
+                <div key={groupTitle} className="p-4 bg-secondary/50 rounded-lg border border-border">
                     <div className="flex items-center justify-between mb-4">
                         <h3 className="text-lg font-bold">{groupTitle}</h3>
                     </div>

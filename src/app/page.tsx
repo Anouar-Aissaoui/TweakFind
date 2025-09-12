@@ -7,8 +7,8 @@ export default function Home() {
   const allApps = apps as Entity[];
 
   return (
-    <div className="container mx-auto p-4 lg:p-8">
-      <div className="grid lg:grid-cols-[1fr_320px] gap-8">
+    <div className="container mx-auto p-4 sm:p-6 lg:p-8">
+      <div className="grid grid-cols-1 lg:grid-cols-[1fr_300px] gap-8">
         <main>
           <HomePageClient
             apps={allApps}

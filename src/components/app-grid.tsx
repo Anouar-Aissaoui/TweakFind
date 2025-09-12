@@ -14,22 +14,22 @@ function getPaymentStatus(app: Entity): { text: string; icon: React.ReactNode; c
     const name = app.name.toLowerCase();
 
     if (description.includes('paid') || name.includes('paid')) {
-        return { text: 'Paid', icon: <DollarSign className="w-3 h-3" />, className: 'text-amber-600' };
+        return { text: 'Paid', icon: <DollarSign className="w-3 h-3" />, className: 'text-amber-500' };
     }
     if (description.includes('unlocked') || name.includes('unlocked') || description.includes('mod')) {
-        return { text: 'Unlocked', icon: <Gift className="w-3 h-3" />, className: 'text-green-600' };
+        return { text: 'Unlocked', icon: <Gift className="w-3 h-3" />, className: 'text-green-500' };
     }
      if (description.includes('free') || name.includes('free')) {
-        return { text: 'Free', icon: <Gift className="w-3 h-3" />, className: 'text-green-600' };
+        return { text: 'Free', icon: <Gift className="w-3 h-3" />, className: 'text-green-500' };
     }
 
     // Default case
     const isPaid = (parseInt(app.facts.version, 10) % 2 === 0);
     if(isPaid) {
-        return { text: 'Paid', icon: <DollarSign className="w-3 h-3" />, className: 'text-amber-600' };
+        return { text: 'Paid', icon: <DollarSign className="w-3 h-3" />, className: 'text-amber-500' };
     }
     
-    return { text: 'Unlocked', icon: <Gift className="w-3 h-3" />, className: 'text-green-600' };
+    return { text: 'Unlocked', icon: <Gift className="w-3 h-3" />, className: 'text-green-500' };
 }
 
 export function AppGrid({ apps }: AppGridProps) {
@@ -46,13 +46,13 @@ export function AppGrid({ apps }: AppGridProps) {
         const status = getPaymentStatus(app);
         return (
             <Link href={`/${app.category.toLowerCase()}/apps/${app.id}`} key={app.id} className="block group">
-                <div className="flex items-center gap-4 p-3 rounded-lg border bg-background hover:bg-secondary transition-colors">
+                <div className="flex items-center gap-4 p-3 rounded-lg border border-border bg-secondary/50 hover:border-primary/80 hover:bg-accent transition-colors">
                     <Image
                     src={app.media.icon}
                     alt={`${app.name} icon`}
                     width={56}
                     height={56}
-                    className="rounded-xl object-cover border"
+                    className="rounded-xl object-cover border border-border"
                     data-ai-hint={app.media.iconHint}
                     placeholder="blur"
                     blurDataURL="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
