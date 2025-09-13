@@ -1,3 +1,4 @@
+
 // src/app/api/genkit/[slug]/route.ts
 import { createGenkitNextAPIHandler } from '@genkit-ai/next';
 import '@/ai/flows/generate-app-description';
