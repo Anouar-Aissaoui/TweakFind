@@ -24,7 +24,7 @@ export async function generateMetadata({ params }: { params: { category: string,
 
   const siteUrl = "https://tweak.appsg.site";
   const url = `${siteUrl}/${params.category.toLowerCase()}/apps/${app.id}`;
-  const ogImage = `https://i.imgur.com/rq3p0eE.png`;
+  const ogImage = app.media.icon;
 
   const meta_title = `${app.name}: ${app.subhead}`;
   const meta_description = app.description;
@@ -47,6 +47,12 @@ export async function generateMetadata({ params }: { params: { category: string,
           alt: `${app.name} hero image`,
         },
       ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: meta_title,
+      description: meta_description,
+      images: [ogImage],
     },
     robots: "index,follow",
   };

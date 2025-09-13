@@ -9,6 +9,7 @@ export async function generateMetadata(): Promise<Metadata> {
     const title = "iOS Game Mods & Tweaked Apps (No Jailbreak) - TweakFind";
     const description = "Download the best tweaked games and game mods for iOS & Android. Get unlimited coins, aimbots, and unlocked features with no jailbreak required. Safe and free.";
     const url = `https://tweak.appsg.site/games/apps`;
+    const ogImage = "https://i.imgur.com/rq3p0eE.png";
 
     return {
         title,
@@ -18,8 +19,15 @@ export async function generateMetadata(): Promise<Metadata> {
             title: "TweakFind: #1 for Tweaked iOS & Android Games",
             description: "Browse our library of free game mods. Unlock unlimited resources, aimbots, and premium features without jailbreak.",
             url, 
-            type: "website" 
+            type: "website",
+            images: [ogImage],
         },
+        twitter: {
+            card: "summary_large_image",
+            title: "TweakFind: #1 for Tweaked iOS & Android Games",
+            description: "Browse our library of free game mods. Unlock unlimited resources, aimbots, and premium features without jailbreak.",
+            images: [ogImage],
+        }
     };
 }
 

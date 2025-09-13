@@ -9,6 +9,7 @@ export async function generateMetadata(): Promise<Metadata> {
     const title = "iOS & Android Emulators (No Jailbreak) - TweakFind";
     const description = "Download the best emulators for iOS & Android to play retro console games. Safe, free, and no jailbreak required.";
     const url = `https://tweak.appsg.site/emulators/apps`;
+    const ogImage = "https://i.imgur.com/rq3p0eE.png";
 
     return {
         title,
@@ -18,8 +19,15 @@ export async function generateMetadata(): Promise<Metadata> {
             title: "TweakFind: #1 for iOS & Android Emulators",
             description: "Play your favorite retro games on the go. Browse our library of free, no-jailbreak emulators for popular consoles.",
             url, 
-            type: "website" 
+            type: "website",
+            images: [ogImage],
         },
+        twitter: {
+            card: "summary_large_image",
+            title: "TweakFind: #1 for iOS & Android Emulators",
+            description: "Play your favorite retro games on the go. Browse our library of free, no-jailbreak emulators for popular consoles.",
+            images: [ogImage],
+        }
     };
 }
 

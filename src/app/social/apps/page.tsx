@@ -9,6 +9,7 @@ export async function generateMetadata(): Promise<Metadata> {
     const title = "Tweaked Social Media Apps (No Jailbreak) - TweakFind";
     const description = "Download modded social media apps for iOS & Android. Unlock features like anonymous story viewing, media downloads, and more. Safe, free, and no jailbreak required.";
     const url = `https://tweak.appsg.site/social/apps`;
+    const ogImage = "https://i.imgur.com/rq3p0eE.png";
 
     return {
         title,
@@ -18,7 +19,14 @@ export async function generateMetadata(): Promise<Metadata> {
             title: "TweakFind: Top Tweaked Social Media Apps",
             description: "Browse our collection of tweaked social apps to unlock premium features and enhance your experience. Free and no jailbreak needed.",
             url, 
-            type: "website" 
+            type: "website",
+            images: [ogImage],
+        },
+        twitter: {
+            card: "summary_large_image",
+            title: "TweakFind: Top Tweaked Social Media Apps",
+            description: "Browse our collection of tweaked social apps to unlock premium features and enhance your experience. Free and no jailbreak needed.",
+            images: [ogImage],
         },
     };
 }

@@ -9,6 +9,7 @@ export async function generateMetadata(): Promise<Metadata> {
     const title = "Tweaked Entertainment Apps (No Jailbreak) - TweakFind";
     const description = "Download the best tweaked entertainment apps for iOS & Android. Unlock premium features for streaming, music, and more. Safe and free.";
     const url = `https://tweak.appsg.site/entertainment/apps`;
+    const ogImage = "https://i.imgur.com/rq3p0eE.png";
 
     return {
         title,
@@ -18,8 +19,15 @@ export async function generateMetadata(): Promise<Metadata> {
             title: "TweakFind: #1 for Tweaked Entertainment Apps",
             description: "Browse our library of free entertainment app mods. Unlock premium features on your favorite streaming and music apps.",
             url, 
-            type: "website" 
+            type: "website",
+            images: [ogImage],
         },
+        twitter: {
+            card: "summary_large_image",
+            title: "TweakFind: #1 for Tweaked Entertainment Apps",
+            description: "Browse our library of free entertainment app mods. Unlock premium features on your favorite streaming and music apps.",
+            images: [ogImage],
+        }
     };
 }
 

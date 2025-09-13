@@ -17,14 +17,39 @@ type AppMetadata = Omit<Metadata, 'title'> & {
 export async function generateMetadata({ searchParams }: { searchParams?: { [key: string]: string | string[] | undefined } }): Promise<AppMetadata> {
   
   const siteUrl = "https://tweak.appsg.site";
+  const ogImage = "https://i.imgur.com/rq3p0eE.png";
+  const title = "TweakFind: #1 Tweaked App Store for iOS & Android";
+  const description = "Download tweaked apps, game mods, and emulators. Safe, updated, and no jailbreak required. Your trusted source for TweakFind.";
+
 
   const baseMetadata: AppMetadata = {
     metadataBase: new URL(siteUrl),
     title: {
-      default: 'TweakFind: #1 Tweaked App Store for iOS & Android',
+      default: title,
       template: '%s | TweakFind',
     },
-    description: 'Download tweaked apps, game mods, and emulators. Safe, updated, and no jailbreak required. Your trusted source for TweakFind.',
+    description: description,
+    openGraph: {
+        title,
+        description,
+        url: siteUrl,
+        siteName: 'TweakFind',
+        images: [
+            {
+                url: ogImage,
+                width: 1200,
+                height: 630,
+            },
+        ],
+        locale: 'en_US',
+        type: 'website',
+    },
+     twitter: {
+        card: 'summary_large_image',
+        title,
+        description,
+        images: [ogImage],
+    },
   };
   
   searchParams = searchParams || {};

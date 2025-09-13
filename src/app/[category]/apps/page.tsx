@@ -26,12 +26,25 @@ export async function generateMetadata({ params }: { params: { category: string 
     const title = `${categoryName.charAt(0).toUpperCase() + categoryName.slice(1)} Apps - TweakFind`;
     const description = `Browse and download the latest tweaked ${categoryName} apps. Safe, updated, and no jailbreak required.`;
     const url = `https://tweak.appsg.site/${categoryParam}/apps`;
+    const ogImage = "https://i.imgur.com/rq3p0eE.png";
 
     return {
         title,
         description,
         alternates: { canonical: url },
-        openGraph: { title, description, url, type: "website" },
+        openGraph: { 
+            title, 
+            description, 
+            url, 
+            type: "website",
+            images: [ogImage],
+        },
+        twitter: {
+            card: "summary_large_image",
+            title,
+            description,
+            images: [ogImage],
+        }
     };
 }
 

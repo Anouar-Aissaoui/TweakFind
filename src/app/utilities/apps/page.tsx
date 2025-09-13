@@ -9,6 +9,7 @@ export async function generateMetadata(): Promise<Metadata> {
     const title = "Top iOS Utility Apps & Tweaks (No Jailbreak) - TweakFind";
     const description = "Download powerful tweaked utility apps for iOS & Android. Includes file managers, recovery tools, and system tweaks. Safe, free, and no jailbreak required.";
     const url = `https://tweak.appsg.site/utilities/apps`;
+    const ogImage = "https://i.imgur.com/rq3p0eE.png";
 
     return {
         title,
@@ -18,7 +19,14 @@ export async function generateMetadata(): Promise<Metadata> {
             title: "TweakFind: Best Tweaked Utility Apps for iOS",
             description: "Enhance your device with our library of free utility app mods. Find everything from recovery tools to advanced file managers.",
             url, 
-            type: "website" 
+            type: "website",
+            images: [ogImage],
+        },
+        twitter: {
+            card: "summary_large_image",
+            title: "TweakFind: Best Tweaked Utility Apps for iOS",
+            description: "Enhance your device with our library of free utility app mods. Find everything from recovery tools to advanced file managers.",
+            images: [ogImage],
         },
     };
 }
