@@ -19,7 +19,7 @@ export async function generateMetadata(): Promise<AppMetadata> {
   const siteUrl = "https://tweak.appsg.site";
   const ogImage = "https://i.imgur.com/rq3p0eE.png";
   const title = "TweakFind: #1 Tweaked App Store for iOS & Android";
-  const description = "Download tweaked apps, game mods, and emulators. Safe, updated, and no jailbreak required. Your trusted source for TweakFind.";
+  const description = "Your #1 trusted source for tweaked apps, game mods, and emulators. Get free & unlocked downloads—safe, updated, and no jailbreak required.";
 
 
   const baseMetadata: AppMetadata = {
