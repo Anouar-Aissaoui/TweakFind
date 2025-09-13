@@ -25,9 +25,6 @@ export async function generateMetadata({ searchParams }: { searchParams?: { [key
       template: '%s | TweakFind',
     },
     description: 'Download tweaked apps, game mods, and emulators. Safe, updated, and no jailbreak required. Your trusted source for TweakFind.',
-    alternates: {
-      canonical: '/',
-    }
   };
   
   searchParams = searchParams || {};
