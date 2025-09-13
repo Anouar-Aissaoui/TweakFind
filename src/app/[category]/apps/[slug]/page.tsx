@@ -28,7 +28,7 @@ export async function generateMetadata({ params }: { params: { category: string,
 
   const meta_title = `${app.name}: ${app.subhead}`;
   const firstFeature = app.features.items[0]?.substring(app.features.items[0]?.indexOf(" ") + 1).split('—')[0].trim() ?? 'new features';
-  const meta_description = `Get the new ${app.name} v${app.facts.version} update! Now with ${firstFeature}. Download the tweaked app free from TweakFind.`;
+  const meta_description = `Free download of the tweaked ${app.name} v${app.facts.version}. Get the unlocked version with ${firstFeature} now on TweakFind!`;
 
 
   return {
