@@ -105,17 +105,11 @@ export default async function Page({ params }: { params: { category: string, slu
             "@context": "https://schema.org",
             "@type": "SoftwareApplication",
             "name": app.name,
-            "operatingSystem": "iOS",
-            "applicationCategory": "UtilityApplication",
+            "operatingSystem": ["iOS", "Android"],
             "offers": {
                 "@type": "Offer",
                 "price": "0",
                 "priceCurrency": "USD"
-            },
-            "aggregateRating": {
-                "@type": "AggregateRating",
-                "ratingValue": "4.8",
-                "reviewCount": "1247"
             }
         })} />
         <AppPageClient app={app} relatedApps={relatedApps} breadcrumbs={breadcrumbs} categories={categories} />
