@@ -38,6 +38,10 @@ export type Entity = {
   perfectFor: {
     title: string;
     tags: string[];
+  },
+  faq: {
+    title: string;
+    items: { question: string; answer: string; }[];
   }
 };
 
@@ -3171,6 +3175,27 @@ const defaultContent = (app: AppDto) => ({
         title: 'Perfect For',
         tags: ['Beta testers', 'App developers', 'Tweakers', 'Region-locked app users', 'Anyone tired of App Store limitations.'],
     },
+    faq: {
+        title: `Frequently Asked Questions about ${app.name}`,
+        items: [
+            {
+                question: `How to download ${app.name} for free?`,
+                answer: `You can download ${app.name} for free directly from TweakFind. Just tap the 'Install' button on this page and follow the on-screen instructions to sideload the app onto your iOS or Android device.`
+            },
+            {
+                question: `Is it safe to install ${app.name} mod from TweakFind?`,
+                answer: `Yes, every app on TweakFind, including this ${app.name} tweaked version, is scanned for safety and is 100% free from malware. We prioritize user security and ensure that no jailbreak or root is required.`
+            },
+            {
+                question: `What are the main features of the ${app.name} unlocked version?`,
+                answer: `This version of ${app.name} comes with several unlocked features, such as premium access, no ads, and unlimited resources, depending on the app. Check the 'Features' section on this page for a full list of enhancements.`
+            },
+            {
+                question: `Will I get banned for using a tweaked version of ${app.name}?`,
+                answer: `While there's always a small risk when using modded apps, our tweaks for ${app.name} are designed to be undetectable. Thousands of users download from TweakFind without any issues. We recommend using a secondary account if you have concerns.`
+            }
+        ]
+    }
 });
 
 const altstoreData = {
@@ -3198,6 +3223,27 @@ const altstoreData = {
     perfectFor: {
         title: "Perfect For:",
         tags: ["Beta testers", "App developers", "Tweakers", "Region-locked app users", "Anyone tired of App Store limitations."]
+    },
+    faq: {
+        title: `Frequently Asked Questions about AltStore`,
+        items: [
+            {
+                question: `How to download AltStore for free?`,
+                answer: `You can download AltStore for free directly from TweakFind. Just tap the 'Install' button on this page and follow the on-screen instructions to sideload the app onto your iOS device.`
+            },
+            {
+                question: `Is it safe to install AltStore from TweakFind?`,
+                answer: `Yes, every app on TweakFind, including AltStore, is scanned for safety and is 100% free from malware. We prioritize user security and ensure that no jailbreak is required.`
+            },
+            {
+                question: `What is the main feature of AltStore?`,
+                answer: `The main feature of AltStore is the ability to sideload any .IPA file to your iPhone or iPad without needing a jailbreak, offering access to a world of apps not available on the App Store.`
+            },
+            {
+                question: `Does AltStore automatically refresh apps?`,
+                answer: `Yes, AltStore can automatically refresh your sideloaded apps in the background, preventing them from expiring so you can use them without interruption.`
+            }
+        ]
     }
 };
 
@@ -3222,5 +3268,6 @@ export const apps: Entity[] = appData.map((app) => {
     about: content.about,
     features: content.features,
     perfectFor: content.perfectFor,
+    faq: content.faq,
   };
 });

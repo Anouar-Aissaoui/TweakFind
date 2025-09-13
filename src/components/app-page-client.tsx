@@ -11,6 +11,7 @@ import { AppCard } from "@/components/app-card";
 import { InstallationModal } from './installation-modal';
 import { Badge } from '@/components/ui/badge';
 import { useIsMobile } from '@/hooks/use-mobile';
+import { FaqSection } from './faq-section';
 
 type Breadcrumb = {
   name: string;
@@ -132,6 +133,9 @@ export function AppPageClient({ app, relatedApps, breadcrumbs, categories }: App
                                 ))}
                             </ul>
                         </section>
+
+                        <FaqSection title={app.faq.title} items={app.faq.items} />
+
                     </div>
 
                      <div>
