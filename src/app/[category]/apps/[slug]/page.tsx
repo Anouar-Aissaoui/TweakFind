@@ -27,7 +27,7 @@ export async function generateMetadata({ params }: { params: { category: string,
   const ogImage = app.media.icon;
 
   const meta_title = `${app.name}: ${app.subhead}`;
-  const meta_description = app.description;
+  const meta_description = `Download the tweaked ${app.name} v${app.facts.version} for free. Get premium features and unlocks. Safe and trusted source at TweakFind.`;
 
 
   return {
