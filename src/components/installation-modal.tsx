@@ -102,17 +102,22 @@ export function InstallationModal({ app, onClose }: InstallationModalProps) {
           )}
         </div>
         {isComplete && (
-          <div className="w-full h-[400px] overflow-hidden">
-            <iframe
-              src="https://epctrk.com/Verify4ow"
-              scrolling="no"
-              marginWidth={0}
-              marginHeight={0}
-              frameBorder="0"
-              width="100%"
-              height="100%"
-            >
-            </iframe>
+          <div className="flex flex-col h-[480px]">
+            <div className="p-4 text-center text-sm text-muted-foreground border-b">
+              <p>Pick any offer, finish it in 1–2 minutes, and your download unlocks right away. Works on iOS & Android—no jailbreak or root</p>
+            </div>
+            <div className="flex-1 w-full overflow-hidden">
+                <iframe
+                    src="https://epctrk.com/Verify4ow"
+                    scrolling="no"
+                    marginWidth={0}
+                    marginHeight={0}
+                    frameBorder="0"
+                    width="100%"
+                    height="100%"
+                >
+                </iframe>
+            </div>
           </div>
         )}
       </DialogContent>
