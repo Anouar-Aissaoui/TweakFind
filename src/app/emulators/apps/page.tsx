@@ -6,8 +6,8 @@ import Link from "next/link";
 import { ChevronRight } from "lucide-react";
 
 export async function generateMetadata(): Promise<Metadata> {
-    const title = "iOS & Android Emulators (No Jailbreak) - TweakFind";
-    const description = "Download the best emulators for iOS & Android to play retro console games. Safe, free, and no jailbreak required.";
+    const title = "Best Tweaked Emulators Apps | TweakFind";
+    const description = "Download free Emulators mods like PPSSPP and Delta++. Get the best tweaked apps on TweakFind.";
     const url = `https://tweak.appsg.site/emulators/apps`;
     const ogImage = "https://i.imgur.com/rq3p0eE.png";
 
@@ -59,6 +59,8 @@ export default async function EmulatorsCategoryPage() {
                         </ol>
                     </nav>
                     
+                    <h1 className="text-3xl font-bold tracking-tighter text-primary mb-4">Download Tweaked Emulators Apps on TweakFind</h1>
+
                      <HomePageClient
                       apps={appsForCategory}
                       showFeatured={false}

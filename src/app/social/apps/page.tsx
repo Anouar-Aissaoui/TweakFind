@@ -6,8 +6,8 @@ import Link from "next/link";
 import { ChevronRight } from "lucide-react";
 
 export async function generateMetadata(): Promise<Metadata> {
-    const title = "Tweaked Social Media Apps (No Jailbreak) - TweakFind";
-    const description = "Download modded social media apps for iOS & Android. Unlock features like anonymous story viewing, media downloads, and more. Safe, free, and no jailbreak required.";
+    const title = "Best Tweaked Social Apps | TweakFind";
+    const description = "Download free Social mods like Instagram++ and Discord Nitro. Get the best tweaked apps on TweakFind.";
     const url = `https://tweak.appsg.site/social/apps`;
     const ogImage = "https://i.imgur.com/rq3p0eE.png";
 
@@ -58,6 +58,8 @@ export default async function SocialCategoryPage() {
                         ))}
                         </ol>
                     </nav>
+
+                    <h1 className="text-3xl font-bold tracking-tighter text-primary mb-4">Download Tweaked Social Apps on TweakFind</h1>
                     
                      <HomePageClient
                       apps={appsForCategory}

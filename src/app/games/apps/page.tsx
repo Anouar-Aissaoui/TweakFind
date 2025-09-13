@@ -6,8 +6,8 @@ import Link from "next/link";
 import { ChevronRight } from "lucide-react";
 
 export async function generateMetadata(): Promise<Metadata> {
-    const title = "iOS Game Mods & Tweaked Apps (No Jailbreak) - TweakFind";
-    const description = "Download the best tweaked games and game mods for iOS & Android. Get unlimited coins, aimbots, and unlocked features with no jailbreak required. Safe and free.";
+    const title = "Best Tweaked Games Apps | TweakFind";
+    const description = "Download free Games mods like COD Mobile, Roblox, and Pokemon Go Spoofer. Get the best tweaked apps on TweakFind.";
     const url = `https://tweak.appsg.site/games/apps`;
     const ogImage = "https://i.imgur.com/rq3p0eE.png";
 
@@ -59,6 +59,8 @@ export default async function GamesCategoryPage() {
                         </ol>
                     </nav>
                     
+                    <h1 className="text-3xl font-bold tracking-tighter text-primary mb-4">Download Tweaked Games Apps on TweakFind</h1>
+
                      <HomePageClient
                       apps={appsForCategory}
                       showFeatured={false}
