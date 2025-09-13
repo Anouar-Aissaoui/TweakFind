@@ -23,13 +23,11 @@ export async function generateMetadata({ params }: { params: { category: string,
   }
 
   const siteUrl = "https://tweak.appsg.site";
-  const url = `${siteUrl}/${params.category}/apps/${app.id}`;
+  const url = `${siteUrl}/${params.category.toLowerCase()}/apps/${app.id}`;
   const ogImage = `https://i.imgur.com/rq3p0eE.png`;
 
-  const meta_title = `${app.name} — Free iOS IPA Installer for iPhone/iPad (No Jailbreak)`;
-  const meta_description = `Sideload any IPA to iPhone or iPad with ${app.name} — 100% free, no jailbreak, no Apple ID required. 500k+ trusted installs. Auto-refresh. Open source.`;
-  const og_title = `${app.name}: Sideload Any App to iOS — No Jailbreak`;
-  const og_description = `The free, open-source iOS app installer trusted by 500k+ users. Works on iPhone & iPad. No computer needed after setup.`;
+  const meta_title = `${app.name}: ${app.subhead}`;
+  const meta_description = app.description;
 
 
   return {
@@ -37,8 +35,8 @@ export async function generateMetadata({ params }: { params: { category: string,
     description: meta_description,
     alternates: { canonical: url },
     openGraph: {
-      title: og_title,
-      description: og_description,
+      title: meta_title,
+      description: meta_description,
       url,
       type: "article",
       images: [
