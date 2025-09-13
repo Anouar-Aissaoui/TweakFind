@@ -7,7 +7,7 @@ import { ChevronRight } from "lucide-react";
 
 export async function generateMetadata(): Promise<Metadata> {
     const title = "Best Tweaked Games Apps | TweakFind";
-    const description = "Download free Games mods like COD Mobile, Roblox, and Pokemon Go Spoofer. Get the best tweaked apps on TweakFind.";
+    const description = "Download free Games mods like COD Mobile, Roblox, and Pokemon Go Spoofer. Get the best game app tweaks on TweakFind.";
     const url = `https://tweak.appsg.site/games/apps`;
     const ogImage = "https://i.imgur.com/rq3p0eE.png";
 
@@ -17,7 +17,7 @@ export async function generateMetadata(): Promise<Metadata> {
         alternates: { canonical: url },
         openGraph: { 
             title: "TweakFind: #1 for Tweaked iOS & Android Games",
-            description: "Browse our library of free game mods. Unlock unlimited resources, aimbots, and premium features without jailbreak.",
+            description: "Browse our library of free game mods and app tweaks. Unlock unlimited resources, aimbots, and premium features without jailbreak.",
             url, 
             type: "website",
             images: [ogImage],
@@ -25,7 +25,7 @@ export async function generateMetadata(): Promise<Metadata> {
         twitter: {
             card: "summary_large_image",
             title: "TweakFind: #1 for Tweaked iOS & Android Games",
-            description: "Browse our library of free game mods. Unlock unlimited resources, aimbots, and premium features without jailbreak.",
+            description: "Browse our library of free game mods and app tweaks. Unlock unlimited resources, aimbots, and premium features without jailbreak.",
             images: [ogImage],
         }
     };
@@ -59,13 +59,13 @@ export default async function GamesCategoryPage() {
                         </ol>
                     </nav>
                     
-                    <h1 className="text-3xl font-bold tracking-tighter text-primary mb-4">Download Tweaked Games Apps on TweakFind</h1>
+                    <h1 className="text-3xl font-bold tracking-tighter text-primary mb-4">Download Game App Tweaks on TweakFind</h1>
 
                      <HomePageClient
                       apps={appsForCategory}
                       showFeatured={false}
                       initialCategory={"Games"}
-                      pageTitle="Game Mods & Tweaked Apps"
+                      pageTitle="Game Mods & App Tweaks"
                       displayMode="grid"
                     />
                 </div>

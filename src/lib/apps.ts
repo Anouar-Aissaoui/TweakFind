@@ -3183,8 +3183,8 @@ const defaultContent = (app: AppDto) => ({
                 answer: `You can download ${app.name} for free directly from TweakFind. Just tap the 'Install' button on this page and follow the on-screen instructions to sideload the app onto your iOS or Android device.`
             },
             {
-                question: `Is it safe to install ${app.name} mod from TweakFind?`,
-                answer: `Yes, every app on TweakFind, including this ${app.name} tweaked version, is scanned for safety and is 100% free from malware. We prioritize user security and ensure that no jailbreak or root is required.`
+                question: `Is it safe to install this app tweak from TweakFind?`,
+                answer: `Yes, every app tweak on TweakFind, including this ${app.name} version, is scanned for safety and is 100% free from malware. We prioritize user security and ensure that no jailbreak or root is required.`
             },
             {
                 question: `What are the main features of the ${app.name} unlocked version?`,
@@ -3192,7 +3192,7 @@ const defaultContent = (app: AppDto) => ({
             },
             {
                 question: `Will I get banned for using a tweaked version of ${app.name}?`,
-                answer: `While there's always a small risk when using modded apps, our tweaks for ${app.name} are designed to be undetectable. Thousands of users download from TweakFind without any issues. We recommend using a secondary account if you have concerns.`
+                answer: `While there's always a small risk when using a modded app or app tweak, our versions for ${app.name} are designed to be undetectable. Thousands of users download from TweakFind without any issues. We recommend using a secondary account if you have concerns.`
             }
         ]
     }
@@ -3232,12 +3232,12 @@ const altstoreData = {
                 answer: `You can download AltStore for free directly from TweakFind. Just tap the 'Install' button on this page and follow the on-screen instructions to sideload the app onto your iOS device.`
             },
             {
-                question: `Is it safe to install AltStore from TweakFind?`,
-                answer: `Yes, every app on TweakFind, including AltStore, is scanned for safety and is 100% free from malware. We prioritize user security and ensure that no jailbreak is required.`
+                question: `Is it safe to install this app tweak from TweakFind?`,
+                answer: `Yes, every app tweak on TweakFind, including AltStore, is scanned for safety and is 100% free from malware. We prioritize user security and ensure that no jailbreak is required.`
             },
             {
-                question: `What is the main feature of AltStore?`,
-                answer: `The main feature of AltStore is the ability to sideload any .IPA file to your iPhone or iPad without needing a jailbreak, offering access to a world of apps not available on the App Store.`
+                question: `What is the main feature of this app tweak?`,
+                answer: `The main feature of this AltStore app tweak is the ability to sideload any .IPA file to your iPhone or iPad without needing a jailbreak, offering access to a world of apps not available on the App Store.`
             },
             {
                 question: `Does AltStore automatically refresh apps?`,

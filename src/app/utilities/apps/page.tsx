@@ -6,8 +6,8 @@ import Link from "next/link";
 import { ChevronRight } from "lucide-react";
 
 export async function generateMetadata(): Promise<Metadata> {
-    const title = "Top iOS Utility Apps & Tweaks (No Jailbreak) - TweakFind";
-    const description = "Download powerful tweaked utility apps for iOS & Android. Includes file managers, recovery tools, and system tweaks. Safe, free, and no jailbreak required.";
+    const title = "Top iOS Utility App Tweaks (No Jailbreak) - TweakFind";
+    const description = "Download powerful utility app tweaks for iOS & Android. Includes file managers, recovery tools, and system tweaks. Safe, free, and no jailbreak required.";
     const url = `https://tweak.appsg.site/utilities/apps`;
     const ogImage = "https://i.imgur.com/rq3p0eE.png";
 
@@ -16,16 +16,16 @@ export async function generateMetadata(): Promise<Metadata> {
         description,
         alternates: { canonical: url },
         openGraph: { 
-            title: "TweakFind: Best Tweaked Utility Apps for iOS",
-            description: "Enhance your device with our library of free utility app mods. Find everything from recovery tools to advanced file managers.",
+            title: "TweakFind: Best Utility App Tweaks for iOS",
+            description: "Enhance your device with our library of free utility app tweaks. Find everything from recovery tools to advanced file managers.",
             url, 
             type: "website",
             images: [ogImage],
         },
         twitter: {
             card: "summary_large_image",
-            title: "TweakFind: Best Tweaked Utility Apps for iOS",
-            description: "Enhance your device with our library of free utility app mods. Find everything from recovery tools to advanced file managers.",
+            title: "TweakFind: Best Utility App Tweaks for iOS",
+            description: "Enhance your device with our library of free utility app tweaks. Find everything from recovery tools to advanced file managers.",
             images: [ogImage],
         },
     };
@@ -63,7 +63,7 @@ export default async function UtilitiesCategoryPage() {
                       apps={appsForCategory}
                       showFeatured={false}
                       initialCategory={"Utilities"}
-                      pageTitle="Essential Utility Apps & Tweaks"
+                      pageTitle="Essential Utility App Tweaks"
                       displayMode="grid"
                     />
                 </div>

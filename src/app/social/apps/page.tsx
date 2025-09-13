@@ -7,7 +7,7 @@ import { ChevronRight } from "lucide-react";
 
 export async function generateMetadata(): Promise<Metadata> {
     const title = "Best Tweaked Social Apps | TweakFind";
-    const description = "Download free Social mods like Instagram++ and Discord Nitro. Get the best tweaked apps on TweakFind.";
+    const description = "Download free Social mods like Instagram++ and Discord Nitro. Get the best social app tweaks on TweakFind.";
     const url = `https://tweak.appsg.site/social/apps`;
     const ogImage = "https://i.imgur.com/rq3p0eE.png";
 
@@ -65,7 +65,7 @@ export default async function SocialCategoryPage() {
                       apps={appsForCategory}
                       showFeatured={false}
                       initialCategory={"Social"}
-                      pageTitle="Tweaked Social Media Apps"
+                      pageTitle="Social Media App Tweaks"
                       displayMode="grid"
                     />
                 </div>
