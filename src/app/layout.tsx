@@ -14,7 +14,7 @@ type AppMetadata = Omit<Metadata, 'title'> & {
   title: string | TemplateString;
 };
 
-export async function generateMetadata({ searchParams }: { searchParams?: { [key:string]: string | string[] | undefined } }): Promise<AppMetadata> {
+export async function generateMetadata(): Promise<AppMetadata> {
   
   const siteUrl = "https://tweak.appsg.site";
   const ogImage = "https://i.imgur.com/rq3p0eE.png";
@@ -53,27 +53,12 @@ export async function generateMetadata({ searchParams }: { searchParams?: { [key
         description,
         images: [ogImage],
     },
+    robots: {
+      index: true,
+      follow: true,
+    }
   };
   
-  searchParams = searchParams || {};
-  const hasSearchParams = Object.keys(searchParams).length > 0;
-
-  if (hasSearchParams) {
-    baseMetadata.robots = {
-      index: false,
-      follow: true,
-      nocache: true,
-      googleBot: {
-        index: false,
-        follow: true,
-        noimageindex: true,
-        'max-video-preview': -1,
-        'max-image-preview': 'large',
-        'max-snippet': -1,
-      },
-    };
-  }
-
   return baseMetadata;
 }
 
