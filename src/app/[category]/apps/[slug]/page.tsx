@@ -5,6 +5,7 @@ import { apps } from "@/lib/apps";
 import { jsonLdScriptProps } from "react-schemaorg";
 import { SoftwareApplication, WebPage, BreadcrumbList } from "schema-dts";
 import { AppPageClient } from "@/components/app-page-client";
+import { generateAppDescription } from "@/ai/flows/generate-app-description";
 
 
 export const revalidate = 86400; // ISR: 24h
@@ -27,9 +28,26 @@ export async function generateMetadata({ params }: { params: { category: string,
   const ogImage = app.media.icon;
 
   const meta_title = `${app.name}: ${app.subhead}`;
-  const firstFeature = app.features.items[0]?.substring(app.features.items[0]?.indexOf(" ") + 1).split('—')[0].trim() ?? 'new features';
-  const meta_description = `Free download of the tweaked ${app.name} v${app.facts.version}. Get the unlocked version with ${firstFeature} now on TweakFind!`;
 
+  // Example of using the AI flow for a specific app
+  let meta_description = `Free download of the tweaked ${app.name} v${app.facts.version}. Get the unlocked version with new features now on TweakFind!`;
+  if (app.id === 'cod-mobile-mod-menu') {
+    try {
+      const generated = await generateAppDescription({
+        appName: app.name,
+        appCategory: app.category,
+        appFeatures: "Aimbot, Wallhack, No Recoil",
+        longTailKeyword: "COD Mobile aimbot for iOS"
+      });
+      meta_description = generated.description;
+    } catch (e) {
+      console.error("Failed to generate app description:", e);
+      // Fallback to default description
+    }
+  } else {
+    const firstFeature = app.features.items[0]?.substring(app.features.items[0]?.indexOf(" ") + 1).split('—')[0].trim() ?? 'new features';
+    meta_description = `Free download of the tweaked ${app.name} v${app.facts.version}. Get the unlocked version with ${firstFeature} now on TweakFind!`;
+  }
 
   return {
     title: meta_title,

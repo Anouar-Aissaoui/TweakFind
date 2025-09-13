@@ -1,7 +1,7 @@
 'use server';
 
 /**
- * @fileOverview An AI agent that generates descriptions for tweaked apps.
+ * @fileOverview An AI agent that generates SEO-optimized descriptions for tweaked apps.
  *
  * - generateAppDescription - A function that generates a description for a tweaked app.
  * - GenerateAppDescriptionInput - The input type for the generateAppDescription function.
@@ -14,12 +14,13 @@ import {z} from 'genkit';
 const GenerateAppDescriptionInputSchema = z.object({
   appName: z.string().describe('The name of the app to generate a description for.'),
   appCategory: z.string().describe('The category of the app.'),
-  appFeatures: z.string().describe('The features of the app.'),
+  appFeatures: z.string().describe('A summary of the key features of the app.'),
+  longTailKeyword: z.string().describe('A specific long-tail keyword phrase to include in the description.'),
 });
 export type GenerateAppDescriptionInput = z.infer<typeof GenerateAppDescriptionInputSchema>;
 
 const GenerateAppDescriptionOutputSchema = z.object({
-  description: z.string().describe('The generated description of the app.'),
+  description: z.string().describe('The generated SEO description, under 160 characters.'),
 });
 export type GenerateAppDescriptionOutput = z.infer<typeof GenerateAppDescriptionOutputSchema>;
 
@@ -31,13 +32,19 @@ const prompt = ai.definePrompt({
   name: 'generateAppDescriptionPrompt',
   input: {schema: GenerateAppDescriptionInputSchema},
   output: {schema: GenerateAppDescriptionOutputSchema},
-  prompt: `You are an expert app description writer. You will generate a description for a tweaked app based on the app name, category, and features.
+  prompt: `You are an SEO expert specializing in meta descriptions for app stores. Your task is to write a compelling description under 160 characters.
 
-App Name: {{{appName}}}
-App Category: {{{appCategory}}}
-App Features: {{{appFeatures}}}
+It must include:
+1. The app name: {{{appName}}}
+2. The exact long-tail keyword: "{{{longTailKeyword}}}"
+3. A strong call-to-action like "Download free" or "Get the unlocked version".
+4. The brand name "TweakFind".
 
-Description:`,
+App Details:
+- Category: {{{appCategory}}}
+- Features: {{{appFeatures}}}
+
+Generate the description.`,
 });
 
 const generateAppDescriptionFlow = ai.defineFlow(
