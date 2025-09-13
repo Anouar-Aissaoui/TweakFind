@@ -6,8 +6,8 @@ import Link from "next/link";
 import { ChevronRight } from "lucide-react";
 
 export async function generateMetadata(): Promise<Metadata> {
-    const title = "Top iOS Utility App Tweaks (No Jailbreak) - TweakFind";
-    const description = "Download powerful utility app tweaks for iOS & Android. Includes file managers, recovery tools, and system tweaks. Safe, free, and no jailbreak required.";
+    const title = "Top iOS & Android Utility App Tweaks | TweakFind";
+    const description = "Find powerful utility tweaks like AltStore and iRecovery. Free download on TweakFind for file managers, recovery tools, and more for your device.";
     const url = `https://tweak.appsg.site/utilities/apps`;
     const ogImage = "https://i.imgur.com/rq3p0eE.png";
 

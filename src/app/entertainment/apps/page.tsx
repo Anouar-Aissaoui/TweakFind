@@ -6,8 +6,8 @@ import Link from "next/link";
 import { ChevronRight } from "lucide-react";
 
 export async function generateMetadata(): Promise<Metadata> {
-    const title = "Tweaked Entertainment Apps (No Jailbreak) - TweakFind";
-    const description = "Download the best entertainment app tweaks for iOS & Android. Unlock premium features for streaming, music, and more. Safe and free on TweakFind.";
+    const title = "Tweaked Entertainment Apps (No Jailbreak) | TweakFind";
+    const description = "Get tweaked entertainment apps like Spotify++ and Netflix++. Free download on TweakFind to unlock premium streaming and music features today.";
     const url = `https://tweak.appsg.site/entertainment/apps`;
     const ogImage = "https://i.imgur.com/rq3p0eE.png";
 

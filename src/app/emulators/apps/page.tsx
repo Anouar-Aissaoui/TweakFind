@@ -6,8 +6,8 @@ import Link from "next/link";
 import { ChevronRight } from "lucide-react";
 
 export async function generateMetadata(): Promise<Metadata> {
-    const title = "Best Tweaked Emulators Apps | TweakFind";
-    const description = "Download free Emulators mods like PPSSPP and Delta++. Get the best tweaked apps on TweakFind.";
+    const title = "Best Tweaked Emulators For iOS & Android | TweakFind";
+    const description = "Get tweaked emulators like PPSSPP & Delta for iOS and Android. Free download for retro gaming on your phone, no jailbreak needed, on TweakFind.";
     const url = `https://tweak.appsg.site/emulators/apps`;
     const ogImage = "https://i.imgur.com/rq3p0eE.png";
 
@@ -47,7 +47,7 @@ export default async function EmulatorsCategoryPage() {
                     <nav aria-label="Breadcrumb" className="mb-4">
                         <ol className="flex items-center space-x-2 text-sm text-muted-foreground">
                         {breadcrumbs.map((crumb, index) => (
-                            <li key={crumb.name} className="flex items-center">
+                            <li key={index} className="flex items-center">
                             {index > 0 && <ChevronRight className="h-4 w-4 mx-2" />}
                             {index === breadcrumbs.length - 1 ? (
                                 <span className="font-semibold text-foreground">{crumb.name}</span>

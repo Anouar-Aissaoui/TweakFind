@@ -6,8 +6,8 @@ import Link from "next/link";
 import { ChevronRight } from "lucide-react";
 
 export async function generateMetadata(): Promise<Metadata> {
-    const title = "Developer Tools & App Tweaks | TweakFind";
-    const description = "Download essential developer tools and app tweaks like Unc0ver, Cydia, and iOS Downgrader. Safe and no jailbreak required on TweakFind.";
+    const title = "Developer Tools & App Tweaks (Unc0ver, Cydia) | TweakFind";
+    const description = "Access essential developer tools and app tweaks like Unc0ver and Cydia. Free download on TweakFind for your jailbreaking and development needs.";
     const url = `https://tweak.appsg.site/developer-tools/apps`;
     const ogImage = "https://i.imgur.com/rq3p0eE.png";
 

@@ -6,8 +6,8 @@ import Link from "next/link";
 import { ChevronRight } from "lucide-react";
 
 export async function generateMetadata(): Promise<Metadata> {
-    const title = "Best Tweaked Games Apps | TweakFind";
-    const description = "Download free Games mods like COD Mobile, Roblox, and Pokemon Go Spoofer. Get the best game app tweaks on TweakFind.";
+    const title = "Best Tweaked Games Mods (iOS & Android) | TweakFind";
+    const description = "Download free game mods for COD Mobile, Roblox & more. Get the latest tweaked apps and unlock aimbots and unlimited resources on TweakFind.";
     const url = `https://tweak.appsg.site/games/apps`;
     const ogImage = "https://i.imgur.com/rq3p0eE.png";
 

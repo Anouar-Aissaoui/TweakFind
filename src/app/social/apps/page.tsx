@@ -6,8 +6,8 @@ import Link from "next/link";
 import { ChevronRight } from "lucide-react";
 
 export async function generateMetadata(): Promise<Metadata> {
-    const title = "Best Tweaked Social Apps | TweakFind";
-    const description = "Download free Social mods like Instagram++ and Discord Nitro. Get the best social app tweaks on TweakFind.";
+    const title = "Tweaked Social Apps (Instagram++, Discord Nitro) | TweakFind";
+    const description = "Explore tweaked social apps like Instagram++ and Discord Nitro. Free download on TweakFind to unlock new features and enhance your social media.";
     const url = `https://tweak.appsg.site/social/apps`;
     const ogImage = "https://i.imgur.com/rq3p0eE.png";
 
