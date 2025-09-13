@@ -43,8 +43,7 @@ export function FeaturedApps({ apps, onInstallClick }: FeaturedAppsProps) {
                         height={64}
                         className="rounded-lg object-contain mb-3"
                         data-ai-hint={app.media.iconHint}
-                        placeholder="blur"
-                        blurDataURL="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                        sizes="(max-width: 768px) 25vw, 10vw"
                     />
                     <div className="flex flex-col items-center flex-1 justify-center">
                         <p className="text-sm font-semibold text-center text-foreground truncate w-full">{app.name}</p>

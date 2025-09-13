@@ -71,8 +71,7 @@ export function AppPageClient({ app, relatedApps, breadcrumbs, categories }: App
                             height={96}
                             className="rounded-2xl object-contain border-4 border-border/30"
                             data-ai-hint={app.media.iconHint}
-                            placeholder="blur"
-                            blurDataURL="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                            sizes="(max-width: 768px) 30vw, 15vw"
                         />
                     </div>
                     <h1 className="text-4xl font-bold tracking-tighter text-primary mb-2">{app.name} — Free iOS App Installer (No Jailbreak Required)</h1>

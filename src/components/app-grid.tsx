@@ -55,8 +55,7 @@ export function AppGrid({ apps }: AppGridProps) {
                     height={56}
                     className="rounded-xl object-cover border border-border"
                     data-ai-hint={app.media.iconHint}
-                    placeholder="blur"
-                    blurDataURL="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                    sizes="(max-width: 768px) 15vw, 5vw"
                     />
                     <div className="flex-1 min-w-0">
                         <p className="text-sm font-bold text-foreground truncate group-hover:text-primary">{app.name}</p>
