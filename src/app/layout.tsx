@@ -14,7 +14,7 @@ type AppMetadata = Omit<Metadata, 'title'> & {
   title: string | TemplateString;
 };
 
-export async function generateMetadata({ searchParams }: { searchParams?: { [key: string]: string | string[] | undefined } }): Promise<AppMetadata> {
+export async function generateMetadata({ searchParams }: { searchParams?: { [key:string]: string | string[] | undefined } }): Promise<AppMetadata> {
   
   const siteUrl = "https://tweak.appsg.site";
   const ogImage = "https://i.imgur.com/rq3p0eE.png";
@@ -29,6 +29,9 @@ export async function generateMetadata({ searchParams }: { searchParams?: { [key
       template: '%s | TweakFind',
     },
     description: description,
+    alternates: {
+      canonical: '/',
+    },
     openGraph: {
         title,
         description,
