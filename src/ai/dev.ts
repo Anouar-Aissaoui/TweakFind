@@ -1,8 +1,8 @@
 import { config } from 'dotenv';
 config();
 
-// This import is required for the genkitNextApiHandler
-import '/src/app/api/genkit/[slug]/route';
+// This import is required for the genkitNextApiHandler - NO LONGER TRUE, REMOVED to fix build
+// import '/src/app/api/genkit/[slug]/route';
 
 import '@/ai/flows/generate-app-description.ts';
 import '@/ai/flows/recommend-tweaked-apps.ts';
