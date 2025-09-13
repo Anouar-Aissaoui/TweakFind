@@ -1,4 +1,6 @@
 
+import { getPlaiceholder } from 'plaiceholder';
+
 export type AppCategory =
   | 'Apps'
   | 'Games'
@@ -19,6 +21,7 @@ export type Entity = {
   media: {
     icon: string;
     iconHint: string;
+    blurDataURL: string;
   };
   facts: {
     version: string;
@@ -2299,7 +2302,7 @@ const appData: AppDto[] = [
     },
     {
         "slug": "fifa-soccer-plus-plus",
-        "img": "https://i.imgur.com/s2K6zs9.png",
+        "img": "https://i.imgur.com/sTQ4Pce.png",
         "name": "FIFA Soccer++",
         "data-ai-hint": "soccer game",
         "description": "Unlimited Coins & More!",
@@ -3247,7 +3250,26 @@ const altstoreData = {
     }
 };
 
-export const apps: Entity[] = appData.map((app) => {
+const appsWithPlaceholders = await Promise.all(
+  appData.map(async (app) => {
+    try {
+      const response = await fetch(app.img);
+      if (!response.ok) {
+        throw new Error(`Failed to fetch image: ${response.statusText}`);
+      }
+      const buffer = await response.arrayBuffer();
+      const { base64 } = await getPlaiceholder(Buffer.from(buffer));
+      return { ...app, blurDataURL: base64 };
+    } catch (error) {
+      console.error(`Failed to generate placeholder for ${app.name}:`, error);
+      // Fallback to a default transparent placeholder
+      return { ...app, blurDataURL: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=' };
+    }
+  })
+);
+
+
+export const apps: Entity[] = appsWithPlaceholders.map((app) => {
   const content = app.slug === 'altstore' ? altstoreData : defaultContent(app);
   
   return {
@@ -3259,6 +3281,7 @@ export const apps: Entity[] = appData.map((app) => {
     media: {
       icon: app.img,
       iconHint: app['data-ai-hint'],
+      blurDataURL: app.blurDataURL,
     },
     facts: {
       version: app.version,

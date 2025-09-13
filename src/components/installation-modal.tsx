@@ -78,6 +78,8 @@ export function InstallationModal({ app, onClose }: InstallationModalProps) {
               className="rounded-xl object-contain"
               data-ai-hint={app.media.iconHint}
               sizes="20vw"
+              placeholder="blur"
+              blurDataURL={app.media.blurDataURL}
             />
           </div>
           <DialogTitle className="text-2xl text-center font-headline">

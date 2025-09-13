@@ -33,6 +33,8 @@ export function AppList({ apps, onInstallClick }: AppListProps) {
               className="rounded-lg object-contain border-2 border-border/30"
               data-ai-hint={app.media.iconHint}
               sizes="(max-width: 768px) 15vw, 5vw"
+              placeholder="blur"
+              blurDataURL={app.media.blurDataURL}
             />
             <div className="flex-1 ml-4">
               <p className="text-base font-semibold text-foreground">{app.name}</p>
