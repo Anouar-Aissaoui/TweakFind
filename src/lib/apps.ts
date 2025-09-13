@@ -1032,7 +1032,7 @@ const appData: AppDto[] = [
     },
     {
         "slug": "apple-music",
-        "img": "https://gyazo.com/93dc53e0d30a2362505484a84b364e20.png",
+        "img": "https://i.imgur.com/mWy5Hxe.png",
         "name": "Apple Music",
         "data-ai-hint": "music app",
         "description": "Free Apple Music & Unlock All Features!",
@@ -1042,7 +1042,7 @@ const appData: AppDto[] = [
     },
     {
         "slug": "appstore-plus-plus",
-        "img": "https://gyazo.com/7df4dca64ee63b40a33261c6ba04b85b.png",
+        "img": "https://i.imgur.com/xcuYI12.png",
         "name": "AppStore++",
         "data-ai-hint": "app store",
         "description": "Get iOS Paid Apps For Free!",
@@ -2282,7 +2282,7 @@ const appData: AppDto[] = [
     },
     {
         "slug": "apkpure",
-        "img": "https://imgur.com/PZhfne5.png",
+        "img": "https://i.imgur.com/PZhfne5.png",
         "name": "APKPure",
         "data-ai-hint": "app store",
         "description": "APKPure Install iPhone iOS & Android",
@@ -2882,7 +2882,7 @@ const appData: AppDto[] = [
     },
     {
         "slug": "netflix",
-        "img": "https://gyazo.com/1b1c717c3f3fcd619aaa5ec5d23e07c2.png",
+        "img": "https://i.imgur.com/0dJ9fHe.png",
         "name": "Netflix",
         "data-ai-hint": "movie streaming",
         "description": "Free Ultimate Premium & All Features!",
@@ -2982,7 +2982,7 @@ const appData: AppDto[] = [
     },
     {
         "slug": "roblox-plus-plus",
-        "img": "https://imgur.com/oICrfhe.png",
+        "img": "https://i.imgur.com/oICrfhe.png",
         "name": "Roblox++",
         "data-ai-hint": "block game",
         "description": "Unlimited Robux & More!",
@@ -3022,7 +3022,7 @@ const appData: AppDto[] = [
     },
     {
         "slug": "spotify-plus-plus",
-        "img": "https://gyazo.com/22695997ecc87bc5e5420b1f2a2281f4.png",
+        "img": "https://i.imgur.com/GZp2h2G.png",
         "name": "Spotify++",
         "data-ai-hint": "music app",
         "description": "Free Spotify Premium!",
