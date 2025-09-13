@@ -2,6 +2,18 @@
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { FileQuestion } from 'lucide-react';
+import type { Metadata } from 'next';
+
+export async function generateMetadata(): Promise<Metadata> {
+  return {
+    title: '404: Page Not Found | TweakFind',
+    description: "The page you're looking for could not be found. Return to the TweakFind homepage to browse our apps.",
+    robots: {
+      index: false,
+      follow: true,
+    },
+  };
+}
 
 export default function NotFound() {
   return (
