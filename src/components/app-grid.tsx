@@ -44,6 +44,7 @@ export function AppGrid({ apps }: AppGridProps) {
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
       {apps.map((app) => {
         const status = getPaymentStatus(app);
+        const fileSize = ((app.id.length * 5) + (app.name.length * 3)) % 350 + 50;
         return (
             <Link href={`/${app.category.toLowerCase()}/apps/${app.id}`} key={app.id} className="block group">
                 <div className="flex items-center gap-4 p-3 rounded-lg border border-border bg-secondary/50 hover:border-primary/80 hover:bg-accent transition-colors">
@@ -59,7 +60,7 @@ export function AppGrid({ apps }: AppGridProps) {
                     />
                     <div className="flex-1 min-w-0">
                         <p className="text-sm font-bold text-foreground truncate group-hover:text-primary">{app.name}</p>
-                        <p className="text-xs text-muted-foreground">v{app.facts.version} • {Math.floor(Math.random() * 500) + 10} MB</p>
+                        <p className="text-xs text-muted-foreground">v{app.facts.version} • {fileSize} MB</p>
                         <div className={cn("flex items-center gap-1.5 text-xs font-medium mt-1", status.className)}>
                             {status.icon}
                             <span>{status.text}</span>

@@ -7,7 +7,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { ChevronRight, Download, CheckCircle, ShieldCheck, FileCode, Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { ClientTime } from "@/components/client-time";
 import { AppCard } from "@/components/app-card";
 import { InstallationModal } from './installation-modal';
 import { Badge } from '@/components/ui/badge';
@@ -35,6 +34,12 @@ export function AppPageClient({ app, relatedApps, breadcrumbs, categories }: App
     { label: "Compatibility", value: app.facts.compatibility, icon: <CheckCircle className="w-4 h-4 mr-2" /> },
     { label: "Downloads", value: app.facts.downloads, icon: <Download className="w-4 h-4 mr-2" /> },
   ];
+
+  const lastUpdatedDate = new Date(app.lastModified).toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric'
+  });
 
   return (
     <>
@@ -153,7 +158,7 @@ export function AppPageClient({ app, relatedApps, breadcrumbs, categories }: App
 
 
                 <footer className="mt-12 text-center text-muted-foreground text-sm">
-                   <p>Last updated <ClientTime date={app.lastModified} /></p>
+                   <p>Last updated on {lastUpdatedDate}</p>
                 </footer>
             </article>
         </div>

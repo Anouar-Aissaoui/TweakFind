@@ -40,7 +40,7 @@ export function AppList({ apps, onInstallClick }: AppListProps) {
               <div className="text-sm text-muted-foreground flex items-center gap-2">
                   <p className="line-clamp-1">v{app.facts.version}</p>
                   <span className='text-xs'>&middot;</span>
-                  <p>{formatDistanceToNow(new Date(app.lastModified), { addSuffix: true })}</p>
+                  <p>{new Date(app.lastModified).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</p>
               </div>
             </div>
             <Button className="shrink-0" onClick={(e) => { e.preventDefault(); onInstallClick(app); }}>
