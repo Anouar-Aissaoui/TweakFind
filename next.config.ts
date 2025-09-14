@@ -61,15 +61,6 @@ const nextConfig: NextConfig = {
       },
     ],
   },
-  async redirects() {
-    return [
-      {
-        source: '/games/apps/codmod',
-        destination: '/games/apps/cod-mobile-mod-menu',
-        permanent: true,
-      },
-    ]
-  },
 };
 
 export default nextConfig;
