@@ -8,30 +8,30 @@ import { Button } from './ui/button';
 import Link from 'next/link';
 import { Header } from './header';
 import { slugify } from '@/lib/utils';
+import { Search } from 'lucide-react';
+import { Input } from './ui/input';
 
 type HomePageClientProps = {
   apps: Entity[];
   displayMode?: 'sections' | 'grid';
   pageTitle?: string;
-  showFeatured?: boolean;
-  initialCategory?: AppCategory | 'All';
+  showSearch?: boolean;
 };
 
 const CATEGORIES_TO_DISPLAY: AppCategory[] = [
   'Games',
-  'Apps',
   'Entertainment',
-  'Utilities',
   'Social',
+  'Utilities',
   'Emulators',
+  'Developer Tools',
 ];
 
 export function HomePageClient({ 
   apps, 
   displayMode = 'sections', 
   pageTitle,
-  showFeatured = true, 
-  initialCategory = 'All' 
+  showSearch = false,
 }: HomePageClientProps) {
   const [searchTerm, setSearchTerm] = useState('');
 
@@ -54,10 +54,23 @@ export function HomePageClient({
     return grouped;
   }, [filteredApps]);
 
+  const searchBar = (
+    <div className="relative mb-6">
+      <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+      <Input
+        type="search"
+        placeholder="Search for apps..."
+        className="w-full bg-secondary border-border pl-9 rounded-full"
+        value={searchTerm}
+        onChange={(e) => setSearchTerm(e.target.value)}
+      />
+    </div>
+  );
+
   const renderGrid = () => (
     <div className="space-y-8">
-      <Header searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
       {pageTitle && <h1 className="text-3xl font-bold tracking-tighter text-primary mb-4">{pageTitle}</h1>}
+      {showSearch && searchBar}
       <AppGrid apps={filteredApps} />
     </div>
   );
