@@ -5,6 +5,8 @@ import { HomePageClient } from "@/components/home-page-client";
 import Link from "next/link";
 import { ChevronRight } from "lucide-react";
 
+export const revalidate = 3600; // ISR: Revalidate once every hour
+
 export async function generateMetadata(): Promise<Metadata> {
     const title = "Best Tweaked Emulators For iOS & Android | TweakFind";
     const description = "Get tweaked emulators like PPSSPP & Delta for iOS and Android. Free download for retro gaming on your phone, no jailbreak needed, on TweakFind.";

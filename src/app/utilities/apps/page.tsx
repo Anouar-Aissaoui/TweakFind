@@ -5,6 +5,8 @@ import { HomePageClient } from "@/components/home-page-client";
 import Link from "next/link";
 import { ChevronRight } from "lucide-react";
 
+export const revalidate = 3600; // ISR: Revalidate once every hour
+
 export async function generateMetadata(): Promise<Metadata> {
     const title = "Top iOS & Android Utility App Tweaks | TweakFind";
     const description = "Find powerful utility tweaks like AltStore and iRecovery. Free download on TweakFind for file managers, recovery tools, and more for your device.";

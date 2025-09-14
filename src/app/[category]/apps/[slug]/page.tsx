@@ -6,7 +6,7 @@ import { jsonLdScriptProps } from "react-schemaorg";
 import { SoftwareApplication, WebPage, BreadcrumbList } from "schema-dts";
 import { AppPageClient } from "@/components/app-page-client";
 
-export const revalidate = 86400; // ISR: 24h
+export const revalidate = 86400; // ISR: Revalidate once every 24 hours
 
 export async function generateStaticParams() {
   return apps.map(app => ({

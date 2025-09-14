@@ -5,6 +5,8 @@ import { HomePageClient } from "@/components/home-page-client";
 import Link from "next/link";
 import { ChevronRight } from "lucide-react";
 
+export const revalidate = 3600; // ISR: Revalidate once every hour
+
 export async function generateMetadata(): Promise<Metadata> {
     const title = "Developer Tools & App Tweaks (Unc0ver, Cydia) | TweakFind";
     const description = "Access essential developer tools and app tweaks like Unc0ver and Cydia. Free download on TweakFind for your jailbreaking and development needs.";

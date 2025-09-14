@@ -5,6 +5,8 @@ import { HomePageClient } from "@/components/home-page-client";
 import Link from "next/link";
 import { ChevronRight } from "lucide-react";
 
+export const revalidate = 3600; // ISR: Revalidate once every hour
+
 export async function generateMetadata(): Promise<Metadata> {
     const title = "Tweaked Social Apps (Instagram++, Discord Nitro) | TweakFind";
     const description = "Explore tweaked social apps like Instagram++ and Discord Nitro. Free download on TweakFind to unlock new features and enhance your social media.";

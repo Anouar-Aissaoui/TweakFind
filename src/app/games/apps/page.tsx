@@ -5,6 +5,8 @@ import { HomePageClient } from "@/components/home-page-client";
 import Link from "next/link";
 import { ChevronRight } from "lucide-react";
 
+export const revalidate = 3600; // ISR: Revalidate once every hour
+
 export async function generateMetadata(): Promise<Metadata> {
     const title = "Best Tweaked Games Mods (iOS & Android) | TweakFind";
     const description = "Download free game mods for COD Mobile, Roblox & more. Get the latest tweaked apps and unlock aimbots and unlimited resources on TweakFind.";
