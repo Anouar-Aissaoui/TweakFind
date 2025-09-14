@@ -1,3 +1,4 @@
+
 /**
  * @fileoverview Script to notify Google's Indexing API about updated URLs.
  * This script reads URLs from the generated sitemap and submits them to Google
@@ -6,21 +7,29 @@
  * Usage:
  * 1. Ensure you have a service account with "Owner" access in Google Search Console.
  * 2. Set the required environment variables in a .env.local file.
- *    - GOOGLE_INDEXING_SERVICE_ACCOUNT_EMAIL
- *    - GOOGLE_INDEXING_PRIVATE_KEY
+ *    - GOOGLE_CLIENT_EMAIL
+ *    - GOOGLE_PRIVATE_KEY
+ *    - SITE_URL
  * 3. Run `npm run notify:google`
  */
 
 const { google } = require('googleapis');
-const { apps } = require('../dist/lib/apps.js');
-const { slugify } = require('../dist/lib/utils.js');
 require('dotenv').config({ path: '.env.local' });
 
 const SCOPES = ['https://www.googleapis.com/auth/indexing'];
-const SITE_URL = 'https://tweak.appsg.site';
 
 // Manually build the sitemap URLs
-function getSitemapUrls() {
+async function getSitemapUrls() {
+  const SITE_URL = process.env.SITE_URL;
+  if (!SITE_URL) {
+    console.error('Error: SITE_URL is not defined in your .env.local file.');
+    process.exit(1);
+  }
+
+  // Need to dynamically import these since they are ES modules
+  const { apps } = await import('../src/lib/apps.js');
+  const { slugify } = await import('../src/lib/utils.js');
+  
   const appUrls = apps.map((app) => ({
     url: `${SITE_URL}/${slugify(app.category)}/apps/${app.id}`,
     lastModified: app.lastModified ? new Date(app.lastModified) : new Date(),
@@ -43,27 +52,17 @@ function getSitemapUrls() {
 async function main() {
   console.log('Starting Google Indexing notification script...');
 
-  const serviceAccountEmail = process.env.GOOGLE_INDEXING_SERVICE_ACCOUNT_EMAIL;
-  const privateKey = process.env.GOOGLE_INDEXING_PRIVATE_KEY?.replace(/\\n/g, '\n');
+  const clientEmail = process.env.GOOGLE_CLIENT_EMAIL;
+  const privateKey = process.env.GOOGLE_PRIVATE_KEY?.replace(/\\n/g, '\n');
+  const siteUrl = process.env.SITE_URL;
 
-  if (!serviceAccountEmail || !privateKey) {
-    console.error('Error: Missing Google service account credentials in .env.local file.');
-    console.error('Please set GOOGLE_INDEXING_SERVICE_ACCOUNT_EMAIL and GOOGLE_INDEXING_PRIVATE_KEY.');
+  if (!clientEmail || !privateKey || !siteUrl) {
+    console.error('Error: Missing Google service account credentials or SITE_URL in .env.local file.');
+    console.error('Please set GOOGLE_CLIENT_EMAIL, GOOGLE_PRIVATE_KEY, and SITE_URL.');
     return;
   }
-  
-  // First, we need to build the project to get the JS files for apps and utils
-  try {
-    console.log('Building project to generate necessary files...');
-    const { execSync } = require('child_process');
-    execSync('npm run build', { stdio: 'inherit' });
-    console.log('Build completed successfully.');
-  } catch (error) {
-    console.error('Failed to build the project. Please fix build errors before running this script.', error);
-    process.exit(1);
-  }
 
-  const urls = getSitemapUrls();
+  const urls = await getSitemapUrls();
   console.log(`Found ${urls.length} URLs to notify Google about.`);
 
   if (urls.length === 0) {
@@ -73,7 +72,7 @@ async function main() {
 
   try {
     const jwtClient = new google.auth.JWT(
-      serviceAccountEmail,
+      clientEmail,
       null,
       privateKey,
       SCOPES
