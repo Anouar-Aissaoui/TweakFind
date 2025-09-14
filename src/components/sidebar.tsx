@@ -2,6 +2,7 @@
 import Link from "next/link";
 import { Button } from "./ui/button";
 import { apps } from "@/lib/apps";
+import { slugify } from "@/lib/utils";
 
 const mainCategories = [...new Set(apps.map(app => app.category))];
 
@@ -19,7 +20,7 @@ export function Sidebar() {
                     </div>
                     <div className="grid grid-cols-2 gap-x-4 gap-y-2">
                         {categories.map(category => (
-                            <Link key={category} href={`/${category.toLowerCase()}/apps`} className="text-sm text-muted-foreground hover:text-primary transition-colors truncate">
+                            <Link key={category} href={`/${slugify(category)}/apps`} className="text-sm text-muted-foreground hover:text-primary transition-colors truncate">
                                 {category}
                             </Link>
                         ))}

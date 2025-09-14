@@ -5,12 +5,13 @@ import { apps } from "@/lib/apps";
 import { jsonLdScriptProps } from "react-schemaorg";
 import { SoftwareApplication, WebPage, BreadcrumbList } from "schema-dts";
 import { AppPageClient } from "@/components/app-page-client";
+import { slugify } from "@/lib/utils";
 
 export const revalidate = 86400; // ISR: Revalidate once every 24 hours
 
 export async function generateStaticParams() {
   return apps.map(app => ({
-    category: app.category.toLowerCase(),
+    category: slugify(app.category),
     slug: app.id,
   }));
 }
@@ -22,7 +23,7 @@ export async function generateMetadata({ params }: { params: { category: string,
   }
 
   const siteUrl = "https://tweak.appsg.site";
-  const url = `${siteUrl}/${params.category.toLowerCase()}/apps/${app.id}`;
+  const url = `${siteUrl}/${slugify(params.category)}/apps/${app.id}`;
   const ogImage = app.media.icon;
 
   const meta_title = `${app.name}: ${app.subhead}`;
@@ -59,7 +60,7 @@ export async function generateMetadata({ params }: { params: { category: string,
 }
 
 export default async function Page({ params }: { params: { category: string, slug:string } }) {
-  const app = apps.find(e => e.id === params.slug && e.category.toLowerCase() === params.category);
+  const app = apps.find(e => e.id === params.slug && slugify(e.category) === params.category);
 
   if (!app) {
     return notFound();
@@ -71,14 +72,14 @@ export default async function Page({ params }: { params: { category: string, slu
 
   const breadcrumbs = [
     { name: "Home", item: "/" },
-    { name: app.category, item: `/${app.category.toLowerCase()}/apps`},
-    { name: app.name, item: `/${app.category.toLowerCase()}/apps/${app.id}` }
+    { name: app.category, item: `/${slugify(app.category)}/apps`},
+    { name: app.name, item: `/${slugify(app.category)}/apps/${app.id}` }
   ];
 
   const siteUrl = "https://tweak.appsg.site";
-  const categories = [...new Set(apps.map(app => app.category.toLowerCase()))];
-  if(app.category === "Developer Tools" && !categories.includes("developer tools")) {
-    categories.push("developer tools");
+  const categories = [...new Set(apps.map(app => app.category))];
+  if(app.category === "Developer Tools" && !categories.includes("Developer Tools")) {
+    categories.push("Developer Tools");
   }
 
 

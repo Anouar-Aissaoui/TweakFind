@@ -7,6 +7,7 @@ import { AppGrid } from './app-grid';
 import { Button } from './ui/button';
 import Link from 'next/link';
 import { Header } from './header';
+import { slugify } from '@/lib/utils';
 
 type HomePageClientProps = {
   apps: Entity[];
@@ -80,7 +81,7 @@ export function HomePageClient({
               <div className="flex items-center justify-between mb-4">
                 <h2 className="text-xl font-bold">{category}</h2>
                 <Button asChild variant="ghost" size="sm">
-                  <Link href={`/${category.toLowerCase()}/apps`}>View More</Link>
+                  <Link href={`/${slugify(category)}/apps`}>View More</Link>
                 </Button>
               </div>
               <AppGrid apps={categoryApps.slice(0, 9)} />

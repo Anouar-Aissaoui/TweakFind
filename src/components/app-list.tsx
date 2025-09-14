@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/button';
 import { Download } from 'lucide-react';
 import { formatDistanceToNow } from 'date-fns';
 import Link from 'next/link';
+import { slugify } from '@/lib/utils';
 
 type AppListProps = {
   apps: Entity[];
@@ -23,7 +24,7 @@ export function AppList({ apps, onInstallClick }: AppListProps) {
   return (
     <div className="space-y-2">
       {apps.map((app) => (
-        <Link href={`/${app.category.toLowerCase()}/apps/${app.id}`} key={app.id} className="block">
+        <Link href={`/${slugify(app.category)}/apps/${app.id}`} key={app.id} className="block">
           <div className="flex items-center bg-card p-3 rounded-lg border border-border/50 hover:bg-secondary/50 transition-colors">
             <Image
               src={app.media.icon}

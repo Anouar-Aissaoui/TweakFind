@@ -3,7 +3,7 @@ import type { Entity } from '@/lib/apps';
 import Image from 'next/image';
 import { Gift, DollarSign } from 'lucide-react';
 import Link from 'next/link';
-import { cn } from '@/lib/utils';
+import { cn, slugify } from '@/lib/utils';
 
 type AppGridProps = {
   apps: Entity[];
@@ -46,7 +46,7 @@ export function AppGrid({ apps }: AppGridProps) {
         const status = getPaymentStatus(app);
         const fileSize = ((app.id.length * 5) + (app.name.length * 3)) % 350 + 50;
         return (
-            <Link href={`/${app.category.toLowerCase()}/apps/${app.id}`} key={app.id} className="block group">
+            <Link href={`/${slugify(app.category)}/apps/${app.id}`} key={app.id} className="block group">
                 <div className="flex items-center gap-4 p-3 rounded-lg border border-border bg-secondary/50 hover:border-primary/80 hover:bg-accent transition-colors">
                     <Image
                     src={app.media.icon}
