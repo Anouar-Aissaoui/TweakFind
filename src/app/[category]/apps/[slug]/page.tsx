@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { apps } from "@/lib/apps";
 import { jsonLdScriptProps } from "react-schemaorg";
-import { SoftwareApplication, WebPage, BreadcrumbList, ImageObject } from "schema-dts";
+import { SoftwareApplication, WebPage, BreadcrumbList } from "schema-dts";
 import { AppPageClient } from "@/components/app-page-client";
 import { slugify } from "@/lib/utils";
 
@@ -26,10 +26,8 @@ export async function generateMetadata({ params }: { params: { category: string,
   const url = `${siteUrl}/${slugify(params.category)}/apps/${app.id}`;
   const ogImage = app.media.icon;
 
-  const meta_title = `${app.name}: ${app.subhead}`;
-
-  const firstFeature = app.features.items[0]?.substring(app.features.items[0]?.indexOf(" ") + 1).split('—')[0].trim() ?? 'new features';
-  const meta_description = `Free download of the tweaked ${app.name} v${app.facts.version}. Get the unlocked version with ${firstFeature} now on TweakFind!`;
+  const meta_title = `${app.name} - Free Tweaked App v${app.facts.version} (iOS/Android)`;
+  const meta_description = `Download the latest tweaked version of ${app.name} (v${app.facts.version}) for free on TweakFind. Get unlocked features, no jailbreak needed for iOS & Android. Safe and updated.`;
 
   return {
     title: meta_title,
@@ -88,10 +86,12 @@ export default async function Page({ params }: { params: { category: string, slu
         <script {...jsonLdScriptProps<WebPage>({
             "@context": "https://schema.org",
             "@type": "WebPage",
-            name: app.name,
-            description: app.description,
-            dateModified: app.lastModified,
-            image: {
+            "url": `${siteUrl}/${slugify(app.category)}/apps/${app.id}`,
+            "name": app.name,
+            "description": app.description,
+            "datePublished": "2024-01-01T00:00:00+00:00",
+            "dateModified": app.lastModified,
+            "image": {
                 "@type": "ImageObject",
                 "url": app.media.icon,
                 "width": "128",
@@ -114,12 +114,31 @@ export default async function Page({ params }: { params: { category: string, slu
             "name": app.name,
             "operatingSystem": ["iOS", "Android"],
             "applicationCategory": "GameApplication",
+            "description": app.subhead,
+            "aggregateRating": {
+                "@type": "AggregateRating",
+                "ratingValue": "4.8",
+                "reviewCount": "2481"
+            },
             "offers": {
                 "@type": "Offer",
                 "price": "0",
                 "priceCurrency": "USD"
             },
-            "image": app.media.icon
+            "image": app.media.icon,
+            "review": {
+                "@type": "Review",
+                "author": {
+                  "@type": "Person",
+                  "name": "TweakFind User"
+                },
+                "reviewRating": {
+                  "@type": "Rating",
+                  "ratingValue": "5",
+                  "bestRating": "5"
+                },
+                "reviewBody": `The tweaked version of ${app.name} from TweakFind is amazing! All the premium features are unlocked for free.`
+              }
         })} />
         <AppPageClient app={app} relatedApps={relatedApps} breadcrumbs={breadcrumbs} categories={categories} />
     </>

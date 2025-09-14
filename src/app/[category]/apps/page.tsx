@@ -26,8 +26,8 @@ export async function generateMetadata({ params }: { params: { category: string 
         return {};
     }
 
-    const title = `${appCategory} Apps - TweakFind`;
-    const description = `Browse and download the latest tweaked ${appCategory} apps. Safe, updated, and no jailbreak required.`;
+    const title = `Top Tweaked ${appCategory} Apps - TweakFind`;
+    const description = `Browse and download the latest tweaked ${appCategory} apps for free on TweakFind. Get unlocked features, safe updates, and no jailbreak required for iOS & Android.`;
     const url = `https://tweak.appsg.site/${categorySlug}/apps`;
     const ogImage = "https://i.imgur.com/rq3p0eE.png";
 
@@ -90,7 +90,7 @@ export default async function CategoryPage({ params }: { params: { category: str
                       apps={appsForCategory}
                       showSearch={true}
                       displayMode="grid"
-                      pageTitle={`${appCategory} Apps`}
+                      pageTitle={`Best Tweaked ${appCategory} Apps`}
                     />
                 </main>
                 <aside className="hidden lg:block">
