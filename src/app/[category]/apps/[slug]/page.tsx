@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { apps } from "@/lib/apps";
 import { jsonLdScriptProps } from "react-schemaorg";
-import { SoftwareApplication, WebPage, BreadcrumbList } from "schema-dts";
+import { SoftwareApplication, WebPage, BreadcrumbList, ImageObject } from "schema-dts";
 import { AppPageClient } from "@/components/app-page-client";
 import { slugify } from "@/lib/utils";
 
@@ -43,8 +43,8 @@ export async function generateMetadata({ params }: { params: { category: string,
       images: [
         {
           url: ogImage,
-          width: 1200,
-          height: 630,
+          width: 128,
+          height: 128,
           alt: `${app.name} hero image`,
         },
       ],
@@ -90,7 +90,13 @@ export default async function Page({ params }: { params: { category: string, slu
             "@type": "WebPage",
             name: app.name,
             description: app.description,
-            dateModified: app.lastModified
+            dateModified: app.lastModified,
+            image: {
+                "@type": "ImageObject",
+                "url": app.media.icon,
+                "width": "128",
+                "height": "128"
+            }
         })} />
         <script {...jsonLdScriptProps<BreadcrumbList>({
             "@context": "https://schema.org",
@@ -107,11 +113,13 @@ export default async function Page({ params }: { params: { category: string, slu
             "@type": "SoftwareApplication",
             "name": app.name,
             "operatingSystem": ["iOS", "Android"],
+            "applicationCategory": "GameApplication",
             "offers": {
                 "@type": "Offer",
                 "price": "0",
                 "priceCurrency": "USD"
-            }
+            },
+            "image": app.media.icon
         })} />
         <AppPageClient app={app} relatedApps={relatedApps} breadcrumbs={breadcrumbs} categories={categories} />
     </>

@@ -12,7 +12,7 @@ type AppCardProps = {
 
 export function AppCard({ app }: AppCardProps) {
   return (
-    <Link href={`/${slugify(app.category)}/apps/${app.id}`} className="block h-full group">
+    <Link href={`/${slugify(app.category)}/apps/${app.id}`} className="block h-full group transition-transform duration-200 ease-in-out hover:-translate-y-1 active:scale-95">
       <div className="flex flex-col items-center justify-center p-4 bg-secondary/50 rounded-lg border border-border aspect-square h-full group-hover:border-primary/80 group-hover:bg-secondary transition-colors">
         <Image
           src={app.media.icon}
@@ -29,7 +29,7 @@ export function AppCard({ app }: AppCardProps) {
           <p className="text-sm font-semibold text-center text-foreground truncate w-full">{app.name}</p>
           <p className="text-xs text-muted-foreground mb-3">v{app.facts.version}</p>
         </div>
-        <Button size="sm" className="w-full mt-auto">
+        <Button size="sm" className="w-full mt-auto" tabIndex={-1}>
           <Download className="mr-2 h-4 w-4" />
           Install
         </Button>

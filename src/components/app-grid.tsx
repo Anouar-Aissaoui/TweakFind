@@ -41,7 +41,7 @@ export function AppGrid({ apps }: AppGridProps) {
     );
   }
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
       {apps.map((app) => {
         const status = getPaymentStatus(app);
         const fileSize = ((app.id.length * 5) + (app.name.length * 3)) % 350 + 50;
@@ -50,7 +50,7 @@ export function AppGrid({ apps }: AppGridProps) {
                 <div className="flex items-center gap-4 p-3 rounded-lg border border-border bg-secondary/50 hover:border-primary/80 hover:bg-accent transition-colors">
                     <Image
                     src={app.media.icon}
-                    alt={`${app.name} icon`}
+                    alt={`${app.name} grid icon`}
                     width={56}
                     height={56}
                     className="rounded-xl object-cover border border-border"

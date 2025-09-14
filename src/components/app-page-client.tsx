@@ -62,7 +62,7 @@ export function AppPageClient({ app, relatedApps, breadcrumbs, categories }: App
             </nav>
 
             <article>
-                <header className="text-center py-12 px-6 bg-card rounded-lg border border-border/50 mb-8">
+                <header className="text-center py-8 md:py-12 px-6 bg-card rounded-lg border border-border/50 mb-8">
                     <div className="flex justify-center mb-4">
                         <Image
                             src={app.media.icon}
@@ -71,12 +71,13 @@ export function AppPageClient({ app, relatedApps, breadcrumbs, categories }: App
                             height={96}
                             className="rounded-2xl object-contain border-4 border-border/30"
                             data-ai-hint={app.media.iconHint}
-                            sizes="(max-width: 768px) 30vw, 15vw"
+                            sizes="(max-width: 768px) 30vw, 10vw"
                             placeholder="blur"
                             blurDataURL={app.media.blurDataURL}
+                            priority
                         />
                     </div>
-                    <h1 className="text-4xl font-bold tracking-tighter text-primary mb-2">{app.name} — Free iOS App Installer (No Jailbreak Required)</h1>
+                    <h1 className="text-3xl md:text-4xl font-bold tracking-tighter text-primary mb-2">{app.name} — Free iOS App Installer (No Jailbreak Required)</h1>
                     <p className="text-lg text-muted-foreground max-w-3xl mx-auto mb-6">{app.subhead}</p>
                     <Button size="lg" onClick={() => setModalApp(app)} className="text-lg px-8 py-6">
                         <Download className="mr-2 h-5 w-5" />
@@ -96,7 +97,7 @@ export function AppPageClient({ app, relatedApps, breadcrumbs, categories }: App
                             </div>
                         ))}
                     </div>
-                     <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-left mt-4">
+                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-left mt-4">
                          <div className="p-4 bg-card rounded-lg border border-border/50">
                             <strong className="flex items-center text-sm text-muted-foreground mb-1">
                                 <ShieldCheck className="w-4 h-4 mr-2" /> Safety

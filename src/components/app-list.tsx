@@ -28,7 +28,7 @@ export function AppList({ apps, onInstallClick }: AppListProps) {
           <div className="flex items-center bg-card p-3 rounded-lg border border-border/50 hover:bg-secondary/50 transition-colors">
             <Image
               src={app.media.icon}
-              alt={`${app.name} icon`}
+              alt={`${app.name} list icon`}
               width={48}
               height={48}
               className="rounded-lg object-contain border-2 border-border/30"

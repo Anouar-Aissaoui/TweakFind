@@ -72,7 +72,7 @@ export function InstallationModal({ app, onClose }: InstallationModalProps) {
           <div className="flex justify-center mb-4">
             <Image
               src={app.media.icon}
-              alt={`${app.name} icon`}
+              alt={`${app.name} installation icon`}
               width={80}
               height={80}
               className="rounded-xl object-contain"
