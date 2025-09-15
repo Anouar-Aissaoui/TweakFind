@@ -5,7 +5,7 @@ import { useState } from 'react';
 import type { Entity } from '@/lib/apps';
 import Image from "next/image";
 import Link from "next/link";
-import { ChevronRight, Download, CheckCircle, ShieldCheck, FileCode, Star } from "lucide-react";
+import { ChevronRight, Download, CheckCircle, ShieldCheck, FileCode, Star, FolderTree } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { AppCard } from "@/components/app-card";
 import { InstallationModal } from './installation-modal';
@@ -36,7 +36,7 @@ export function AppPageClient({ app, relatedApps, breadcrumbs, categories }: App
 
   const keyFacts = [
     { label: "Version", value: app.facts.version, icon: <Star className="w-4 h-4 mr-2" /> },
-    { label: "Category", value: app.category, icon: <ChevronRight className="w-4 h-4 mr-2" /> },
+    { label: "Category", value: app.category, icon: <FolderTree className="w-4 h-4 mr-2" />, isLink: true, href: `/${slugify(app.category)}/apps` },
     { label: "Compatibility", value: app.facts.compatibility, icon: <CheckCircle className="w-4 h-4 mr-2" /> },
     { label: "Downloads", value: app.facts.downloads, icon: <Download className="w-4 h-4 mr-2" /> },
   ];
@@ -94,7 +94,13 @@ export function AppPageClient({ app, relatedApps, breadcrumbs, categories }: App
                                 <strong className="flex items-center text-sm text-muted-foreground mb-1">
                                     {fact.icon} {fact.label}
                                 </strong>
-                                <span className="text-lg font-semibold block truncate">{fact.value}</span>
+                                {fact.isLink && fact.href ? (
+                                    <Link href={fact.href} className="text-lg font-semibold block truncate hover:text-primary transition-colors">
+                                        {fact.value}
+                                    </Link>
+                                ) : (
+                                    <span className="text-lg font-semibold block truncate">{fact.value}</span>
+                                )}
                             </div>
                         ))}
                     </div>
@@ -122,7 +128,7 @@ export function AppPageClient({ app, relatedApps, breadcrumbs, categories }: App
                     <div className="md:col-span-2">
                         <section aria-labelledby="app-description" className="prose prose-invert max-w-none text-foreground mb-8">
                             <h2 id="app-description" className="text-2xl font-bold tracking-tight mb-2">{app.about.title}</h2>
-                            <p>{app.about.content}</p>
+                            <div dangerouslySetInnerHTML={{ __html: app.about.content }} />
                         </section>
 
                          <section aria-labelledby="app-features" className="mb-8">

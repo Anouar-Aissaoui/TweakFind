@@ -3162,7 +3162,7 @@ const defaultContent = (app: AppDto) => ({
     },
     about: {
         title: `What is ${app.name}?`,
-        content: `${app.name} is one of the top apps in the ${app.category} category. It lets you extend the functionality of your device. Designed for power users and enthusiasts, it offers a clean, intuitive interface.`,
+        content: `<strong>${app.name}</strong> is one of the top apps in the <strong>${app.category}</strong> category, designed to supercharge your mobile experience. It lets you bypass the standard limitations and unlock a new level of functionality right on your device. Whether you're a power user, a gamer, or just someone looking for more freedom, ${app.name} provides a clean, intuitive interface to get the most out of your iPhone or iPad. We ensure every download is safe, secure, and ready to go.`,
     },
     features: {
         title: `Why Users Love ${app.name}`,
@@ -3186,6 +3186,18 @@ const defaultContent = (app: AppDto) => ({
                 answer: `You can download ${app.name} for free directly from TweakFind. Just tap the 'Install' button on this page and follow the on-screen instructions to sideload the app onto your iOS or Android device.`
             },
             {
+                question: `Is using this tweaked app from TweakFind legal?`,
+                answer: `The legality of using tweaked apps like ${app.name} depends on your local laws and the app's terms of service. Generally, for personal, non-commercial use, it's unlikely to be a legal issue. However, redistributing them can violate copyright law. TweakFind provides these for educational and personal use only.`
+            },
+            {
+                question: `How do I update the ${app.name} tweak?`,
+                answer: `To update, simply return to this page on TweakFind. We regularly update our links to the latest, safest versions. We recommend checking back periodically to ensure you have the most recent release.`
+            },
+            {
+                question: `What should I do if the app stops working?`,
+                answer: `If ${app.name} stops working, it's often due to an update from the original developer or a certificate revocation. The best first step is to reinstall it from TweakFind to get the latest patched version. If the problem persists, please check our site for any updates or notices.`
+            },
+            {
                 question: `Is it safe to install this app tweak from TweakFind?`,
                 answer: `Yes, every app tweak on TweakFind, including this ${app.name} version, is scanned for safety and is 100% free from malware. We prioritize user security and ensure that no jailbreak or root is required.`
             },
@@ -3207,7 +3219,7 @@ const altstoreData = {
     },
     about: {
         title: "What is AltStore?",
-        content: "AltStore is the #1 free iOS app installer that lets you sideload any .IPA file directly to your iPhone or iPad — no jailbreak required. Designed for developers, power users, and everyday iOS enthusiasts, AltStore offers a clean, intuitive interface with automatic app refreshes and background updates — all without needing a Mac or complex setup."
+        content: "<strong>AltStore</strong> is the #1 free iOS app installer that lets you sideload any .IPA file directly to your iPhone or iPad — no jailbreak required. Designed for developers, power users, and everyday iOS enthusiasts, AltStore offers a clean, intuitive interface with automatic app refreshes and background updates — all without needing a Mac or complex setup."
     },
     features: {
         title: "Why Users Love AltStore:",
