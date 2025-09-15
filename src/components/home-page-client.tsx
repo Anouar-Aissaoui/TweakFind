@@ -97,7 +97,7 @@ export function HomePageClient({
                   <Link href={`/${slugify(category)}/apps`}>View More</Link>
                 </Button>
               </div>
-              <AppGrid apps={categoryApps.slice(0, 9)} />
+              <AppGrid apps={categoryApps.slice(0, 4)} />
             </section>
           );
         })
