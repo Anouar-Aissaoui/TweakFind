@@ -12,6 +12,7 @@ import { InstallationModal } from './installation-modal';
 import { Badge } from '@/components/ui/badge';
 import { useIsMobile } from '@/hooks/use-mobile';
 import { FaqSection } from './faq-section';
+import { OptimizedImageBlock } from './optimized-image-block';
 
 type Breadcrumb = {
   name: string;
@@ -64,17 +65,12 @@ export function AppPageClient({ app, relatedApps, breadcrumbs, categories }: App
             <article>
                 <header className="text-center py-8 md:py-12 px-6 bg-card rounded-lg border border-border/50 mb-8">
                     <div className="flex justify-center mb-4">
-                        <Image
-                            src={app.media.icon}
-                            alt={`${app.name} icon`}
+                        <OptimizedImageBlock
+                            imageSrc={app.media.icon}
+                            altDesc={`${app.name} icon`}
                             width={96}
                             height={96}
-                            className="rounded-2xl object-contain border-4 border-border/30"
-                            data-ai-hint={app.media.iconHint}
-                            sizes="(max-width: 768px) 30vw, 10vw"
-                            placeholder="blur"
-                            blurDataURL={app.media.blurDataURL}
-                            priority
+                            priority={true}
                         />
                     </div>
                     <h1 className="text-3xl md:text-4xl font-bold tracking-tighter text-primary mb-2">{app.name}</h1>
