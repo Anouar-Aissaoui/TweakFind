@@ -3182,7 +3182,7 @@ const defaultContent = (app: AppDto) => ({
         title: `Frequently Asked Questions about ${app.name}`,
         items: [
             {
-                question: `How to download ${app.name} for free?`,
+                question: `How do I download ${app.name} for free?`,
                 answer: `You can download ${app.name} for free directly from TweakFind. Just tap the 'Install' button on this page and follow the on-screen instructions to sideload the app onto your iOS or Android device.`
             },
             {
@@ -3196,6 +3196,22 @@ const defaultContent = (app: AppDto) => ({
             {
                 question: `Will I get banned for using a tweaked version of ${app.name}?`,
                 answer: `While there's always a small risk when using a modded app or app tweak, our versions for ${app.name} are designed to be undetectable. Thousands of users download from TweakFind without any issues. We recommend using a secondary account if you have concerns.`
+            },
+            {
+                question: `How do I update the tweaked version of ${app.name}?`,
+                answer: `To update, simply return to this page on TweakFind and click the 'Install' button again. We regularly update our app tweaks to the latest version, so you'll always get the newest features and security patches.`
+            },
+            {
+                question: `Is using a tweaked app from TweakFind legal?`,
+                answer: `Using tweaked apps falls into a legal gray area. While it's generally not illegal to use them for personal use, it may violate the app's terms of service. We provide these apps for educational and testing purposes.`
+            },
+            {
+                question: `What should I do if the ${app.name} tweak isn't working?`,
+                answer: `If you encounter any issues, try reinstalling the app from this page. Also, ensure your device's operating system is up to date. If problems persist, it might be due to a server-side patch from the original app developers, and we will work on an update.`
+            },
+            {
+                question: `How is the TweakFind version of ${app.name} different from the one on the App Store?`,
+                answer: `Our version provides access to premium features that would normally require a subscription or in-app purchase. It's the full-featured experience, unlocked and available for free, without the limitations of the standard version.`
             }
         ]
     }
