@@ -9,6 +9,15 @@ const nextConfig: NextConfig = {
   eslint: {
     ignoreDuringBuilds: true,
   },
+   async redirects() {
+    return [
+      {
+        source: '/games/apps/codmod',
+        destination: '/games/apps/cod-mobile-mod-menu',
+        permanent: true,
+      },
+    ]
+  },
   images: {
     remotePatterns: [
       {
