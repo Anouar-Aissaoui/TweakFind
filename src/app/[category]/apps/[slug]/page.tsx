@@ -115,6 +115,7 @@ export default async function Page({ params }: { params: { category: string, slu
             "operatingSystem": ["iOS", "Android"],
             "applicationCategory": "GameApplication",
             "description": app.subhead,
+            "featureList": app.features.items,
             "aggregateRating": {
                 "@type": "AggregateRating",
                 "ratingValue": "4.8",
@@ -144,3 +145,4 @@ export default async function Page({ params }: { params: { category: string, slu
     </>
   );
 }
+

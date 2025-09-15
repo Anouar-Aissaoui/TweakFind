@@ -130,7 +130,7 @@ export function AppPageClient({ app, relatedApps, breadcrumbs, categories }: App
                                 {app.features.items.map((item, index) => (
                                     <li key={index} className="flex items-start">
                                         <CheckCircle className="w-5 h-5 text-green-500 mr-3 mt-1 shrink-0" />
-                                        <span>{item.substring(item.indexOf(" ") + 1)}</span>
+                                        <span>{item}</span>
                                     </li>
                                 ))}
                             </ul>
@@ -163,7 +163,7 @@ export function AppPageClient({ app, relatedApps, breadcrumbs, categories }: App
                 )}
 
 
-                <footer className="mt-12 text-center text-muted-foreground text-sm">
+                <footer className="mt-12 text-center text-muted-foreground text-sm border-t border-border pt-8">
                    <p>Last updated on {lastUpdatedDate}</p>
                 </footer>
             </article>
@@ -173,3 +173,4 @@ export function AppPageClient({ app, relatedApps, breadcrumbs, categories }: App
     </>
   );
 }
+
