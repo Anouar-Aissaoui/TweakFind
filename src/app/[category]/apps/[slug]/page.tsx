@@ -26,8 +26,8 @@ export async function generateMetadata({ params }: { params: { category: string,
   const url = `${siteUrl}/${slugify(params.category)}/apps/${app.id}`;
   const ogImage = app.media.icon;
 
-  const meta_title = `${app.name} - Free Tweaked App v${app.facts.version} (iOS/Android)`;
-  const meta_description = `Download the latest tweaked version of ${app.name} (v${app.facts.version}) for free on TweakFind. Get unlocked features, no jailbreak needed for iOS & Android. Safe and updated.`;
+  const meta_title = `Download ${app.name} v${app.facts.version} (MOD) for iOS & Android`;
+  const meta_description = `Get the latest ${app.name} tweak for free on TweakFind. Unlock premium features on your iOS or Android device—safe, updated, and no jailbreak required.`;
 
   return {
     title: meta_title,
@@ -145,4 +145,3 @@ export default async function Page({ params }: { params: { category: string, slu
     </>
   );
 }
-

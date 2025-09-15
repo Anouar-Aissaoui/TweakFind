@@ -78,7 +78,7 @@ export function AppPageClient({ app, relatedApps, breadcrumbs, categories }: App
                             contentUrl={canonicalUrl}
                         />
                     </div>
-                    <h1 className="text-3xl md:text-4xl font-bold tracking-tighter text-primary mb-2">{app.name}</h1>
+                    <h1 className="text-3xl md:text-4xl font-bold tracking-tighter text-primary mb-2">{app.name} (Tweaked)</h1>
                     <p className="text-lg text-muted-foreground max-w-3xl mx-auto mb-6">{app.subhead}</p>
                     <Button size="lg" onClick={() => setModalApp(app)} className="text-lg px-8 py-6">
                         <Download className="mr-2 h-5 w-5" />
