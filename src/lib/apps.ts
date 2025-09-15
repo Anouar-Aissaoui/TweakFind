@@ -51,7 +51,7 @@ export type Entity = {
 type AppDto = {
   slug: string;
   img: string;
-  name: string;
+  name:string;
   "data-ai-hint": string;
   description: string;
   version: string;
@@ -3152,7 +3152,9 @@ const appData: AppDto[] = [
     }
 ];
 
-const defaultContent = (app: AppDto) => ({
+type AppContent = Omit<Entity, 'id' | 'name' | 'description' | 'category' | 'lastModified' | 'media' | 'facts'> & { facts: Omit<Entity['facts'], 'version'> };
+
+const defaultContent = (app: AppDto): AppContent => ({
     subhead: `Sideload ${app.name} to your iPhone or iPad — safely, easily, and 100% free.`,
     facts: {
         downloads: '500,000+ Trusted Installs',
@@ -3209,7 +3211,9 @@ const defaultContent = (app: AppDto) => ({
     }
 });
 
-const altstoreData = {
+const customContent = new Map<string, AppContent>();
+
+customContent.set('altstore', {
     subhead: "Sideload any IPA to iPhone or iPad — safely, easily, and 100% free. No Apple ID restrictions. No computer needed after setup.",
     facts: {
         downloads: "500,000+ Trusted Installs",
@@ -3256,7 +3260,106 @@ const altstoreData = {
             }
         ]
     }
-};
+});
+
+customContent.set('dreameshort-coins', {
+    subhead: "Unlock every short drama and movie on DreameShort with unlimited coins. Binge-watch exclusive content without interruptions or paywalls.",
+    facts: {
+        downloads: "120,000+ Downloads",
+        compatibility: "iOS & Android",
+        safety: ["Server-Sided", "No Jailbreak", "Account Safe"],
+        license: ["Free Coins", "VIP Unlocked"],
+    },
+    about: {
+        title: "What is the DreameShort Coins Mod?",
+        content: "The <strong>DreameShort Coins mod</strong> is a tweaked version of the popular short-drama app that gives you an unlimited supply of coins. Stop waiting for daily bonuses or paying for expensive coin packs. With this mod, you can instantly unlock any paid episode, special feature, or VIP-exclusive series. It's the ultimate way to experience everything DreameShort has to offer without spending a dime."
+    },
+    features: {
+        title: "Unlocked DreameShort Features:",
+        items: [
+            "✅ Unlimited Coins — Never run out of coins to unlock episodes.",
+            "✅ VIP Access Unlocked — Watch all VIP-only dramas for free.",
+            "✅ No Ads — Enjoy an uninterrupted, ad-free viewing experience.",
+            "✅ Daily Coin Bonus Multiplier — Still claim daily rewards on top of your unlimited balance.",
+            "✅ Cross-Platform Sync — Works seamlessly on both iOS and Android devices."
+        ]
+    },
+    perfectFor: {
+        title: "Perfect For:",
+        tags: ["Binge-watchers", "Short drama fans", "Users who hate paywalls", "Movie lovers on a budget"]
+    },
+    faq: {
+        title: `FAQs for DreameShort Coins`,
+        items: [
+            {
+                question: `How do I get unlimited coins for DreameShort?`,
+                answer: `Simply install the tweaked version of DreameShort from this page. Once installed, your account will automatically be credited with a near-infinite amount of coins, allowing you to unlock any content you want.`
+            },
+            {
+                question: `Is this DreameShort coin generator safe for my account?`,
+                answer: `Yes, it is completely safe. The coin injection process is handled on a secure server and doesn't modify the core app files on your device, making it undetectable and keeping your account safe from being banned.`
+            },
+            {
+                question: `Can I use these coins to unlock VIP shows?`,
+                answer: `Absolutely. The unlimited coins can be used for everything in the app, including unlocking VIP-exclusive dramas, special episodes, and bonus content.`
+            },
+            {
+                question: `Do I need to root or jailbreak my phone?`,
+                answer: `No, this mod works without requiring you to jailbreak your iPhone or root your Android device. The installation is simple and safe.`
+            }
+        ]
+    }
+});
+
+customContent.set('cod-mobile-mod-menu', {
+    subhead: "Dominate the battlefield with the ultimate COD Mobile MOD Menu. Get access to Aimbot, Wallhack, No Recoil, and more to rank up faster than ever.",
+    facts: {
+        downloads: "250,000+ Active Users",
+        compatibility: "iOS & Android",
+        safety: ["Anti-Ban Protection", "Undetected", "Proxy Support"],
+        license: ["Free to Use", "Regular Updates"],
+    },
+    about: {
+        title: "About the COD Mobile MOD Menu",
+        content: "The <strong>COD Mobile MOD Menu</strong> is a powerful cheat tool that gives you an unfair advantage in Call of Duty: Mobile. This tweaked version of the game injects a hidden menu that you can access in-game to toggle powerful features on and off. Whether you need precise aiming with Aimbot, the ability to see enemies through walls with Wallhack, or perfect stability with No Recoil, this mod menu has everything you need to climb the leaderboards and crush the competition."
+    },
+    features: {
+        title: "MOD Menu Features:",
+        items: [
+            "✅ Aimbot — Automatically lock onto enemies for perfect headshots.",
+            "✅ Wallhack (ESP) — See enemy locations, health, and distance through walls.",
+            "✅ No Recoil — Eliminate weapon recoil for perfect accuracy during full-auto fire.",
+            "✅ SuperJump & Speed Hack — Move around the map with enhanced speed and jump height.",
+            "✅ Unlimited Ammo — Never worry about running out of bullets again.",
+            "✅ Anti-Ban System — Built-in protection to keep your account safe from detection."
+        ]
+    },
+    perfectFor: {
+        title: "Perfect For:",
+        tags: ["Competitive players", "Ranking up fast", "Snipers", "Content creators"]
+    },
+    faq: {
+        title: `COD Mobile MOD Menu FAQ`,
+        items: [
+            {
+                question: `Can I get banned for using this COD Mobile hack?`,
+                answer: `While no hack is 100% risk-free, our MOD Menu includes a robust anti-ban system that is updated regularly to remain undetected. We recommend not overusing the most obvious features to minimize risk.`
+            },
+            {
+                question: `Does the Aimbot work in ranked matches?`,
+                answer: `Yes, all features, including Aimbot and Wallhack, are designed to work in all game modes, including public matches, ranked lobbies, and tournaments.`
+            },
+            {
+                question: `How do I open the MOD Menu in the game?`,
+                answer: `After installing the tweaked app from this page, a small, semi-transparent icon will appear on your screen during gameplay. Tapping this icon will open and close the MOD Menu.`
+            },
+            {
+                question: `Is this free to download?`,
+                answer: `Yes, the COD Mobile MOD Menu is completely free to download and use from TweakFind. We believe in providing the best tools to the gaming community without a paywall.`
+            }
+        ]
+    }
+});
 
 const appsWithPlaceholders = await Promise.all(
   appData.map(async (app) => {
@@ -3278,7 +3381,7 @@ const appsWithPlaceholders = await Promise.all(
 
 
 export const apps: Entity[] = appsWithPlaceholders.map((app) => {
-  const content = app.slug === 'altstore' ? altstoreData : defaultContent(app);
+  const content = customContent.get(app.slug) || defaultContent(app);
   
   return {
     id: app.slug,
