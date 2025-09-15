@@ -77,7 +77,7 @@ export function AppPageClient({ app, relatedApps, breadcrumbs, categories }: App
                             priority
                         />
                     </div>
-                    <h1 className="text-3xl md:text-4xl font-bold tracking-tighter text-primary mb-2">{app.name} — Free iOS App Installer (No Jailbreak Required)</h1>
+                    <h1 className="text-3xl md:text-4xl font-bold tracking-tighter text-primary mb-2">{app.name}</h1>
                     <p className="text-lg text-muted-foreground max-w-3xl mx-auto mb-6">{app.subhead}</p>
                     <Button size="lg" onClick={() => setModalApp(app)} className="text-lg px-8 py-6">
                         <Download className="mr-2 h-5 w-5" />
@@ -126,7 +126,7 @@ export function AppPageClient({ app, relatedApps, breadcrumbs, categories }: App
 
                          <section aria-labelledby="app-features" className="mb-8">
                             <h3 id="app-features" className="text-xl font-bold tracking-tight mb-3">{app.features.title}</h3>
-                            <ul className="space-y-2">
+                            <ul className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-2">
                                 {app.features.items.map((item, index) => (
                                     <li key={index} className="flex items-start">
                                         <CheckCircle className="w-5 h-5 text-green-500 mr-3 mt-1 shrink-0" />
@@ -150,6 +150,12 @@ export function AppPageClient({ app, relatedApps, breadcrumbs, categories }: App
                     </div>
                 </div>
 
+                <div className="my-12 text-center">
+                    <Button size="lg" onClick={() => setModalApp(app)} className="text-lg px-10 py-6 w-full max-w-md mx-auto">
+                        <Download className="mr-2 h-5 w-5" />
+                        Install {app.name} Now
+                    </Button>
+                </div>
                 
                 {relatedApps.length > 0 && (
                     <section aria-labelledby="related-apps" className="mt-12 border-t border-border/50 pt-8">
