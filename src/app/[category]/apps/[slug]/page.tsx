@@ -23,7 +23,7 @@ export async function generateMetadata({ params }: { params: { category: string,
   }
 
   const siteUrl = "https://tweak.appsg.site";
-  const url = `${siteUrl}/${slugify(params.category)}/apps/${app.id}`;
+  const url = `${siteUrl}/${slugify(app.category)}/apps/${app.id}`;
   const ogImage = app.media.icon;
 
   const meta_title = `Download ${app.name} v${app.facts.version} (MOD) for iOS & Android`;
