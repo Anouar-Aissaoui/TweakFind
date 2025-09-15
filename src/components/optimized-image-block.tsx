@@ -1,4 +1,6 @@
 import Image from 'next/image';
+import { jsonLdScriptProps } from 'react-schemaorg';
+import type { ImageObject } from 'schema-dts';
 
 type OptimizedImageBlockProps = {
   imageSrc: string;
@@ -7,6 +9,7 @@ type OptimizedImageBlockProps = {
   width: number;
   height: number;
   priority?: boolean;
+  contentUrl?: string;
 };
 
 export function OptimizedImageBlock({ 
@@ -15,10 +18,23 @@ export function OptimizedImageBlock({
   caption, 
   width, 
   height,
-  priority = false 
+  priority = false,
+  contentUrl
 }: OptimizedImageBlockProps) {
   return (
     <figure className="my-4">
+      {contentUrl && (
+         <script
+          {...jsonLdScriptProps<ImageObject>({
+            '@context': 'https://schema.org',
+            '@type': 'ImageObject',
+            contentUrl: contentUrl,
+            thumbnailUrl: imageSrc,
+            description: altDesc,
+            caption: caption,
+          })}
+        />
+      )}
       <Image
         src={imageSrc}
         alt={altDesc}

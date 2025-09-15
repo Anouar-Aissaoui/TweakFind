@@ -13,6 +13,7 @@ import { Badge } from '@/components/ui/badge';
 import { useIsMobile } from '@/hooks/use-mobile';
 import { FaqSection } from './faq-section';
 import { OptimizedImageBlock } from './optimized-image-block';
+import { slugify } from '@/lib/utils';
 
 type Breadcrumb = {
   name: string;
@@ -29,6 +30,9 @@ type AppPageClientProps = {
 export function AppPageClient({ app, relatedApps, breadcrumbs, categories }: AppPageClientProps) {
   const [modalApp, setModalApp] = useState<Entity | null>(null);
   const isMobile = useIsMobile();
+  const siteUrl = "https://tweak.appsg.site";
+  const canonicalUrl = `${siteUrl}/${slugify(app.category)}/apps/${app.id}`;
+
 
   const keyFacts = [
     { label: "Version", value: app.facts.version, icon: <Star className="w-4 h-4 mr-2" /> },
@@ -71,6 +75,7 @@ export function AppPageClient({ app, relatedApps, breadcrumbs, categories }: App
                             width={96}
                             height={96}
                             priority={true}
+                            contentUrl={canonicalUrl}
                         />
                     </div>
                     <h1 className="text-3xl md:text-4xl font-bold tracking-tighter text-primary mb-2">{app.name}</h1>
@@ -175,4 +180,3 @@ export function AppPageClient({ app, relatedApps, breadcrumbs, categories }: App
     </>
   );
 }
-
