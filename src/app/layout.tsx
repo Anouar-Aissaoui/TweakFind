@@ -6,9 +6,8 @@ import { Inter } from 'next/font/google';
 import Link from 'next/link';
 import { jsonLdScriptProps } from 'react-schemaorg';
 import { Organization, WebSite } from 'schema-dts';
-import { Header } from '@/components/header';
 import { slugify } from '@/lib/utils';
-import { apps } from '@/lib/apps';
+import { HeaderWrapper } from '@/components/header-wrapper';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -112,19 +111,26 @@ export default function RootLayout({
       </head>
       <body className={`${inter.variable} font-sans antialiased`}>
         <div className="flex flex-col min-h-screen">
-          <Header />
+          <HeaderWrapper />
           <main className="flex-grow">
             {children}
           </main>
           <footer className="bg-secondary/50 border-t border-border mt-12 py-8 text-muted-foreground">
             <div className="container mx-auto px-4">
-                <div className="grid grid-cols-2 md:grid-cols-3 gap-8">
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
                     <div>
                         <h4 className="font-bold text-foreground mb-2">Categories</h4>
                         <ul className="space-y-2">
                            {mainCategories.map(category => (
                              <li key={category}><Link href={`/${slugify(category)}/apps`} className="text-sm hover:text-primary transition-colors">{category}</Link></li>
                            ))}
+                        </ul>
+                    </div>
+                     <div>
+                        <h4 className="font-bold text-foreground mb-2">More</h4>
+                        <ul className="space-y-2">
+                           <li><Link href={`/${slugify('Emulators')}/apps`} className="text-sm hover:text-primary transition-colors">Emulators</Link></li>
+                           <li><Link href={`/${slugify('Developer Tools')}/apps`} className="text-sm hover:text-primary transition-colors">Developer Tools</Link></li>
                         </ul>
                     </div>
                     <div>
