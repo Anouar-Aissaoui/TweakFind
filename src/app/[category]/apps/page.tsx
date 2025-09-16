@@ -89,6 +89,7 @@ export default async function CategoryPage({ params }: { params: { category: str
                         "@type": "SoftwareApplication",
                         "name": app.name,
                         "url": `${siteUrl}/${slugify(app.category)}/apps/${app.id}`,
+                        "image": app.media.icon,
                         "operatingSystem": "iOS, Android",
                         "applicationCategory": `${app.category.replace(' ', '')}Application`,
                         "offers": {
@@ -132,4 +133,3 @@ export default async function CategoryPage({ params }: { params: { category: str
         </>
     );
 }
-
