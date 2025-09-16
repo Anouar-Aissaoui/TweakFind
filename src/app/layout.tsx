@@ -4,6 +4,8 @@ import './globals.css';
 import { Toaster } from '@/components/ui/toaster';
 import { Inter } from 'next/font/google';
 import Link from 'next/link';
+import { jsonLdScriptProps } from 'react-schemaorg';
+import { Organization } from 'schema-dts';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -71,8 +73,26 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const siteUrl = "https://tweak.appsg.site";
+  const ogImage = "https://i.imgur.com/rq3p0eE.png";
+
   return (
     <html lang="en" className="dark">
+      <head>
+        <script
+          {...jsonLdScriptProps<Organization>({
+            '@context': 'https://schema.org',
+            '@type': 'Organization',
+            name: 'TweakFind',
+            url: siteUrl,
+            logo: ogImage,
+            sameAs: [
+              'https://twitter.com/TweakFind',
+              'https://www.facebook.com/TweakFind',
+            ],
+          })}
+        />
+      </head>
       <body className={`${inter.variable} font-sans antialiased`}>
         <div className="flex flex-col min-h-screen">
           <main className="flex-grow">
