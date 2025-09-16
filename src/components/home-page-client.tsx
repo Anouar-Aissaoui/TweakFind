@@ -6,7 +6,6 @@ import type { Entity, AppCategory } from '@/lib/apps';
 import { AppGrid } from './app-grid';
 import { Button } from './ui/button';
 import Link from 'next/link';
-import { Header } from './header';
 import { slugify } from '@/lib/utils';
 import { Search } from 'lucide-react';
 import { Input } from './ui/input';
@@ -59,7 +58,7 @@ export function HomePageClient({
       <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
       <Input
         type="search"
-        placeholder="Search for apps..."
+        placeholder="Search in this category..."
         className="w-full bg-secondary border-border pl-9 rounded-full"
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
@@ -69,7 +68,13 @@ export function HomePageClient({
 
   const renderGrid = () => (
     <div className="space-y-8">
-      {pageTitle && <h1 className="text-3xl font-bold tracking-tighter text-primary mb-4">{pageTitle}</h1>}
+      {pageTitle && (
+          <div className='text-center mb-6 pt-6'>
+            <h1 className="text-3xl font-extrabold tracking-tighter text-foreground sm:text-4xl">
+              {pageTitle}
+            </h1>
+          </div>
+      )}
       {showSearch && searchBar}
       <AppGrid apps={filteredApps} />
     </div>
@@ -77,7 +82,13 @@ export function HomePageClient({
 
   const renderSections = () => (
     <div className="space-y-8">
-      <Header searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
+       <div className='text-center mb-6 pt-6'>
+        <h1 className="text-4xl font-extrabold tracking-tighter text-foreground sm:text-5xl">
+          TweakFind
+        </h1>
+        <p className="text-muted-foreground text-base mt-2">Your #1 source for tweaked apps, mods, and emulators.</p>
+      </div>
+
       {searchTerm ? (
         <section className="p-4 bg-secondary/50 rounded-lg border border-border">
           <h2 className="text-xl font-bold mb-4">Search Results</h2>

@@ -6,6 +6,7 @@ import { Inter } from 'next/font/google';
 import Link from 'next/link';
 import { jsonLdScriptProps } from 'react-schemaorg';
 import { Organization } from 'schema-dts';
+import { Header } from '@/components/header';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -95,6 +96,7 @@ export default function RootLayout({
       </head>
       <body className={`${inter.variable} font-sans antialiased`}>
         <div className="flex flex-col min-h-screen">
+          <Header />
           <main className="flex-grow">
             {children}
           </main>
