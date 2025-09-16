@@ -75,6 +75,7 @@ export default async function Page({ params }: { params: { category: string, slu
   ];
 
   const siteUrl = "https://tweak.appsg.site";
+  const canonicalUrl = `${siteUrl}/${slugify(app.category)}/apps/${app.id}`;
   const categories = [...new Set(apps.map(app => app.category))];
   if(app.category === "Developer Tools" && !categories.includes("Developer Tools")) {
     categories.push("Developer Tools");
@@ -86,7 +87,7 @@ export default async function Page({ params }: { params: { category: string, slu
         <script {...jsonLdScriptProps<WebPage>({
             "@context": "https://schema.org",
             "@type": "WebPage",
-            "url": `${siteUrl}/${slugify(app.category)}/apps/${app.id}`,
+            "url": canonicalUrl,
             "name": app.name,
             "description": app.description,
             "datePublished": "2024-01-01T00:00:00+00:00",
@@ -113,7 +114,7 @@ export default async function Page({ params }: { params: { category: string, slu
             "@type": "SoftwareApplication",
             "name": app.name,
             "operatingSystem": ["iOS", "Android"],
-            "applicationCategory": "GameApplication",
+            "applicationCategory": `${app.category.replace(' ', '')}Application`,
             "description": app.subhead,
             "featureList": app.features.items,
             "aggregateRating": {
