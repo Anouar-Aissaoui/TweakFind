@@ -1,11 +1,19 @@
 
 import Link from "next/link";
-import { Button } from "./ui/button";
-import { apps } from "@/lib/apps";
 import { slugify } from "@/lib/utils";
 import { Home } from "lucide-react";
+import type { AppCategory } from "@/lib/apps";
 
-const mainCategories = [...new Set(apps.map(app => app.category))];
+const mainCategories: AppCategory[] = [
+    'Apps',
+    'Games',
+    'Emulators',
+    'Tweaks',
+    'Utilities',
+    'Entertainment',
+    'Social',
+    'Developer Tools'
+];
 
 const categoryGroups = {
     "Categories": mainCategories,

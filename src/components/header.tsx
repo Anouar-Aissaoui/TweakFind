@@ -6,9 +6,9 @@ import { useState, useEffect } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import { slugify } from '@/lib/utils';
-import { apps } from '@/lib/apps';
+import type { AppCategory } from '@/lib/apps';
 
-const mainCategories = [...new Set(apps.map(app => app.category))];
+const mainCategories: AppCategory[] = ['Games', 'Entertainment', 'Social', 'Utilities'];
 
 export function Header() {
   const router = useRouter();
@@ -37,7 +37,7 @@ export function Header() {
             <span className="hidden font-bold sm:inline-block text-lg">TweakFind</span>
           </Link>
           <nav className="flex items-center space-x-6 text-sm font-medium">
-            {mainCategories.slice(0, 4).map(category => (
+            {mainCategories.map(category => (
                 <Link 
                     key={category} 
                     href={`/${slugify(category)}/apps`}
