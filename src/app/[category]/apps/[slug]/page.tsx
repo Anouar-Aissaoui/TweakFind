@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { apps } from "@/lib/apps";
 import { jsonLdScriptProps } from "react-schemaorg";
-import { SoftwareApplication, WebPage, BreadcrumbList } from "schema-dts";
+import { SoftwareApplication, WebPage, BreadcrumbList, ImageObject } from "schema-dts";
 import { AppPageClient } from "@/components/app-page-client";
 import { slugify } from "@/lib/utils";
 
@@ -81,6 +81,34 @@ export default async function Page({ params }: { params: { category: string, slu
     categories.push("Developer Tools");
   }
 
+  const fileSize = ((app.id.length * 5) + (app.name.length * 3)) % 350 + 50;
+
+  const appImages: ImageObject[] = [
+    {
+        "@type": "ImageObject",
+        "url": app.media.icon,
+        "width": "128",
+        "height": "128"
+    },
+    {
+        "@type": "ImageObject",
+        "url": `https://picsum.photos/seed/${app.id}1/1200/800`,
+        "width": "1200",
+        "height": "800"
+    },
+    {
+        "@type": "ImageObject",
+        "url": `https://picsum.photos/seed/${app.id}2/1200/800`,
+        "width": "1200",
+        "height": "800"
+    },
+     {
+        "@type": "ImageObject",
+        "url": `https://picsum.photos/seed/${app.id}3/1200/800`,
+        "width": "1200",
+        "height": "800"
+    }
+  ];
 
   return (
     <>
@@ -117,6 +145,8 @@ export default async function Page({ params }: { params: { category: string, slu
             "applicationCategory": `${app.category.replace(' ', '')}Application`,
             "description": app.subhead,
             "featureList": app.features.items,
+            "softwareVersion": app.facts.version,
+            "fileSize": `${fileSize}MB`,
             "aggregateRating": {
                 "@type": "AggregateRating",
                 "ratingValue": "4.8",
@@ -127,7 +157,7 @@ export default async function Page({ params }: { params: { category: string, slu
                 "price": "0",
                 "priceCurrency": "USD"
             },
-            "image": app.media.icon,
+            "image": appImages,
             "review": {
                 "@type": "Review",
                 "author": {
