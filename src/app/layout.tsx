@@ -32,6 +32,9 @@ export async function generateMetadata(): Promise<AppMetadata> {
     description: description,
     alternates: {
       canonical: '/',
+      types: {
+        'application/rss+xml': [{ url: 'rss.xml', title: 'TweakFind RSS Feed' }],
+      },
     },
     openGraph: {
         title,
