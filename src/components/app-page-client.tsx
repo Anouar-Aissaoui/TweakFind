@@ -67,7 +67,7 @@ export function AppPageClient({ app, relatedApps, breadcrumbs, categories }: App
             </nav>
 
             <article>
-                <header className="text-center py-8 md:py-12 px-6 bg-card rounded-lg border border-border/50 mb-8">
+                <header className="text-center py-6 md:py-10 px-4 bg-card rounded-lg border border-border/50 mb-8">
                     <div className="flex justify-center mb-4">
                         <OptimizedImageBlock
                             imageSrc={app.media.icon}
