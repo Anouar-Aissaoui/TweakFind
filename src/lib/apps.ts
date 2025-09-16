@@ -3211,155 +3211,57 @@ const defaultContent = (app: AppDto): AppContent => ({
     }
 });
 
-const customContent = new Map<string, AppContent>();
-
-customContent.set('altstore', {
-    subhead: "Sideload any IPA to iPhone or iPad — safely, easily, and 100% free. No Apple ID restrictions. No computer needed after setup.",
-    facts: {
-        downloads: "500,000+ Trusted Installs",
-        compatibility: "iOS 12.0+ • iPhone & iPad",
-        safety: ["Open Source", "No Jailbreak", "No Root"],
-        license: ["Free Forever", "No Ads", "No Paywalls"],
-    },
-    about: {
-        title: "What is AltStore?",
-        content: "<strong>AltStore</strong> is the #1 free iOS app installer that lets you sideload any .IPA file directly to your iPhone or iPad — no jailbreak required. Designed for developers, power users, and everyday iOS enthusiasts, AltStore offers a clean, intuitive interface with automatic app refreshes and background updates — all without needing a Mac or complex setup."
-    },
-    features: {
-        title: "Why Users Love AltStore:",
-        items: [
-            "✅ No Apple Developer Account Needed — bypass App Store restrictions",
-            "✅ Auto-Refresh Apps — keep sideloaded apps alive without daily re-signing",
-            "✅ Wi-Fi Installations — wirelessly transfer and install IPAs from your browser",
-            "✅ Open Source & Privacy-Focused — inspect the code. No tracking. No ads.",
-            "✅ Works on All iOS Devices — iPhone, iPad, iPod Touch — iOS 12 and up"
-        ]
-    },
-    perfectFor: {
-        title: "Perfect For:",
-        tags: ["Beta testers", "App developers", "Tweakers", "Region-locked app users", "Anyone tired of App Store limitations."]
-    },
-    faq: {
-        title: `Frequently Asked Questions about AltStore`,
-        items: [
-            {
-                question: `How to download AltStore for free?`,
-                answer: `You can download AltStore for free directly from TweakFind. Just tap the 'Install' button on this page and follow the on-screen instructions to sideload the app onto your iOS device.`
-            },
-            {
-                question: `Is it safe to install this app tweak from TweakFind?`,
-                answer: `Yes, every app tweak on TweakFind, including AltStore, is scanned for safety and is 100% free from malware. We prioritize user security and ensure that no jailbreak is required.`
-            },
-            {
-                question: `What is the main feature of this app tweak?`,
-                answer: `The main feature of this AltStore app tweak is the ability to sideload any .IPA file to your iPhone or iPad without needing a jailbreak, offering access to a world of apps not available on the App Store.`
-            },
-            {
-                question: `Does AltStore automatically refresh apps?`,
-                answer: `Yes, AltStore can automatically refresh your sideloaded apps in the background, preventing them from expiring so you can use them without interruption.`
-            }
-        ]
+const customContent: Record<string, AppContent> = {
+    'altstore': {
+        subhead: "Sideload any IPA to iPhone or iPad — safely, easily, and 100% free. No Apple ID restrictions. No computer needed after setup.",
+        facts: {
+            downloads: "500,000+ Trusted Installs",
+            compatibility: "iOS 12.0+ • iPhone & iPad",
+            safety: ["Open Source", "No Jailbreak", "No Root"],
+            license: ["Free Forever", "No Ads", "No Paywalls"],
+        },
+        about: {
+            title: "What is AltStore?",
+            content: "<strong>AltStore</strong> is the #1 free iOS app installer that lets you sideload any .IPA file directly to your iPhone or iPad — no jailbreak required. Designed for developers, power users, and everyday iOS enthusiasts, AltStore offers a clean, intuitive interface with automatic app refreshes and background updates — all without needing a Mac or complex setup."
+        },
+        features: {
+            title: "Why Users Love AltStore:",
+            items: [
+                "✅ No Apple Developer Account Needed — bypass App Store restrictions",
+                "✅ Auto-Refresh Apps — keep sideloaded apps alive without daily re-signing",
+                "✅ Wi-Fi Installations — wirelessly transfer and install IPAs from your browser",
+                "✅ Open Source & Privacy-Focused — inspect the code. No tracking. No ads.",
+                "✅ Works on All iOS Devices — iPhone, iPad, iPod Touch — iOS 12 and up"
+            ]
+        },
+        perfectFor: {
+            title: "Perfect For:",
+            tags: ["Beta testers", "App developers", "Tweakers", "Region-locked app users", "Anyone tired of App Store limitations."]
+        },
+        faq: {
+            title: `Frequently Asked Questions about AltStore`,
+            items: [
+                {
+                    question: `How to download AltStore for free?`,
+                    answer: `You can download AltStore for free directly from TweakFind. Just tap the 'Install' button on this page and follow the on-screen instructions to sideload the app onto your iOS device.`
+                },
+                {
+                    question: `Is it safe to install this app tweak from TweakFind?`,
+                    answer: `Yes, every app tweak on TweakFind, including AltStore, is scanned for safety and is 100% free from malware. We prioritize user security and ensure that no jailbreak is required.`
+                },
+                {
+                    question: `What is the main feature of this app tweak?`,
+                    answer: `The main feature of this AltStore app tweak is the ability to sideload any .IPA file to your iPhone or iPad without needing a jailbreak, offering access to a world of apps not available on the App Store.`
+                },
+                {
+                    question: `Does AltStore automatically refresh apps?`,
+                    answer: `Yes, AltStore can automatically refresh your sideloaded apps in the background, preventing them from expiring so you can use them without interruption.`
+                }
+            ]
+        }
     }
-});
+};
 
-customContent.set('dreameshort-coins', {
-    subhead: "Unlock every short drama and movie on DreameShort with unlimited coins. Binge-watch exclusive content without interruptions or paywalls.",
-    facts: {
-        downloads: "120,000+ Downloads",
-        compatibility: "iOS & Android",
-        safety: ["Server-Sided", "No Jailbreak", "Account Safe"],
-        license: ["Free Coins", "VIP Unlocked"],
-    },
-    about: {
-        title: "What is the DreameShort Coins Mod?",
-        content: "The <strong>DreameShort Coins mod</strong> is a tweaked version of the popular short-drama app that gives you an unlimited supply of coins. Stop waiting for daily bonuses or paying for expensive coin packs. With this mod, you can instantly unlock any paid episode, special feature, or VIP-exclusive series. It's the ultimate way to experience everything DreameShort has to offer without spending a dime."
-    },
-    features: {
-        title: "Unlocked DreameShort Features:",
-        items: [
-            "✅ Unlimited Coins — Never run out of coins to unlock episodes.",
-            "✅ VIP Access Unlocked — Watch all VIP-only dramas for free.",
-            "✅ No Ads — Enjoy an uninterrupted, ad-free viewing experience.",
-            "✅ Daily Coin Bonus Multiplier — Still claim daily rewards on top of your unlimited balance.",
-            "✅ Cross-Platform Sync — Works seamlessly on both iOS and Android devices."
-        ]
-    },
-    perfectFor: {
-        title: "Perfect For:",
-        tags: ["Binge-watchers", "Short drama fans", "Users who hate paywalls", "Movie lovers on a budget"]
-    },
-    faq: {
-        title: `FAQs for DreameShort Coins`,
-        items: [
-            {
-                question: `How do I get unlimited coins for DreameShort?`,
-                answer: `Simply install the tweaked version of DreameShort from this page. Once installed, your account will automatically be credited with a near-infinite amount of coins, allowing you to unlock any content you want.`
-            },
-            {
-                question: `Is this DreameShort coin generator safe for my account?`,
-                answer: `Yes, it is completely safe. The coin injection process is handled on a secure server and doesn't modify the core app files on your device, making it undetectable and keeping your account safe from being banned.`
-            },
-            {
-                question: `Can I use these coins to unlock VIP shows?`,
-                answer: `Absolutely. The unlimited coins can be used for everything in the app, including unlocking VIP-exclusive dramas, special episodes, and bonus content.`
-            },
-            {
-                question: `Do I need to root or jailbreak my phone?`,
-                answer: `No, this mod works without requiring you to jailbreak your iPhone or root your Android device. The installation is simple and safe.`
-            }
-        ]
-    }
-});
-
-customContent.set('cod-mobile-mod-menu', {
-    subhead: "Dominate the battlefield with the ultimate COD Mobile MOD Menu. Get access to Aimbot, Wallhack, No Recoil, and more to rank up faster than ever.",
-    facts: {
-        downloads: "250,000+ Active Users",
-        compatibility: "iOS & Android",
-        safety: ["Anti-Ban Protection", "Undetected", "Proxy Support"],
-        license: ["Free to Use", "Regular Updates"],
-    },
-    about: {
-        title: "About the COD Mobile MOD Menu",
-        content: "The <strong>COD Mobile MOD Menu</strong> is a powerful cheat tool that gives you an unfair advantage in Call of Duty: Mobile. This tweaked version of the game injects a hidden menu that you can access in-game to toggle powerful features on and off. Whether you need precise aiming with Aimbot, the ability to see enemies through walls with Wallhack, or perfect stability with No Recoil, this mod menu has everything you need to climb the leaderboards and crush the competition."
-    },
-    features: {
-        title: "MOD Menu Features:",
-        items: [
-            "✅ Aimbot — Automatically lock onto enemies for perfect headshots.",
-            "✅ Wallhack (ESP) — See enemy locations, health, and distance through walls.",
-            "✅ No Recoil — Eliminate weapon recoil for perfect accuracy during full-auto fire.",
-            "✅ SuperJump & Speed Hack — Move around the map with enhanced speed and jump height.",
-            "✅ Unlimited Ammo — Never worry about running out of bullets again.",
-            "✅ Anti-Ban System — Built-in protection to keep your account safe from detection."
-        ]
-    },
-    perfectFor: {
-        title: "Perfect For:",
-        tags: ["Competitive players", "Ranking up fast", "Snipers", "Content creators"]
-    },
-    faq: {
-        title: `COD Mobile MOD Menu FAQ`,
-        items: [
-            {
-                question: `Can I get banned for using this COD Mobile hack?`,
-                answer: `While no hack is 100% risk-free, our MOD Menu includes a robust anti-ban system that is updated regularly to remain undetected. We recommend not overusing the most obvious features to minimize risk.`
-            },
-            {
-                question: `Does the Aimbot work in ranked matches?`,
-                answer: `Yes, all features, including Aimbot and Wallhack, are designed to work in all game modes, including public matches, ranked lobbies, and tournaments.`
-            },
-            {
-                question: `How do I open the MOD Menu in the game?`,
-                answer: `After installing the tweaked app from this page, a small, semi-transparent icon will appear on your screen during gameplay. Tapping this icon will open and close the MOD Menu.`
-            },
-            {
-                question: `Is this free to download?`,
-                answer: `Yes, the COD Mobile MOD Menu is completely free to download and use from TweakFind. We believe in providing the best tools to the gaming community without a paywall.`
-            }
-        ]
-    }
-});
 
 const appsWithPlaceholders = await Promise.all(
   appData.map(async (app) => {
@@ -3381,7 +3283,7 @@ const appsWithPlaceholders = await Promise.all(
 
 
 export const apps: Entity[] = appsWithPlaceholders.map((app) => {
-  const content = customContent.get(app.slug) || defaultContent(app);
+  const content = customContent[app.slug] || defaultContent(app);
   
   return {
     id: app.slug,
