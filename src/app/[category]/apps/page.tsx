@@ -29,8 +29,8 @@ export async function generateMetadata({ params }: { params: { category: string 
         return {};
     }
 
-    const title = `Top Tweaked ${appCategory} Apps - TweakFind`;
-    const description = `Browse and download the latest tweaked ${appCategory} apps for free on TweakFind. Get unlocked features, safe updates, and no jailbreak required for iOS & Android.`;
+    const title = `Top Tweaked ${appCategory} Apps | TweakFind`;
+    const description = `Browse the best tweaked ${appCategory} apps. Get free, safe, and updated mods with unlocked features for iOS & Android. No jailbreak required.`;
     const url = `https://tweak.appsg.site/${categorySlug}/apps`;
     const ogImage = "https://i.imgur.com/rq3p0eE.png";
 

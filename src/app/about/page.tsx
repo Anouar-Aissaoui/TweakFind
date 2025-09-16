@@ -4,8 +4,8 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Users, Target, ShieldCheck } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'About TweakFind',
-  description: 'Learn about TweakFind, our mission to provide safe, reliable, and accessible tweaked apps for iOS and Android, and our commitment to the community.',
+  title: 'About TweakFind | Our Mission & Commitment',
+  description: 'Learn about TweakFind’s mission to provide safe, reliable, and accessible tweaked apps for iOS & Android. Discover our commitment to the community.',
 };
 
 export default function AboutPage() {

@@ -4,8 +4,8 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Mail, MessageSquare, HelpCircle } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Contact Us',
-  description: 'Get in touch with the TweakFind team. Whether you have a question, a suggestion, or an app request, we are here to help.',
+  title: 'Contact Us | TweakFind Support',
+  description: 'Get in touch with the TweakFind team. Contact us for support, questions, app requests, or feedback. We are here to help you.',
 };
 
 export default function ContactPage() {
