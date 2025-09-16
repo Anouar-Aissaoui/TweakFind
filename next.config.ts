@@ -16,6 +16,17 @@ const nextConfig: NextConfig = {
         destination: '/games/apps/cod-mobile-mod-menu',
         permanent: true,
       },
+      {
+        source: '/:path((?!/).*)',
+        has: [
+          {
+            type: 'host',
+            value: '^(?!tweak\\.appsg\\.site$).*$',
+          },
+        ],
+        destination: 'https://tweak.appsg.site/:path*',
+        permanent: true,
+      },
     ]
   },
   images: {
