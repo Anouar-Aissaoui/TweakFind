@@ -3,6 +3,7 @@ import type { Metadata, TemplateString } from 'next';
 import './globals.css';
 import { Toaster } from '@/components/ui/toaster';
 import { Inter } from 'next/font/google';
+import Link from 'next/link';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -70,7 +71,23 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark">
       <body className={`${inter.variable} font-sans antialiased`}>
-        {children}
+        <div className="flex flex-col min-h-screen">
+          <main className="flex-grow">
+            {children}
+          </main>
+          <footer className="bg-secondary/50 border-t border-border mt-12 py-8">
+            <div className="container mx-auto px-4 text-center text-muted-foreground">
+              <div className="flex justify-center gap-4 mb-4">
+                <Link href="/about" className="text-sm hover:text-primary transition-colors">About Us</Link>
+                <Link href="/contact" className="text-sm hover:text-primary transition-colors">Contact</Link>
+                <Link href="/privacy-policy" className="text-sm hover:text-primary transition-colors">Privacy Policy</Link>
+                <Link href="/disclaimer" className="text-sm hover:text-primary transition-colors">Disclaimer</Link>
+              </div>
+              <p className="text-xs">&copy; {new Date().getFullYear()} TweakFind. All rights reserved.</p>
+              <p className="text-xs mt-2">TweakFind is an independent third-party platform and is not affiliated with, endorsed by, or sponsored by Apple Inc., Google LLC, or any of the app developers featured on this site.</p>
+            </div>
+          </footer>
+        </div>
         <Toaster />
         {/* 100% privacy-first analytics */}
         <script data-collect-dnt="true" async src="https://scripts.simpleanalyticscdn.com/latest.js"></script>
