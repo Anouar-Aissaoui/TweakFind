@@ -104,7 +104,7 @@ export default async function Page({ params }: { params: { category: string, slu
     },
      {
         "@type": "ImageObject",
-        "url": `https://picsum.photos/seed/${app.id}3/1200/800`,
+        "url": "https://i.imgur.com/8CbjRgL.png",
         "width": "1200",
         "height": "800"
     }
