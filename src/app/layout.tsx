@@ -7,6 +7,8 @@ import Link from 'next/link';
 import { jsonLdScriptProps } from 'react-schemaorg';
 import { Organization, WebSite } from 'schema-dts';
 import { Header } from '@/components/header';
+import { slugify } from '@/lib/utils';
+import { apps } from '@/lib/apps';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -77,6 +79,9 @@ export default function RootLayout({
   const siteUrl = "https://tweak.appsg.site";
   const ogImage = "https://i.imgur.com/rq3p0eE.png";
 
+  const mainCategories = ['Games', 'Entertainment', 'Social', 'Utilities'];
+  const allCategories = [...new Set(apps.map(app => app.category))];
+
   return (
     <html lang="en" className="dark">
       <head>
@@ -112,16 +117,44 @@ export default function RootLayout({
           <main className="flex-grow">
             {children}
           </main>
-          <footer className="bg-secondary/50 border-t border-border mt-12 py-8">
-            <div className="container mx-auto px-4 text-center text-muted-foreground">
-              <div className="flex justify-center gap-4 mb-4">
-                <Link href="/about" className="text-sm hover:text-primary transition-colors">About Us</Link>
-                <Link href="/contact" className="text-sm hover:text-primary transition-colors">Contact</Link>
-                <Link href="/privacy-policy" className="text-sm hover:text-primary transition-colors">Privacy Policy</Link>
-                <Link href="/disclaimer" className="text-sm hover:text-primary transition-colors">Disclaimer</Link>
-              </div>
-              <p className="text-xs">&copy; {new Date().getFullYear()} TweakFind. All rights reserved.</p>
-              <p className="text-xs mt-2">TweakFind is an independent third-party platform and is not affiliated with, endorsed by, or sponsored by Apple Inc., Google LLC, or any of the app developers featured on this site.</p>
+          <footer className="bg-secondary/50 border-t border-border mt-12 py-8 text-muted-foreground">
+            <div className="container mx-auto px-4">
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+                    <div>
+                        <h4 className="font-bold text-foreground mb-2">Categories</h4>
+                        <ul className="space-y-2">
+                           {mainCategories.map(category => (
+                             <li key={category}><Link href={`/${slugify(category)}/apps`} className="text-sm hover:text-primary transition-colors">{category}</Link></li>
+                           ))}
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 className="font-bold text-foreground mb-2">More</h4>
+                         <ul className="space-y-2">
+                           {allCategories.filter(c => !mainCategories.includes(c)).map(category => (
+                             <li key={category}><Link href={`/${slugify(category)}/apps`} className="text-sm hover:text-primary transition-colors">{category}</Link></li>
+                           ))}
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 className="font-bold text-foreground mb-2">Company</h4>
+                        <ul className="space-y-2">
+                            <li><Link href="/about" className="text-sm hover:text-primary transition-colors">About Us</Link></li>
+                            <li><Link href="/contact" className="text-sm hover:text-primary transition-colors">Contact</Link></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 className="font-bold text-foreground mb-2">Legal</h4>
+                        <ul className="space-y-2">
+                            <li><Link href="/privacy-policy" className="text-sm hover:text-primary transition-colors">Privacy Policy</Link></li>
+                            <li><Link href="/disclaimer" className="text-sm hover:text-primary transition-colors">Disclaimer</Link></li>
+                        </ul>
+                    </div>
+                </div>
+                 <div className="border-t border-border mt-8 pt-6 text-center text-xs">
+                    <p>&copy; {new Date().getFullYear()} TweakFind. All rights reserved.</p>
+                    <p className="mt-2">TweakFind is an independent third-party platform and is not affiliated with, endorsed by, or sponsored by Apple Inc., Google LLC, or any of the app developers featured on this site.</p>
+                </div>
             </div>
           </footer>
         </div>
