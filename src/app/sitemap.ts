@@ -6,6 +6,7 @@ import { MetadataRoute } from 'next';
 export default function sitemap(): MetadataRoute.Sitemap {
   const siteUrl = 'https://tweak.appsg.site';
 
+  // App Pages: Priority 0.8
   const appUrls: MetadataRoute.Sitemap = apps.map((app) => ({
     url: `${siteUrl}/${slugify(app.category)}/apps/${app.id}`,
     lastModified: app.lastModified ? new Date(app.lastModified) : new Date(),
@@ -13,6 +14,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.8,
   }));
 
+  // Category Pages: Priority 0.9
   const categoryUrls: MetadataRoute.Sitemap = [...new Set(apps.map((app) => app.category))].map((category) => ({
     url: `${siteUrl}/${slugify(category)}/apps`,
     lastModified: new Date(),
@@ -20,12 +22,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.9,
   }));
 
+  // Static & Legal Pages: Priority 1.0, 0.7, 0.5
   const staticUrls: MetadataRoute.Sitemap = [
     {
       url: siteUrl,
       lastModified: new Date(),
       changeFrequency: 'daily',
-      priority: 1,
+      priority: 1.0,
     },
     {
       url: `${siteUrl}/about`,
