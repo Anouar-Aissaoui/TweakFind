@@ -5,7 +5,7 @@ import { Toaster } from '@/components/ui/toaster';
 import { Inter } from 'next/font/google';
 import Link from 'next/link';
 import { jsonLdScriptProps } from 'react-schemaorg';
-import { Organization } from 'schema-dts';
+import { Organization, WebSite } from 'schema-dts';
 import { Header } from '@/components/header';
 
 const inter = Inter({
@@ -91,6 +91,18 @@ export default function RootLayout({
               'https://twitter.com/TweakFind',
               'https://www.facebook.com/TweakFind',
             ],
+          })}
+        />
+        <script
+          {...jsonLdScriptProps<WebSite>({
+            '@context': 'https://schema.org',
+            '@type': 'WebSite',
+            url: siteUrl,
+            potentialAction: {
+              '@type': 'SearchAction',
+              target: `${siteUrl}/search?q={search_term_string}`,
+              'query-input': 'required name=search_term_string',
+            },
           })}
         />
       </head>
