@@ -80,7 +80,6 @@ export default function RootLayout({
   const ogImage = "https://i.imgur.com/rq3p0eE.png";
 
   const mainCategories = ['Games', 'Entertainment', 'Social', 'Utilities'];
-  const allCategories = [...new Set(apps.map(app => app.category))];
 
   return (
     <html lang="en" className="dark">
@@ -119,19 +118,11 @@ export default function RootLayout({
           </main>
           <footer className="bg-secondary/50 border-t border-border mt-12 py-8 text-muted-foreground">
             <div className="container mx-auto px-4">
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+                <div className="grid grid-cols-2 md:grid-cols-3 gap-8">
                     <div>
                         <h4 className="font-bold text-foreground mb-2">Categories</h4>
                         <ul className="space-y-2">
                            {mainCategories.map(category => (
-                             <li key={category}><Link href={`/${slugify(category)}/apps`} className="text-sm hover:text-primary transition-colors">{category}</Link></li>
-                           ))}
-                        </ul>
-                    </div>
-                    <div>
-                        <h4 className="font-bold text-foreground mb-2">More</h4>
-                         <ul className="space-y-2">
-                           {allCategories.filter(c => !mainCategories.includes(c)).map(category => (
                              <li key={category}><Link href={`/${slugify(category)}/apps`} className="text-sm hover:text-primary transition-colors">{category}</Link></li>
                            ))}
                         </ul>
