@@ -1,7 +1,12 @@
 
 import { apps } from '@/lib/apps';
 import { SearchClient } from './search-client';
+import { Suspense } from 'react';
 
 export default function SearchPage() {
-  return <SearchClient apps={apps} />;
+  return (
+    <Suspense>
+      <SearchClient apps={apps} />
+    </Suspense>
+  );
 }
