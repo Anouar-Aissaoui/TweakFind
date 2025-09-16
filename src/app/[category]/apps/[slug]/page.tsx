@@ -141,36 +141,17 @@ export default async function Page({ params }: { params: { category: string, slu
             "@context": "https://schema.org",
             "@type": "SoftwareApplication",
             "name": app.name,
-            "operatingSystem": ["iOS", "Android"],
+            "operatingSystem": "iOS, Android",
             "applicationCategory": `${app.category.replace(' ', '')}Application`,
-            "description": app.subhead,
-            "featureList": app.features.items,
             "softwareVersion": app.facts.version,
-            "fileSize": `${fileSize}MB`,
-            "aggregateRating": {
-                "@type": "AggregateRating",
-                "ratingValue": "4.8",
-                "reviewCount": "2481"
-            },
             "offers": {
                 "@type": "Offer",
                 "price": "0",
                 "priceCurrency": "USD"
             },
-            "image": appImages,
-            "review": {
-                "@type": "Review",
-                "author": {
-                  "@type": "Person",
-                  "name": "TweakFind User"
-                },
-                "reviewRating": {
-                  "@type": "Rating",
-                  "ratingValue": "5",
-                  "bestRating": "5"
-                },
-                "reviewBody": `The tweaked version of ${app.name} from TweakFind is amazing! All the premium features are unlocked for free.`
-              }
+            "image": appImages.map(img => img.url),
+            "url": canonicalUrl,
+            "description": app.subhead
         })} />
         <AppPageClient app={app} relatedApps={relatedApps} breadcrumbs={breadcrumbs} categories={categories} />
     </>
