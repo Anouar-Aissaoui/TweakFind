@@ -8,7 +8,10 @@ runConfig:
 
 redirects:
   - type: 301
-    source: /.*
-    regex: /.*
-    destination: https://tweak.appsg.site
+    # This regex will capture all hostnames that are NOT your canonical domain
+    # and permanently redirect them.
     host: '^(?!tweak\.appsg\.site$).*$'
+    destination: https://tweak.appsg.site
+    # The source regex matches the entire path to preserve it during the redirect.
+    regex: /.*
+
