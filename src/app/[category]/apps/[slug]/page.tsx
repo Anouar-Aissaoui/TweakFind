@@ -92,19 +92,19 @@ export default async function Page({ params }: { params: { category: string, slu
     },
     {
         "@type": "ImageObject",
-        "url": `https://picsum.photos/seed/${app.id}1/1200/800`,
+        "url": `https://tweak.appsg.site/_next/image?url=https%3A%2F%2Fi.imgur.com%2FItBBn9z.png&w=1080&q=75`,
         "width": "1200",
         "height": "800"
     },
     {
         "@type": "ImageObject",
-        "url": `https://picsum.photos/seed/${app.id}2/1200/800`,
+        "url": `https://tweak.appsg.site/_next/image?url=https%3A%2F%2Fi.imgur.com%2FR9jMHHH.png&w=1080&q=75`,
         "width": "1200",
         "height": "800"
     },
      {
         "@type": "ImageObject",
-        "url": `https://picsum.photos/seed/${app.id}3/1200/800`,
+        "url": `https://tweak.appsg.site/_next/image?url=https%3A%2F%2Fi.imgur.com%2F8CbjRgL.png&w=1080&q=75`,
         "width": "1200",
         "height": "800"
     }
