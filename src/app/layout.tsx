@@ -64,6 +64,9 @@ export async function generateMetadata(): Promise<AppMetadata> {
     robots: {
       index: true,
       follow: true,
+    },
+    other: {
+      'apple-touch-icon': ogImage,
     }
   };
   
@@ -124,13 +127,6 @@ export default function RootLayout({
                            {mainCategories.map(category => (
                              <li key={category}><Link href={`/${slugify(category)}/apps`} className="text-sm hover:text-primary transition-colors">{category}</Link></li>
                            ))}
-                        </ul>
-                    </div>
-                     <div>
-                        <h4 className="font-bold text-foreground mb-2">More</h4>
-                        <ul className="space-y-2">
-                           <li><Link href={`/${slugify('Emulators')}/apps`} className="text-sm hover:text-primary transition-colors">Emulators</Link></li>
-                           <li><Link href={`/${slugify('Developer Tools')}/apps`} className="text-sm hover:text-primary transition-colors">Developer Tools</Link></li>
                         </ul>
                     </div>
                     <div>
