@@ -26,7 +26,7 @@ type AppPageClientProps = {
   categories: string[];
 };
 
-export function AppPageClient({ app, relatedApps, breadcrumbs, categories }: AppPageClientProps) {
+export function AppPageClient({ app, relatedApps, breadcrumbs }: AppPageClientProps) {
   const [modalApp, setModalApp] = useState<Entity | null>(null);
   const isMobile = useIsMobile();
   const siteUrl = "https://tweak.appsg.site";
