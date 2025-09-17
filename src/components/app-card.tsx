@@ -22,9 +22,9 @@ export function AppCard({ app }: AppCardProps) {
             sizes="(max-width: 640px) 25vw, (max-width: 1024px) 15vw, 10vw"
             className="rounded-lg object-contain"
             data-ai-hint={app.media.iconHint}
-            placeholder="blur"
-            blurDataURL={app.media.blurDataURL}
             unoptimized={app.media.unoptimized}
+            blurDataURL={app.media.blurDataURL}
+            placeholder="blur"
           />
         </div>
         <div className="flex flex-col items-center flex-1 justify-center text-center">

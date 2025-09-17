@@ -19,7 +19,7 @@ export async function getAppsWithPlaceholders(appData: AppDto[]) {
                 if (!app.img || typeof app.img !== 'string' || !app.img.startsWith('http')) {
                     throw new Error('Invalid image URL');
                 }
-                const response = await fetch(app.img);
+                const response = await fetch(app.img, { cache: 'force-cache' });
                 if (!response.ok) {
                     throw new Error(`Failed to fetch image: ${response.statusText}`);
                 }
@@ -28,7 +28,7 @@ export async function getAppsWithPlaceholders(appData: AppDto[]) {
             } catch (error) {
                 console.warn(`Failed to fetch image for ${app.name} (url: ${app.img}). Using fallback.`);
                 try {
-                    const fallbackResponse = await fetch(FALLBACK_IMAGE);
+                    const fallbackResponse = await fetch(FALLBACK_IMAGE, { cache: 'force-cache' });
                     const fallbackArrayBuffer = await fallbackResponse.arrayBuffer();
                     buffer = Buffer.from(fallbackArrayBuffer);
                     processedImg = FALLBACK_IMAGE; // Use the fallback image URL

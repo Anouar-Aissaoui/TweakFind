@@ -33,9 +33,9 @@ export function AppList({ apps, onInstallClick }: AppListProps) {
                 sizes="10vw"
                 className="rounded-lg object-contain border-2 border-border/30"
                 data-ai-hint={app.media.iconHint}
-                placeholder="blur"
-                blurDataURL={app.media.blurDataURL}
                 unoptimized={app.media.unoptimized}
+                blurDataURL={app.media.blurDataURL}
+                placeholder="blur"
               />
             </div>
             <div className="flex-1 ml-4">

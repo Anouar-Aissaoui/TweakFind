@@ -78,9 +78,9 @@ export function InstallationModal({ app, onClose }: InstallationModalProps) {
                 sizes="20vw"
                 className="rounded-xl object-contain"
                 data-ai-hint={app.media.iconHint}
-                placeholder="blur"
-                blurDataURL={app.media.blurDataURL}
                 unoptimized={app.media.unoptimized}
+                blurDataURL={app.media.blurDataURL}
+                placeholder="blur"
               />
             </div>
           </div>

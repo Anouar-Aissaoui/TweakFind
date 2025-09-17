@@ -24,7 +24,7 @@ export type Entity = {
     icon: string;
     iconHint: string;
     blurDataURL: string;
-    unoptimized?: boolean;
+    unoptimized: boolean;
   };
   facts: {
     version: string;
