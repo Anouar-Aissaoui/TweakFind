@@ -71,56 +71,62 @@ function generateSafetyFeatures(description: string): string[] {
     return safetyFeatures;
 }
 
-export const apps: Entity[] = appsWithPlaceholders.map(app => ({
-  id: app.slug,
-  name: app.name,
-  subhead: app.description,
-  description: `${app.description} Get the tweaked version of ${app.name} to unlock advanced features.`,
-  category: app.category,
-  lastModified: app.lastModified,
-  media: {
-    icon: app.processedImg, // Use the processed image URL
-    iconHint: app['data-ai-hint'],
-    blurDataURL: app.blurDataURL,
-    unoptimized: app.processedImg.includes('i.imgur.com') || app.processedImg.includes('cdn3.iconfinder.com') || app.processedImg.includes('picsum.photos'),
-  },
-  facts: {
-    version: app.version,
-    downloads: generateDownloads(app.slug),
-    compatibility: 'iOS & Android',
-    safety: generateSafetyFeatures(app.description),
-    license: ['Free', 'MOD'],
-  },
-  about: {
-    title: `About ${app.name}`,
-    content: `<p>This is the tweaked version of <strong>${app.name}</strong>, offering enhanced features and functionalities not available in the standard version. Enjoy an improved experience with our modifications. It is designed to be safe and easy to use on both iOS and Android devices.</p>`,
-  },
-  features: {
-    title: 'Key Features',
-    items: [
-      'Premium Features Unlocked',
-      'Ad-Free Experience',
-      'Enhanced Performance',
-      'No Jailbreak/Root Required',
-      'Regular Updates',
-      'Cross-Platform Compatibility'
-    ],
-  },
-  perfectFor: {
-    title: 'Perfect For',
-    tags: ['Power Users', 'Feature Enthusiasts', 'Mobile Gamers', 'Testers'],
-  },
-  faq: {
-    title: 'Frequently Asked Questions',
-    items: [
-      {
-        question: `Is ${app.name} safe to install?`,
-        answer: `Yes, all apps on TweakFind, including this version of ${app.name}, are scanned for malware and are safe to install. We prioritize user security.`,
+const unoptimizedDomains = ['i.imgur.com', 'cdn3.iconfinder.com'];
+
+export const apps: Entity[] = appsWithPlaceholders.map(app => {
+    const isUnoptimized = unoptimizedDomains.some(domain => app.processedImg.includes(domain));
+    
+    return {
+      id: app.slug,
+      name: app.name,
+      subhead: app.description,
+      description: `${app.description} Get the tweaked version of ${app.name} to unlock advanced features.`,
+      category: app.category,
+      lastModified: app.lastModified,
+      media: {
+        icon: app.processedImg,
+        iconHint: app['data-ai-hint'],
+        blurDataURL: app.blurDataURL,
+        unoptimized: isUnoptimized,
       },
-      {
-        question: 'Do I need to jailbreak my iPhone?',
-        answer: 'No, our apps are designed to work without requiring a jailbreak or root access on your device.',
+      facts: {
+        version: app.version,
+        downloads: generateDownloads(app.slug),
+        compatibility: 'iOS & Android',
+        safety: generateSafetyFeatures(app.description),
+        license: ['Free', 'MOD'],
       },
-    ],
-  },
-}));
+      about: {
+        title: `About ${app.name}`,
+        content: `<p>This is the tweaked version of <strong>${app.name}</strong>, offering enhanced features and functionalities not available in the standard version. Enjoy an improved experience with our modifications. It is designed to be safe and easy to use on both iOS and Android devices.</p>`,
+      },
+      features: {
+        title: 'Key Features',
+        items: [
+          'Premium Features Unlocked',
+          'Ad-Free Experience',
+          'Enhanced Performance',
+          'No Jailbreak/Root Required',
+          'Regular Updates',
+          'Cross-Platform Compatibility'
+        ],
+      },
+      perfectFor: {
+        title: 'Perfect For',
+        tags: ['Power Users', 'Feature Enthusiasts', 'Mobile Gamers', 'Testers'],
+      },
+      faq: {
+        title: 'Frequently Asked Questions',
+        items: [
+          {
+            question: `Is ${app.name} safe to install?`,
+            answer: `Yes, all apps on TweakFind, including this version of ${app.name}, are scanned for malware and are safe to install. We prioritize user security.`,
+          },
+          {
+            question: 'Do I need to jailbreak my iPhone?',
+            answer: 'No, our apps are designed to work without requiring a jailbreak or root access on your device.',
+          },
+        ],
+      },
+    }
+});
