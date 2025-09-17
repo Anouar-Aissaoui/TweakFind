@@ -35,7 +35,7 @@ export function OptimizedImageBlock({
   }
 
   return (
-    <figure className="my-0 w-full h-full">
+    <figure className="my-0 w-full h-full relative">
       {contentUrl && (
          <script
           {...jsonLdScriptProps<ImageObject>({
@@ -48,23 +48,21 @@ export function OptimizedImageBlock({
           })}
         />
       )}
-      <div className="relative w-full h-full">
-        <Image
-          src={imageSrc}
-          alt={altDesc}
-          fill
-          sizes="(max-width: 768px) 30vw, (max-width: 1200px) 20vw, 15vw"
-          style={{ objectFit: 'contain' }}
-          loading={priority ? 'eager' : 'lazy'}
-          decoding="async"
-          itemProp="image"
-          className="rounded-lg transition-shadow duration-300 hover:shadow-lg"
-          priority={priority}
-          unoptimized={unoptimized}
-          placeholder={blurDataURL ? 'blur' : 'empty'}
-          blurDataURL={blurDataURL}
-        />
-      </div>
+      <Image
+        src={imageSrc}
+        alt={altDesc}
+        fill
+        sizes="(max-width: 768px) 30vw, (max-width: 1200px) 20vw, 15vw"
+        style={{ objectFit: 'contain' }}
+        loading={priority ? 'eager' : 'lazy'}
+        decoding="async"
+        itemProp="image"
+        className="rounded-lg transition-shadow duration-300 hover:shadow-lg"
+        priority={priority}
+        unoptimized={unoptimized}
+        placeholder={blurDataURL ? 'blur' : 'empty'}
+        blurDataURL={blurDataURL}
+      />
       {caption && (
         <figcaption className="mt-2 text-sm text-center text-muted-foreground">
           {caption}

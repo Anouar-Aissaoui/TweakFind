@@ -14,7 +14,7 @@ export function AppCard({ app }: AppCardProps) {
   return (
     <Link href={`/${slugify(app.category)}/apps/${app.id}`} className="block h-full group transition-transform duration-200 ease-in-out hover:-translate-y-1 active:scale-95">
       <div className="flex flex-col items-center justify-between p-4 bg-secondary/50 rounded-lg border border-border aspect-square h-full group-hover:border-primary/80 group-hover:bg-secondary transition-colors">
-        <div className="relative w-16 h-16 mb-3">
+        <div className="relative w-16 h-16 mb-3 aspect-square">
           <Image
             src={app.media.icon}
             alt={`${app.name} icon`}
