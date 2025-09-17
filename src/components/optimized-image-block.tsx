@@ -6,8 +6,6 @@ type OptimizedImageBlockProps = {
   imageSrc: string;
   altDesc: string;
   caption?: string;
-  width: number;
-  height: number;
   priority?: boolean;
   contentUrl?: string;
   unoptimized?: boolean;
@@ -18,8 +16,6 @@ export function OptimizedImageBlock({
   imageSrc, 
   altDesc, 
   caption, 
-  width, 
-  height,
   priority = false,
   contentUrl,
   unoptimized = false,
@@ -30,8 +26,7 @@ export function OptimizedImageBlock({
     // This provides a fallback, though our data processing should prevent this.
     return (
       <div 
-        className="rounded-lg bg-muted flex items-center justify-center"
-        style={{ width: `${width}px`, height: `${height}px` }}
+        className="rounded-lg bg-muted flex items-center justify-center w-full h-full"
       >
         <span className="text-xs text-muted-foreground">No Image</span>
       </div>
@@ -39,7 +34,7 @@ export function OptimizedImageBlock({
   }
 
   return (
-    <figure className="my-4">
+    <figure className="my-4 w-full h-full">
       {contentUrl && (
          <script
           {...jsonLdScriptProps<ImageObject>({
@@ -55,13 +50,13 @@ export function OptimizedImageBlock({
       <Image
         src={imageSrc}
         alt={altDesc}
-        width={width}
-        height={height}
+        fill
+        sizes="(max-width: 768px) 30vw, (max-width: 1200px) 20vw, 15vw"
+        style={{ objectFit: 'contain' }}
         loading={priority ? 'eager' : 'lazy'}
         decoding="async"
         itemProp="image"
-        className="rounded-lg transition-shadow duration-300 hover:shadow-lg w-full h-auto"
-        sizes="(max-width: 768px) 100vw, 50vw"
+        className="rounded-lg transition-shadow duration-300 hover:shadow-lg"
         priority={priority}
         unoptimized={unoptimized}
         placeholder={blurDataURL ? 'blur' : 'empty'}
