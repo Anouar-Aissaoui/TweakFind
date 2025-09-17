@@ -26,18 +26,19 @@ export function AppList({ apps, onInstallClick }: AppListProps) {
       {apps.map((app) => (
         <Link href={`/${slugify(app.category)}/apps/${app.id}`} key={app.id} className="block">
           <div className="flex items-center bg-card p-3 rounded-lg border border-border/50 hover:bg-secondary/50 transition-colors">
-            <Image
-              src={app.media.icon}
-              alt={`${app.name} list icon`}
-              width={48}
-              height={48}
-              className="rounded-lg object-contain border-2 border-border/30"
-              data-ai-hint={app.media.iconHint}
-              sizes="10vw"
-              placeholder="blur"
-              blurDataURL={app.media.blurDataURL}
-              unoptimized={app.media.unoptimized}
-            />
+            <div className="relative w-12 h-12">
+              <Image
+                src={app.media.icon}
+                alt={`${app.name} list icon`}
+                fill
+                sizes="10vw"
+                className="rounded-lg object-contain border-2 border-border/30"
+                data-ai-hint={app.media.iconHint}
+                placeholder="blur"
+                blurDataURL={app.media.blurDataURL}
+                unoptimized={app.media.unoptimized}
+              />
+            </div>
             <div className="flex-1 ml-4">
               <p className="text-base font-semibold text-foreground">{app.name}</p>
               <div className="text-sm text-muted-foreground flex items-center gap-2">

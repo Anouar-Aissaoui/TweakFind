@@ -48,18 +48,19 @@ export function AppGrid({ apps }: AppGridProps) {
         return (
             <Link href={`/${slugify(app.category)}/apps/${app.id}`} key={app.id} className="block group">
                 <div className="flex items-center gap-4 p-3 rounded-lg border border-border bg-secondary/50 hover:border-primary/80 hover:bg-accent transition-colors">
-                    <Image
-                    src={app.media.icon}
-                    alt={`${app.name} grid icon`}
-                    width={56}
-                    height={56}
-                    className="rounded-xl object-cover border border-border"
-                    data-ai-hint={app.media.iconHint}
-                    sizes="(max-width: 768px) 15vw, 5vw"
-                    placeholder="blur"
-                    blurDataURL={app.media.blurDataURL}
-                    unoptimized={app.media.unoptimized}
-                    />
+                    <div className="relative w-14 h-14">
+                      <Image
+                        src={app.media.icon}
+                        alt={`${app.name} grid icon`}
+                        fill
+                        sizes="(max-width: 768px) 15vw, 5vw"
+                        className="rounded-xl object-cover border border-border"
+                        data-ai-hint={app.media.iconHint}
+                        placeholder="blur"
+                        blurDataURL={app.media.blurDataURL}
+                        unoptimized={app.media.unoptimized}
+                      />
+                    </div>
                     <div className="flex-1 min-w-0">
                         <p className="text-sm font-bold text-foreground truncate group-hover:text-primary">{app.name}</p>
                         <p className="text-xs text-muted-foreground">v{app.facts.version} • {fileSize} MB</p>

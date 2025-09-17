@@ -1,3 +1,4 @@
+
 'use server';
 
 import { getPlaiceholder } from 'plaiceholder';
@@ -22,6 +23,8 @@ const FALLBACK_BLUR_DATA_URL = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA
 export async function getAppsWithPlaceholders(appData: AppDto[]) {
     const appsWithPlaceholders = await Promise.all(
         appData.map(async (app) => {
+            let buffer: Buffer;
+            let processedImg = app.img;
             try {
                 // Ensure img is a valid URL
                 if (!app.img || typeof app.img !== 'string' || !app.img.startsWith('http')) {
@@ -31,13 +34,23 @@ export async function getAppsWithPlaceholders(appData: AppDto[]) {
                 if (!response.ok) {
                     throw new Error(`Failed to fetch image: ${response.statusText}`);
                 }
-                const buffer = await response.arrayBuffer();
-                const { base64 } = await getPlaiceholder(Buffer.from(buffer));
-                return { ...app, blurDataURL: base64, processedImg: app.img };
+                const arrayBuffer = await response.arrayBuffer();
+                buffer = Buffer.from(arrayBuffer);
             } catch (error) {
-                console.error(`Failed to generate placeholder for ${app.name} (url: ${app.img}). Using fallback.`, error);
-                // Fallback to a default placeholder
-                return { ...app, processedImg: FALLBACK_IMAGE, blurDataURL: FALLBACK_BLUR_DATA_URL };
+                console.error(`Failed to fetch image for ${app.name} (url: ${app.img}). Using fallback.`, error);
+                // In case of any error, fetch the fallback image
+                const fallbackResponse = await fetch(FALLBACK_IMAGE);
+                const fallbackArrayBuffer = await fallbackResponse.arrayBuffer();
+                buffer = Buffer.from(fallbackArrayBuffer);
+                processedImg = FALLBACK_IMAGE; // Use the fallback image URL
+            }
+
+            try {
+                const { base64 } = await getPlaiceholder(buffer);
+                return { ...app, blurDataURL: base64, processedImg: processedImg };
+            } catch (error) {
+                console.error(`Failed to generate plaiceholder for ${app.name}. Using fallback blurDataURL.`, error);
+                return { ...app, blurDataURL: FALLBACK_BLUR_DATA_URL, processedImg: processedImg };
             }
         })
     );

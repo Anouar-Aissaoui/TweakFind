@@ -70,18 +70,19 @@ export function InstallationModal({ app, onClose }: InstallationModalProps) {
       <DialogContent className="sm:max-w-[425px] p-0">
         <DialogHeader className="p-6 pb-0">
           <div className="flex justify-center mb-4">
-            <Image
-              src={app.media.icon}
-              alt={`${app.name} installation icon`}
-              width={80}
-              height={80}
-              className="rounded-xl object-contain"
-              data-ai-hint={app.media.iconHint}
-              sizes="20vw"
-              placeholder="blur"
-              blurDataURL={app.media.blurDataURL}
-              unoptimized={app.media.unoptimized}
-            />
+            <div className="relative w-20 h-20">
+              <Image
+                src={app.media.icon}
+                alt={`${app.name} installation icon`}
+                fill
+                sizes="20vw"
+                className="rounded-xl object-contain"
+                data-ai-hint={app.media.iconHint}
+                placeholder="blur"
+                blurDataURL={app.media.blurDataURL}
+                unoptimized={app.media.unoptimized}
+              />
+            </div>
           </div>
           <DialogTitle className="text-2xl text-center font-headline">
             {isComplete ? 'Verification Required' : `Installing ${app.name}`}
