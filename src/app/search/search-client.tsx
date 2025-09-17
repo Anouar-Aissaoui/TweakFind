@@ -4,7 +4,7 @@
 import { useSearchParams } from 'next/navigation';
 import type { Entity } from '@/lib/apps';
 import { HomePageClient } from '@/components/home-page-client';
-import { useEffect, useMemo } from 'react';
+import { useMemo } from 'react';
 
 type SearchClientProps = {
   apps: Entity[];
@@ -13,14 +13,6 @@ type SearchClientProps = {
 export function SearchClient({ apps }: SearchClientProps) {
   const searchParams = useSearchParams();
   const query = searchParams.get('q') || '';
-
-  useEffect(() => {
-    if (query) {
-      document.title = `Search results for "${query}" | TweakFind`;
-    } else {
-      document.title = 'Search | TweakFind';
-    }
-  }, [query]);
 
   const filteredApps = useMemo(() => {
     if (!query) return [];
