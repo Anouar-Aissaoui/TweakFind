@@ -24,7 +24,6 @@ export function OptimizedImageBlock({
 }: OptimizedImageBlockProps) {
   
   if (!imageSrc) {
-    // This provides a fallback, though our data processing should prevent this.
     return (
       <div 
         className="rounded-lg bg-muted flex items-center justify-center w-full h-full"
@@ -53,11 +52,7 @@ export function OptimizedImageBlock({
         alt={altDesc}
         fill
         sizes="(max-width: 768px) 30vw, (max-width: 1200px) 20vw, 15vw"
-        style={{ objectFit: 'contain' }}
-        loading={priority ? 'eager' : 'lazy'}
-        decoding="async"
-        itemProp="image"
-        className="rounded-lg transition-shadow duration-300 hover:shadow-lg"
+        className="rounded-lg object-contain transition-shadow duration-300 hover:shadow-lg"
         priority={priority}
         unoptimized={unoptimized}
         placeholder={blurDataURL ? 'blur' : 'empty'}

@@ -37,7 +37,7 @@ export function FeaturedApps({ apps, onInstallClick }: FeaturedAppsProps) {
               <div className="p-1">
                  <Link href={`/${slugify(app.category)}/apps/${app.id}`} className="block h-full">
                     <div className="flex flex-col items-center justify-between p-4 bg-card rounded-lg border border-border/50 aspect-square h-full">
-                    <div className="relative w-16 h-16 mb-3 aspect-square">
+                    <div className="relative w-16 h-16 aspect-square">
                       <Image
                           src={app.media.icon}
                           alt={`${app.name} featured icon`}
