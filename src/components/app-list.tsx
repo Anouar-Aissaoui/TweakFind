@@ -33,7 +33,7 @@ export function AppList({ apps, onInstallClick }: AppListProps) {
               height={48}
               className="rounded-lg object-contain border-2 border-border/30"
               data-ai-hint={app.media.iconHint}
-              sizes="(max-width: 768px) 15vw, 5vw"
+              sizes="10vw"
               placeholder="blur"
               blurDataURL={app.media.blurDataURL}
               unoptimized={app.media.unoptimized}

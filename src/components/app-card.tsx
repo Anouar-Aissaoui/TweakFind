@@ -21,7 +21,7 @@ export function AppCard({ app }: AppCardProps) {
           height={64}
           className="rounded-lg object-contain mb-3"
           data-ai-hint={app.media.iconHint}
-          sizes="(max-width: 768px) 25vw, 10vw"
+          sizes="(max-width: 640px) 25vw, (max-width: 1024px) 15vw, 10vw"
           placeholder="blur"
           blurDataURL={app.media.blurDataURL}
           unoptimized={app.media.unoptimized}

@@ -1,3 +1,4 @@
+
 import Image from 'next/image';
 import { jsonLdScriptProps } from 'react-schemaorg';
 import type { ImageObject } from 'schema-dts';
