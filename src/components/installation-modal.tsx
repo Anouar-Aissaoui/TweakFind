@@ -70,7 +70,7 @@ export function InstallationModal({ app, onClose }: InstallationModalProps) {
       <DialogContent className="sm:max-w-[425px] p-0">
         <DialogHeader className="p-6 pb-0">
           <div className="flex justify-center mb-4">
-            <div className="relative w-20 h-20">
+            <div className="relative w-20 h-20 aspect-square">
               <Image
                 src={app.media.icon}
                 alt={`${app.name} installation icon`}

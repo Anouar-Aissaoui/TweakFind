@@ -54,7 +54,7 @@ export function AppGrid({ apps }: AppGridProps) {
                         alt={`${app.name} grid icon`}
                         fill
                         sizes="(max-width: 768px) 15vw, 5vw"
-                        className="rounded-xl object-cover border border-border"
+                        className="rounded-xl object-contain border border-border"
                         data-ai-hint={app.media.iconHint}
                         unoptimized={app.media.unoptimized}
                         blurDataURL={app.media.blurDataURL}

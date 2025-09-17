@@ -34,30 +34,30 @@ export function FeaturedApps({ apps, onInstallClick }: FeaturedAppsProps) {
         <CarouselContent>
           {apps.map((app) => (
             <CarouselItem key={app.id} className="basis-1/2 md:basis-1/3 lg:basis-1/4">
-              <div className="p-1">
+              <div className="p-1 h-full">
                  <Link href={`/${slugify(app.category)}/apps/${app.id}`} className="block h-full">
-                    <div className="flex flex-col items-center justify-between p-4 bg-card rounded-lg border border-border/50 aspect-square h-full">
-                    <div className="relative w-16 h-16 aspect-square">
-                      <Image
-                          src={app.media.icon}
-                          alt={`${app.name} featured icon`}
-                          fill
-                          sizes="(max-width: 768px) 25vw, 10vw"
-                          className="rounded-lg object-contain"
-                          data-ai-hint={app.media.iconHint}
-                          unoptimized={app.media.unoptimized}
-                          blurDataURL={app.media.blurDataURL}
-                          placeholder="blur"
-                      />
-                    </div>
-                    <div className="flex flex-col items-center flex-1 justify-center text-center">
-                        <p className="text-sm font-semibold text-foreground truncate w-full">{app.name}</p>
-                        <p className="text-xs text-muted-foreground mb-3">v{app.facts.version}</p>
-                    </div>
-                    <Button size="sm" className="w-full mt-auto" onClick={(e) => { e.preventDefault(); onInstallClick(app); }}>
-                        <Download className="mr-2 h-4 w-4" />
-                        Install
-                    </Button>
+                    <div className="flex flex-col items-center justify-between p-4 bg-card rounded-lg border border-border/50 h-full">
+                      <div className="relative w-16 h-16 aspect-square">
+                        <Image
+                            src={app.media.icon}
+                            alt={`${app.name} featured icon`}
+                            fill
+                            sizes="(max-width: 768px) 25vw, 10vw"
+                            className="rounded-lg object-contain"
+                            data-ai-hint={app.media.iconHint}
+                            unoptimized={app.media.unoptimized}
+                            blurDataURL={app.media.blurDataURL}
+                            placeholder="blur"
+                        />
+                      </div>
+                      <div className="flex flex-col items-center flex-1 justify-center text-center mt-2">
+                          <p className="text-sm font-semibold text-foreground truncate w-full">{app.name}</p>
+                          <p className="text-xs text-muted-foreground mb-3">v{app.facts.version}</p>
+                      </div>
+                      <Button size="sm" className="w-full mt-auto" onClick={(e) => { e.preventDefault(); onInstallClick(app); }}>
+                          <Download className="mr-2 h-4 w-4" />
+                          Install
+                      </Button>
                     </div>
                 </Link>
               </div>

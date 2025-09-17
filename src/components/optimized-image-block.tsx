@@ -34,7 +34,7 @@ export function OptimizedImageBlock({
   }
 
   return (
-    <figure className="my-0 w-full h-full relative">
+    <figure className="my-0 w-full h-full relative aspect-square">
       {contentUrl && (
          <script
           {...jsonLdScriptProps<ImageObject>({

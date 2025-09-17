@@ -82,7 +82,7 @@ export const apps: Entity[] = appsWithPlaceholders.map(app => ({
     icon: app.processedImg, // Use the processed image URL
     iconHint: app['data-ai-hint'],
     blurDataURL: app.blurDataURL,
-    unoptimized: app.processedImg.includes('cdn3.iconfinder.com') || app.processedImg.includes('picsum.photos'),
+    unoptimized: app.processedImg.includes('i.imgur.com') || app.processedImg.includes('cdn3.iconfinder.com') || app.processedImg.includes('picsum.photos'),
   },
   facts: {
     version: app.version,
