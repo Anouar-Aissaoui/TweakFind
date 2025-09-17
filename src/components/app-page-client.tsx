@@ -67,7 +67,7 @@ export function AppPageClient({ app, relatedApps, breadcrumbs }: AppPageClientPr
 
             <article>
                 <header className="text-center py-6 md:py-10 px-4 bg-card rounded-lg border border-border/50 mb-8">
-                    <div className="relative w-24 h-24 mx-auto mb-4">
+                    <div className="relative w-24 h-24 aspect-square mx-auto mb-4">
                         <OptimizedImageBlock
                             imageSrc={app.media.icon}
                             altDesc={`${app.name} icon`}
