@@ -24,6 +24,7 @@ export function AppCard({ app }: AppCardProps) {
           sizes="(max-width: 768px) 25vw, 10vw"
           placeholder="blur"
           blurDataURL={app.media.blurDataURL}
+          unoptimized={app.media.unoptimized}
         />
         <div className="flex flex-col items-center flex-1 justify-center">
           <p className="text-sm font-semibold text-center text-foreground truncate w-full">{app.name}</p>

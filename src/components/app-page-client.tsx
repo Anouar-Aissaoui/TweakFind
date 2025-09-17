@@ -76,6 +76,7 @@ export function AppPageClient({ app, relatedApps, breadcrumbs, categories }: App
                             height={96}
                             priority={true}
                             contentUrl={canonicalUrl}
+                            unoptimized={app.media.unoptimized}
                         />
                     </div>
                     <h1 className="text-3xl md:text-4xl font-bold tracking-tighter text-primary mb-2">{app.name} (Tweaked)</h1>

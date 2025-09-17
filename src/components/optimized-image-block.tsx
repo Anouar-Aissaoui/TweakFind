@@ -10,6 +10,7 @@ type OptimizedImageBlockProps = {
   height: number;
   priority?: boolean;
   contentUrl?: string;
+  unoptimized?: boolean;
 };
 
 export function OptimizedImageBlock({ 
@@ -19,7 +20,8 @@ export function OptimizedImageBlock({
   width, 
   height,
   priority = false,
-  contentUrl
+  contentUrl,
+  unoptimized = false,
 }: OptimizedImageBlockProps) {
   return (
     <figure className="my-4">
@@ -46,6 +48,7 @@ export function OptimizedImageBlock({
         className="rounded-lg transition-shadow duration-300 hover:shadow-lg w-full h-auto"
         sizes="(max-width: 768px) 100vw, 50vw"
         priority={priority}
+        unoptimized={unoptimized}
       />
       {caption && (
         <figcaption className="mt-2 text-sm text-center text-muted-foreground">

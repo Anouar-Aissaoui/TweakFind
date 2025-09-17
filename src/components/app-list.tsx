@@ -36,6 +36,7 @@ export function AppList({ apps, onInstallClick }: AppListProps) {
               sizes="(max-width: 768px) 15vw, 5vw"
               placeholder="blur"
               blurDataURL={app.media.blurDataURL}
+              unoptimized={app.media.unoptimized}
             />
             <div className="flex-1 ml-4">
               <p className="text-base font-semibold text-foreground">{app.name}</p>

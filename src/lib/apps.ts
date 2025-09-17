@@ -22,6 +22,7 @@ export type Entity = {
     icon: string;
     iconHint: string;
     blurDataURL: string;
+    unoptimized?: boolean;
   };
   facts: {
     version: string;
@@ -3255,6 +3256,7 @@ const appsWithPlaceholders = await getAppsWithPlaceholders(appData);
 
 export const apps: Entity[] = appsWithPlaceholders.map((app) => {
   const content = customContent[app.slug] || defaultContent(app);
+  const unoptimized = app.img.includes('cdn3.iconfinder.com');
   
   return {
     id: app.slug,
@@ -3266,6 +3268,7 @@ export const apps: Entity[] = appsWithPlaceholders.map((app) => {
       icon: app.img,
       iconHint: app['data-ai-hint'],
       blurDataURL: app.blurDataURL,
+      unoptimized: unoptimized,
     },
     facts: {
       version: app.version,

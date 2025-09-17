@@ -80,6 +80,7 @@ export function InstallationModal({ app, onClose }: InstallationModalProps) {
               sizes="20vw"
               placeholder="blur"
               blurDataURL={app.media.blurDataURL}
+              unoptimized={app.media.unoptimized}
             />
           </div>
           <DialogTitle className="text-2xl text-center font-headline">

@@ -58,6 +58,7 @@ export function AppGrid({ apps }: AppGridProps) {
                     sizes="(max-width: 768px) 15vw, 5vw"
                     placeholder="blur"
                     blurDataURL={app.media.blurDataURL}
+                    unoptimized={app.media.unoptimized}
                     />
                     <div className="flex-1 min-w-0">
                         <p className="text-sm font-bold text-foreground truncate group-hover:text-primary">{app.name}</p>
