@@ -48,7 +48,7 @@ export function AppGrid({ apps }: AppGridProps) {
         return (
             <Link href={`/${slugify(app.category)}/apps/${app.id}`} key={app.id} className="block group">
                 <div className="flex items-center gap-4 p-3 rounded-lg border border-border bg-secondary/50 hover:border-primary/80 hover:bg-accent transition-colors">
-                    <div className="relative w-14 h-14">
+                    <div className="relative w-14 h-14 flex-shrink-0">
                       <Image
                         src={app.media.icon}
                         alt={`${app.name} grid icon`}

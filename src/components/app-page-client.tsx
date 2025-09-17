@@ -3,7 +3,6 @@
 
 import { useState } from 'react';
 import type { Entity } from '@/lib/apps';
-import Image from "next/image";
 import Link from "next/link";
 import { ChevronRight, Download, CheckCircle, ShieldCheck, FileCode, Star, FolderTree } from "lucide-react";
 import { Button } from "@/components/ui/button";

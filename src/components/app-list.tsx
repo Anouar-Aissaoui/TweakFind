@@ -3,7 +3,6 @@ import type { Entity } from '@/lib/apps';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { Download } from 'lucide-react';
-import { formatDistanceToNow } from 'date-fns';
 import Link from 'next/link';
 import { slugify } from '@/lib/utils';
 
@@ -26,7 +25,7 @@ export function AppList({ apps, onInstallClick }: AppListProps) {
       {apps.map((app) => (
         <Link href={`/${slugify(app.category)}/apps/${app.id}`} key={app.id} className="block">
           <div className="flex items-center bg-card p-3 rounded-lg border border-border/50 hover:bg-secondary/50 transition-colors">
-            <div className="relative w-12 h-12">
+            <div className="relative w-12 h-12 flex-shrink-0">
               <Image
                 src={app.media.icon}
                 alt={`${app.name} list icon`}

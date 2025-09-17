@@ -1,6 +1,6 @@
 
 import { getAppsWithPlaceholders } from './image-processing';
-import { appData, type AppDto } from './data';
+import { appData } from './data';
 
 
 export type AppCategory =
@@ -82,7 +82,7 @@ export const apps: Entity[] = appsWithPlaceholders.map(app => ({
     icon: app.processedImg, // Use the processed image URL
     iconHint: app['data-ai-hint'],
     blurDataURL: app.blurDataURL,
-    unoptimized: app.img.includes('cdn3.iconfinder.com'), // Keep unoptimized flag for specific domains
+    unoptimized: app.processedImg.includes('cdn3.iconfinder.com'), // Keep unoptimized flag for specific domains
   },
   facts: {
     version: app.version,
