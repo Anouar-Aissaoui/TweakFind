@@ -2,18 +2,7 @@
 'use server';
 
 import { getPlaiceholder } from 'plaiceholder';
-import type { AppCategory } from './apps';
-
-export type AppDto = {
-  slug: string;
-  img: string;
-  name:string;
-  "data-ai-hint": string;
-  description: string;
-  version: string;
-  category: AppCategory;
-  lastModified: string;
-};
+import type { AppDto } from './data';
 
 // A default placeholder image to use when an app's image fails to fetch
 const FALLBACK_IMAGE = 'https://i.imgur.com/8CbjRgL.png';
