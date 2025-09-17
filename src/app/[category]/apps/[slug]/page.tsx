@@ -92,19 +92,19 @@ export default async function Page({ params }: { params: { category: string, slu
     },
     {
         "@type": "ImageObject",
-        "url": `https://tweak.appsg.site/_next/image?url=https%3A%2F%2Fi.imgur.com%2FItBBn9z.png&w=1080&q=75`,
+        "url": `https://i.imgur.com/ItBBn9z.png`,
         "width": "1200",
         "height": "800"
     },
     {
         "@type": "ImageObject",
-        "url": `https://tweak.appsg.site/_next/image?url=https%3A%2F%2Fi.imgur.com%2FR9jMHHH.png&w=1080&q=75`,
+        "url": `https://i.imgur.com/R9jMHHH.png`,
         "width": "1200",
         "height": "800"
     },
      {
         "@type": "ImageObject",
-        "url": `https://tweak.appsg.site/_next/image?url=https%3A%2F%2Fi.imgur.com%2F8CbjRgL.png&w=1080&q=75`,
+        "url": `https://i.imgur.com/8CbjRgL.png`,
         "width": "1200",
         "height": "800"
     }
@@ -149,7 +149,7 @@ export default async function Page({ params }: { params: { category: string, slu
                 "price": "0",
                 "priceCurrency": "USD"
             },
-            "image": appImages.map(img => img.url),
+            "image": appImages,
             "url": canonicalUrl,
             "description": app.subhead
         })} />
