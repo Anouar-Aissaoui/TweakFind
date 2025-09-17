@@ -120,7 +120,7 @@ export function AppPageClient({ app, relatedApps, breadcrumbs, categories }: App
                                 <FileCode className="w-4 h-4 mr-2" /> License
                             </strong>
                              <div className="flex flex-wrap gap-1 mt-2">
-                                {app.facts.license.map(tag => <Badge key={tag} variant="secondary">{tag}</Badge.json>)}
+                                {app.facts.license.map(tag => <Badge key={tag} variant="secondary">{tag}</Badge>)}
                             </div>
                         </div>
                     </div>
