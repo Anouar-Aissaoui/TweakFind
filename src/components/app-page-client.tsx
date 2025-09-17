@@ -77,6 +77,7 @@ export function AppPageClient({ app, relatedApps, breadcrumbs, categories }: App
                             priority={true}
                             contentUrl={canonicalUrl}
                             unoptimized={app.media.unoptimized}
+                            blurDataURL={app.media.blurDataURL}
                         />
                     </div>
                     <h1 className="text-3xl md:text-4xl font-bold tracking-tighter text-primary mb-2">{app.name} (Tweaked)</h1>
@@ -119,7 +120,7 @@ export function AppPageClient({ app, relatedApps, breadcrumbs, categories }: App
                                 <FileCode className="w-4 h-4 mr-2" /> License
                             </strong>
                              <div className="flex flex-wrap gap-1 mt-2">
-                                {app.facts.license.map(tag => <Badge key={tag} variant="secondary">{tag}</Badge>)}
+                                {app.facts.license.map(tag => <Badge key={tag} variant="secondary">{tag}</Badge.json>)}
                             </div>
                         </div>
                     </div>

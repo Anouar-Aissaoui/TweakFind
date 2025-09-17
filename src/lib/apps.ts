@@ -79,10 +79,10 @@ export const apps: Entity[] = appsWithPlaceholders.map(app => ({
   category: app.category,
   lastModified: app.lastModified,
   media: {
-    icon: app.img,
+    icon: app.processedImg, // Use the processed image URL
     iconHint: app['data-ai-hint'],
     blurDataURL: app.blurDataURL,
-    unoptimized: app.img.includes('cdn3.iconfinder.com'),
+    unoptimized: app.img.includes('cdn3.iconfinder.com'), // Keep unoptimized flag for specific domains
   },
   facts: {
     version: app.version,

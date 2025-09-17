@@ -11,6 +11,7 @@ type OptimizedImageBlockProps = {
   priority?: boolean;
   contentUrl?: string;
   unoptimized?: boolean;
+  blurDataURL?: string;
 };
 
 export function OptimizedImageBlock({ 
@@ -22,7 +23,21 @@ export function OptimizedImageBlock({
   priority = false,
   contentUrl,
   unoptimized = false,
+  blurDataURL,
 }: OptimizedImageBlockProps) {
+  
+  if (!imageSrc) {
+    // This provides a fallback, though our data processing should prevent this.
+    return (
+      <div 
+        className="rounded-lg bg-muted flex items-center justify-center"
+        style={{ width: `${width}px`, height: `${height}px` }}
+      >
+        <span className="text-xs text-muted-foreground">No Image</span>
+      </div>
+    );
+  }
+
   return (
     <figure className="my-4">
       {contentUrl && (
@@ -49,6 +64,8 @@ export function OptimizedImageBlock({
         sizes="(max-width: 768px) 100vw, 50vw"
         priority={priority}
         unoptimized={unoptimized}
+        placeholder={blurDataURL ? 'blur' : 'empty'}
+        blurDataURL={blurDataURL}
       />
       {caption && (
         <figcaption className="mt-2 text-sm text-center text-muted-foreground">
