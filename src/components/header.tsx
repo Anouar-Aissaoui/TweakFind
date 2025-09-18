@@ -1,17 +1,16 @@
-
 'use client'
 import { Search } from 'lucide-react';
 import { Input } from '@/components/ui/input';
-import { useState, useEffect } from 'react';
-import { useRouter, useSearchParams } from 'next/navigation';
+import { useEffect, useState } from 'react';
+import { useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import { slugify } from '@/lib/utils';
 import type { AppCategory } from '@/lib/apps';
+import { search } from '@/app/actions';
 
 const mainCategories: AppCategory[] = ['Games', 'Entertainment', 'Social', 'Utilities'];
 
 export function Header() {
-  const router = useRouter();
   const searchParams = useSearchParams();
   const [searchTerm, setSearchTerm] = useState(searchParams.get('q') || '');
 
@@ -19,16 +18,7 @@ export function Header() {
     // Sync search term from URL query param
     setSearchTerm(searchParams.get('q') || '');
   }, [searchParams]);
-
-  const handleSearch = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    if (searchTerm.trim()) {
-      router.push(`/search?q=${encodeURIComponent(searchTerm.trim())}`);
-    } else {
-      router.push('/');
-    }
-  };
-
+  
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-14 items-center">
@@ -52,11 +42,12 @@ export function Header() {
         </div>
         <div className="flex flex-1 items-center justify-between space-x-2 md:justify-end">
            <div className="w-full flex-1 md:w-auto md:flex-none">
-             <form onSubmit={handleSearch}>
+             <form action={search}>
                 <div className="relative">
                     <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
                     <Input
                         type="search"
+                        name="q"
                         placeholder="Search for apps..."
                         className="w-full bg-secondary border-border pl-9 md:w-64"
                         value={searchTerm}
