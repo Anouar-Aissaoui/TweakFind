@@ -1,5 +1,5 @@
 
-import { apps } from '@/lib/apps';
+import { apps, type Entity } from '@/lib/apps';
 import { SearchClient } from './search-client';
 import { Suspense } from 'react';
 import type { Metadata } from 'next';
@@ -23,10 +23,21 @@ export async function generateMetadata({ searchParams }: SearchPageProps): Promi
   };
 }
 
-export default function SearchPage() {
+export default function SearchPage({ searchParams }: SearchPageProps) {
+  const query = searchParams.get('q') || '';
+
+  const filteredApps = useMemo(() => {
+    if (!query) return [];
+    return apps.filter(app => 
+      app.name.toLowerCase().includes(query.toLowerCase()) ||
+      app.description.toLowerCase().includes(query.toLowerCase()) ||
+      app.category.toLowerCase().includes(query.toLowerCase())
+    );
+  }, [apps, query]);
+
   return (
     <Suspense>
-      <SearchClient apps={apps} />
+      <SearchClient filteredApps={filteredApps} query={query} />
     </Suspense>
   );
 }

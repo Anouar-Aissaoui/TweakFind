@@ -120,7 +120,7 @@ export default async function CategoryPage({ params }: { params: { category: str
                     </nav>
                     
                      <HomePageClient
-                      apps={appsForCategory}
+                      initialApps={appsForCategory}
                       showSearch={true}
                       displayMode="grid"
                       pageTitle={`Best Tweaked ${appCategory} Apps`}

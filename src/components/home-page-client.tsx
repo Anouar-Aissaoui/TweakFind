@@ -11,7 +11,7 @@ import { Search } from 'lucide-react';
 import { Input } from './ui/input';
 
 type HomePageClientProps = {
-  apps: Entity[];
+  initialApps: Entity[];
   displayMode?: 'sections' | 'grid';
   pageTitle?: string;
   showSearch?: boolean;
@@ -27,7 +27,7 @@ const CATEGORIES_TO_DISPLAY: AppCategory[] = [
 ];
 
 export function HomePageClient({ 
-  apps, 
+  initialApps, 
   displayMode = 'sections', 
   pageTitle,
   showSearch = false,
@@ -35,12 +35,12 @@ export function HomePageClient({
   const [searchTerm, setSearchTerm] = useState('');
 
   const filteredApps = useMemo(() => {
-    if (!searchTerm) return apps;
-    return apps.filter(app => 
+    if (!searchTerm) return initialApps;
+    return initialApps.filter(app => 
       app.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
       app.description.toLowerCase().includes(searchTerm.toLowerCase())
     );
-  }, [apps, searchTerm]);
+  }, [initialApps, searchTerm]);
 
   const appsByCategory = useMemo(() => {
     const grouped: Partial<Record<AppCategory, Entity[]>> = {};

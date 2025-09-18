@@ -1,32 +1,19 @@
 
 'use client';
 
-import { useSearchParams } from 'next/navigation';
 import type { Entity } from '@/lib/apps';
 import { HomePageClient } from '@/components/home-page-client';
-import { useMemo } from 'react';
 
 type SearchClientProps = {
-  apps: Entity[];
+  filteredApps: Entity[];
+  query: string;
 };
 
-export function SearchClient({ apps }: SearchClientProps) {
-  const searchParams = useSearchParams();
-  const query = searchParams.get('q') || '';
-
-  const filteredApps = useMemo(() => {
-    if (!query) return [];
-    return apps.filter(app => 
-      app.name.toLowerCase().includes(query.toLowerCase()) ||
-      app.description.toLowerCase().includes(query.toLowerCase()) ||
-      app.category.toLowerCase().includes(query.toLowerCase())
-    );
-  }, [apps, query]);
-
+export function SearchClient({ filteredApps, query }: SearchClientProps) {
   return (
     <div className="container mx-auto p-4 sm:p-6 lg:p-8">
       <HomePageClient
-        apps={filteredApps}
+        initialApps={filteredApps}
         displayMode="grid"
         pageTitle={query ? `Search results for "${query}"` : 'Enter a search term'}
         showSearch={false}

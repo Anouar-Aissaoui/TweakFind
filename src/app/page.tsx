@@ -11,7 +11,7 @@ export default function Home() {
       <div className="grid grid-cols-1 lg:grid-cols-[1fr_300px] gap-8">
         <main>
           <HomePageClient
-            apps={allApps}
+            initialApps={allApps}
           />
         </main>
         <aside className="hidden lg:block">
