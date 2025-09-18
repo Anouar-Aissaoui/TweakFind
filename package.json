@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "next lint",
     "typecheck": "tsc --noEmit",
-    "notify:google": "node scripts/notify-google-indexing.js"
+    "notify:google": "node scripts/notify-google-indexing.js",
+    "notify:indexnow": "node scripts/notify-indexnow.js"
   },
   "dependencies": {
     "@hookform/resolvers": "^4.1.3",
