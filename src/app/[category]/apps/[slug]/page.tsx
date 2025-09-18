@@ -2,7 +2,7 @@
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { apps } from "@/lib/apps";
-import { SoftwareApplication, WebPage, BreadcrumbList, ImageObject } from "schema-dts";
+import { SoftwareApplication, WebPage, BreadcrumbList, ImageObject, FAQPage } from "schema-dts";
 import { AppPageClient } from "@/components/app-page-client";
 import { slugify } from "@/lib/utils";
 
@@ -45,7 +45,20 @@ export async function generateMetadata({ params }: { params: { category: string,
     { name: app.name, item: `/${slugify(app.category)}/apps/${app.id}` }
   ];
 
-  const jsonLd: (WebPage | BreadcrumbList | SoftwareApplication)[] = [
+  const faqSchema: FAQPage = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": app.faq.items.map(item => ({
+      "@type": "Question",
+      "name": item.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": item.answer
+      }
+    }))
+  };
+
+  const jsonLd: (WebPage | BreadcrumbList | SoftwareApplication | FAQPage)[] = [
     {
       "@context": "https://schema.org",
       "@type": "WebPage",
@@ -91,7 +104,8 @@ export async function generateMetadata({ params }: { params: { category: string,
           "ratingValue": "4.8",
           "reviewCount": "2481"
         }
-    }
+    },
+    faqSchema
   ];
 
   return {
