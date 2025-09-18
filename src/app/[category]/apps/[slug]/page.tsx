@@ -85,7 +85,7 @@ export async function generateMetadata({ params }: { params: { category: string,
         },
         "image": appImages,
         "url": url,
-        "description": app.subhead,
+        "description": meta_description,
         "aggregateRating": {
           "@type": "AggregateRating",
           "ratingValue": "4.8",
