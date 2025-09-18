@@ -27,6 +27,16 @@ const nextConfig: NextConfig = {
         destination: 'https://tweak.appsg.site/:path*',
         permanent: true,
       },
+      {
+        source: '/developer tools/apps',
+        destination: '/developer-tools/apps',
+        permanent: true,
+      },
+      {
+        source: '/developer tools/apps/:slug',
+        destination: '/developer-tools/apps/:slug',
+        permanent: true,
+      },
     ]
   },
   images: {
